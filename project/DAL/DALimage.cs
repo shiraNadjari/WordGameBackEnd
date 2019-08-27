@@ -33,6 +33,20 @@ namespace DAL
             }
         }
 
+        public static List<COMimage> GetTenNextImages(int categoryId)
+        {
+            //return list with all images objects in this category
+            using (DBEntities context = new DBEntities())
+            {
+                List<COMimage> list = new List<COMimage>();
+                foreach (Images_tbl item in context.Images_tbl.Where(img => img.CategoryID == categoryId))
+                {
+                    list.Add(MAPPER.ConvertDALimageToCOMimage(item));
+                }
+                return list;
+            }
+        }
+
         public static void Removeimage(int id)
         {
             using (DBEntities contex = new DBEntities())

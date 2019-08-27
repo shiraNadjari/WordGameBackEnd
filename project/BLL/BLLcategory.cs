@@ -25,6 +25,11 @@ namespace BLL
             return DALcategory.GetCategories();
         }
 
+        public static int GetPagesAmountPerCategory(int categoryId)
+        {
+            return DALcategory.GetPagesAmountPerCategory(categoryId);
+        }
+
         public static void RemoveCategory(int id)
         {
             DALcategory.RemoveCategory(id);

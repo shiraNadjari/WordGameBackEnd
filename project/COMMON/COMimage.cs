@@ -11,5 +11,7 @@ namespace COMMON
         public int ImageID { get; set; }
         public string URL { get; set; }
         public int CategoryID { get; set; }
+        public int BeginIndex { get; set; }
+        public int EndIndex { get; set; }
     }
 }
