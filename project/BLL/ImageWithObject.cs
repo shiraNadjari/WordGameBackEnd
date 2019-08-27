@@ -8,7 +8,7 @@ namespace BLL
 {
   public  class ImageWithObject
     {
-       public COMimage image;
+        public COMimage image;
         public COMimageObject[] imageobjects { get; set; }
     }
 }

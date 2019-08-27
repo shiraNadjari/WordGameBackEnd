@@ -23,6 +23,7 @@ namespace WebApi.Controllers
 
         public List<Comcategory> GetCategories()
         {
+            
             return BLLcategory.GetCategories();
         }
         public IHttpActionResult PostCategory(Comcategory com)
