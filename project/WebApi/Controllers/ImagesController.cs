@@ -12,7 +12,7 @@ namespace WebApi.Controllers
     public class ImagesController : ApiController
     {
 
-        public IHttpActionResult GetimageById(int id)
+        public IHttpActionResult GetImageById(int id)
         {
             COMimage img = BLLimage.GetImageById(id);
             if (img == null)
@@ -22,11 +22,18 @@ namespace WebApi.Controllers
             return Ok(img);
         }
 
-        public List<COMimage> Getimages()
+        public List<COMimage> GetImages()
         {
             return BLLimage.Getimages();
         }
-        public IHttpActionResult Postimages(COMimage img)
+
+        public List<ImageWithObject> GetTenNextImages(int id,int time)
+        {
+            //time is current page number in this category images
+            return ImageMat.CreateMat(BLLimage.GetTenNextImages(id, time)); ;
+        }
+
+        public IHttpActionResult PostImages(COMimage img)
         {
             COMimage im = BLLimage.GetImageById(img.ImageID);
             if (im != null)
@@ -36,7 +43,8 @@ namespace WebApi.Controllers
             BLLimage.AddImage(img);
             return Ok();
         }
-        public void Deleteimage(int id)
+
+        public void DeleteImage(int id)
         {
             BLLimage.RemoveImage(id);
         }

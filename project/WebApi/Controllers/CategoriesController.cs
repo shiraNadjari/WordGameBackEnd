@@ -11,21 +11,29 @@ namespace WebApi.Controllers
 {
     public class CategoriesController : ApiController
     {
-        public IHttpActionResult GetCategoryById(int id)
-        {
-            Comcategory cat = BLLcategory.GetCategoryById(id);
-            if (cat == null)
-            {
-                return BadRequest("category does not exist");
-            }
-            return Ok(cat);
-        }
+        //[Route("api/GetCategoryById/{id}")]
+        //public IHttpActionResult GetCategoryById(int id)
+        //{
+        //    Comcategory cat = BLLcategory.GetCategoryById(id);
+        //    if (cat == null)
+        //    {
+        //        return BadRequest("category does not exist");
+        //    }
+        //    return Ok(cat);
+        //}
 
         public List<Comcategory> GetCategories()
         {
             
             return BLLcategory.GetCategories();
         }
+
+        //[Route("api/GetPagesAmountPerCategory/{id}")]
+        public int GetPagesAmountPerCategory(int id)
+        {
+            return BLLcategory.GetPagesAmountPerCategory(id);
+        }
+
         public IHttpActionResult PostCategory(Comcategory com)
         {
             Comcategory c = BLLcategory.GetCategoryById(com.CategoryId);

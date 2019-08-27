@@ -4,7 +4,7 @@
     <Key>
       <PropertyRef Name="CategoryID" />
     </Key>
-    <Property Name="CategoryID" Type="int" Nullable="false" />
+    <Property Name="CategoryID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="CategoryName" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="ImageURL" Type="varchar(max)" Nullable="false" />
   </EntityType>
@@ -12,15 +12,17 @@
     <Key>
       <PropertyRef Name="ImageID" />
     </Key>
-    <Property Name="ImageID" Type="int" Nullable="false" />
+    <Property Name="ImageID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="URL" Type="varchar(max)" Nullable="false" />
     <Property Name="CategoryID" Type="int" Nullable="false" />
+    <Property Name="BeginIndex" Type="int" Nullable="false" />
+    <Property Name="EndIndex" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="Objects_tbl">
     <Key>
       <PropertyRef Name="ObjectID" />
     </Key>
-    <Property Name="ObjectID" Type="int" Nullable="false" />
+    <Property Name="ObjectID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="X1" Type="float" Nullable="false" />
     <Property Name="Y1" Type="float" Nullable="false" />

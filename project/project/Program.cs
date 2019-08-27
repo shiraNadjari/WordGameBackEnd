@@ -38,7 +38,7 @@ namespace project
             //    Console.WriteLine(item.ObjectId+" "+item.Name);
             //}
 
-            ImageMat.CreateMat();
+            //ImageMat.CreateMat();
            
         }
     }

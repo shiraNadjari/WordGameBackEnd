@@ -34,6 +34,14 @@ namespace DAL
             }
         }
 
+        public static int GetPagesAmountPerCategory(int categoryId)
+        {
+            using (DBEntities context = new DBEntities())
+            {
+                return DALimage.Getimages().Where(img => img.CategoryID == categoryId).Count()/10;
+            }
+        }
+
         public static void RemoveCategory(int id)
         {
             using (DBEntities contex = new DBEntities())
