@@ -15,3 +15,5 @@ C:\Users\shira_000\Desktop\projectGoogle\WordGameBackend\project\project\obj\Deb
 C:\Users\shira_000\Desktop\projectGoogle\WordGameBackend\project\project\obj\Debug\project.pdb
 C:\Users\shira_000\Desktop\projectGoogle\WordGameBackend\project\project\bin\Debug\EntityFramework.SqlServer.dll
 C:\Users\shira_000\Desktop\projectGoogle\WordGameBackend\project\project\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\shira_000\Desktop\projectGoogle\WordGameBackend\project\project\bin\Debug\BLL.dll
+C:\Users\shira_000\Desktop\projectGoogle\WordGameBackend\project\project\bin\Debug\BLL.pdb

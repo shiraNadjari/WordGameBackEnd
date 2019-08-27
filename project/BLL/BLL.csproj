@@ -44,6 +44,8 @@
     <Compile Include="BLLimage.cs" />
     <Compile Include="BLLobject.cs" />
     <Compile Include="GoogleVision.cs" />
+    <Compile Include="ImageMat.cs" />
+    <Compile Include="ImageWithObject.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

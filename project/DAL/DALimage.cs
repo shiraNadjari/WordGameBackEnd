@@ -44,6 +44,14 @@ namespace DAL
                     contex.SaveChanges();
                 }
             }
+
+        }
+        public static int NumImages()
+        {
+            using (DBEntities contex = new DBEntities())
+            {
+                return contex.Images_tbl.Count();
+            }
         }
     }
 }

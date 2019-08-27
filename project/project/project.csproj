@@ -56,6 +56,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\BLL\BLL.csproj">
+      <Project>{37450f47-fecf-4312-ba6a-ec3783b34278}</Project>
+      <Name>BLL</Name>
+    </ProjectReference>
     <ProjectReference Include="..\COMMON\COMMON.csproj">
       <Project>{46897c28-c8ae-422c-a21a-4d6fe17deca9}</Project>
       <Name>COMMON</Name>
