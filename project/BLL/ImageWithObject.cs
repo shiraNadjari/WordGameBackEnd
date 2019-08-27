@@ -9,6 +9,8 @@ namespace BLL
   public  class ImageWithObject
     {
         public COMimage image;
+
         public List<COMimageObject> imageobjects;
+
     }
 }

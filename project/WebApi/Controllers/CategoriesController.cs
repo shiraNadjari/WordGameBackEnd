@@ -24,6 +24,7 @@ namespace WebApi.Controllers
 
         public List<Comcategory> GetCategories()
         {
+            
             return BLLcategory.GetCategories();
         }
 

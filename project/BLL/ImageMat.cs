@@ -26,7 +26,7 @@ namespace BLL
                 array[j].image.CategoryID = img.CategoryID;
                 for (int i = img.BeginIndex; i <= img.EndIndex; i++)
                 {
-                    array[j].imageobjects.Add(ObjArray[i]);
+                   array[j].imageobjects.Add(ObjArray[i]);
                 }
             }
             return array.ToList();
