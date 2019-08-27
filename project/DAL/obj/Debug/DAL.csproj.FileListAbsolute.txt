@@ -12,3 +12,17 @@ C:\Users\shira_000\Desktop\projectGoogle\WordGameBackend\project\DAL\obj\Debug\D
 C:\Users\shira_000\Desktop\projectGoogle\WordGameBackend\project\DAL\obj\Debug\DAL.csproj.CopyComplete
 C:\Users\shira_000\Desktop\projectGoogle\WordGameBackend\project\DAL\obj\Debug\DAL.dll
 C:\Users\shira_000\Desktop\projectGoogle\WordGameBackend\project\DAL\obj\Debug\DAL.pdb
+C:\Users\ריקי\Desktop\WordGameBackend\WordGameBackEnd\project\DAL\bin\Debug\DAL.dll.config
+C:\Users\ריקי\Desktop\WordGameBackend\WordGameBackEnd\project\DAL\bin\Debug\DAL.dll
+C:\Users\ריקי\Desktop\WordGameBackend\WordGameBackEnd\project\DAL\bin\Debug\DAL.pdb
+C:\Users\ריקי\Desktop\WordGameBackend\WordGameBackEnd\project\DAL\bin\Debug\COMMON.dll
+C:\Users\ריקי\Desktop\WordGameBackend\WordGameBackEnd\project\DAL\bin\Debug\EntityFramework.dll
+C:\Users\ריקי\Desktop\WordGameBackend\WordGameBackEnd\project\DAL\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\ריקי\Desktop\WordGameBackend\WordGameBackEnd\project\DAL\bin\Debug\COMMON.pdb
+C:\Users\ריקי\Desktop\WordGameBackend\WordGameBackEnd\project\DAL\bin\Debug\EntityFramework.xml
+C:\Users\ריקי\Desktop\WordGameBackend\WordGameBackEnd\project\DAL\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\ריקי\Desktop\WordGameBackend\WordGameBackEnd\project\DAL\obj\Debug\DAL.csprojAssemblyReference.cache
+C:\Users\ריקי\Desktop\WordGameBackend\WordGameBackEnd\project\DAL\obj\Debug\DAL.csproj.CoreCompileInputs.cache
+C:\Users\ריקי\Desktop\WordGameBackend\WordGameBackEnd\project\DAL\obj\Debug\DAL.csproj.CopyComplete
+C:\Users\ריקי\Desktop\WordGameBackend\WordGameBackEnd\project\DAL\obj\Debug\DAL.dll
+C:\Users\ריקי\Desktop\WordGameBackend\WordGameBackEnd\project\DAL\obj\Debug\DAL.pdb
