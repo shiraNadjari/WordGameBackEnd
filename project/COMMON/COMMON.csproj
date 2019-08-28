@@ -40,8 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
-    <Compile Include="Comcategory.cs" />
+    <Compile Include="ComCategory.cs" />
     <Compile Include="COMimage.cs" />
     <Compile Include="COMimageObject.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

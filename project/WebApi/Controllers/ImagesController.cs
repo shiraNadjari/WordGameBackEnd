@@ -30,7 +30,7 @@ namespace WebApi.Controllers
         public List<ImageWithObject> GetTenNextImages(int id,int time)
         {
             //time is current page number in this category images
-            return ImageMat.CreateMat(BLLimage.GetTenNextImages(id, time)); ;
+            return ImageMat.CreateMat(BLLimage.GetTenNextImages(id, time));
         }
 
         public IHttpActionResult PostImages(COMimage img)

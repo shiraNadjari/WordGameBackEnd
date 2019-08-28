@@ -10,17 +10,17 @@ namespace BLL
 {
     public class BLLcategory
     {
-        public static void AddCategory(Comcategory cat)
+        public static void AddCategory(ComCategory cat)
         {
             DALcategory.AddCategory(cat);
         }
 
-        public static Comcategory GetCategoryById(int id)
+        public static ComCategory GetCategoryById(int id)
         {
             return DALcategory.GetCategoryById(id);
         }
 
-        public static List<Comcategory> GetCategories()
+        public static List<ComCategory> GetCategories()
         {
             return DALcategory.GetCategories();
         }

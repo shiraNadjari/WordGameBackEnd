@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
+//using System.Tet;
 using System.Threading.Tasks;
 using COMMON;
 using DAL;
@@ -39,7 +39,8 @@ namespace project
             //}
 
             //ImageMat.CreateMat();
-           
+            BLLgoogleVision gv = new BLLgoogleVision();
+            //gv.VisionApi();
         }
     }
 }

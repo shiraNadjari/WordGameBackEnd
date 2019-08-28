@@ -1,5 +1,4 @@
-<<<<<<< HEAD
-C:\Users\shira_000\Desktop\projectGoogle\WordGameBackend\project\WebApi\obj\Debug\WebApi.csprojResolveAssemblyReference.cache
+﻿C:\Users\shira_000\Desktop\projectGoogle\WordGameBackend\project\WebApi\obj\Debug\WebApi.csprojResolveAssemblyReference.cache
 C:\Users\shira_000\Desktop\projectGoogle\WordGameBackend\project\WebApi\obj\Debug\WebApi.csproj.CoreCompileInputs.cache
 C:\Users\shira_000\Desktop\projectGoogle\WordGameBackend\project\WebApi\bin\WebApi.dll.config
 C:\Users\shira_000\Desktop\projectGoogle\WordGameBackend\project\WebApi\bin\WebApi.dll
@@ -150,4 +149,6 @@ C:\Users\ריקי\Desktop\WordGameBackend\WordGameBackEnd\project\WebApi\obj\Deb
 C:\Users\ריקי\Desktop\WordGameBackend\WordGameBackEnd\project\WebApi\obj\Debug\WebApi.csproj.CopyComplete
 C:\Users\ריקי\Desktop\WordGameBackend\WordGameBackEnd\project\WebApi\obj\Debug\WebApi.dll
 C:\Users\ריקי\Desktop\WordGameBackend\WordGameBackEnd\project\WebApi\obj\Debug\WebApi.pdb
->>>>>>> f5915e85fe1308df285e5fd35518bd340cc0b2a3
+
+C:\Users\ריקי\Desktop\WordGameBackend\WordGameBackEnd\project\WebApi\bin\EntityFramework.xml
+C:\Users\ריקי\Desktop\WordGameBackend\WordGameBackEnd\project\WebApi\bin\EntityFramework.SqlServer.xml

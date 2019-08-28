@@ -58,6 +58,10 @@ namespace DAL
             o.X2 = obj.X2;
             o.Y1 = obj.Y1;
             o.Y2 = obj.Y2;
+            o.X3 = obj.X3;
+            o.Y3 = obj.Y3;
+            o.X4 = obj.X4;
+            o.Y4 = obj.Y4;
             return o;
         }
 
@@ -71,6 +75,10 @@ namespace DAL
             o.X2 = obj.X2;
             o.Y1 = obj.Y1;
             o.Y2 = obj.Y2;
+            o.X3 = obj.X3;
+            o.Y3 = obj.Y3;
+            o.X4 = obj.X4;
+            o.Y4 = obj.Y4;
             return o;
         }
 
@@ -96,7 +104,7 @@ namespace DAL
 
         ////////////
         ///
-        public static Categories_tbl ConvertCOMcategoryToDALcategory(Comcategory category)
+        public static Categories_tbl ConvertCOMcategoryToDALcategory(ComCategory category)
         {
             Categories_tbl cat = new Categories_tbl();
             cat.CategoryID = category.CategoryId;
@@ -105,28 +113,28 @@ namespace DAL
             return cat;
         }
 
-        public static Comcategory ConvertDALcategoryToCOMcategory(Categories_tbl category)
+        public static ComCategory ConvertDALcategoryToCOMcategory(Categories_tbl category)
         {
-            Comcategory cat = new Comcategory();
+            ComCategory cat = new ComCategory();
             cat.CategoryId = category.CategoryID;
             cat.CategoryName = category.CategoryName;
             cat.ImageURL = category.ImageURL;
             return cat;
         }
 
-        public static List<Categories_tbl> ConvertListCOMcategoryToListDALcategory(List<Comcategory> categories)
+        public static List<Categories_tbl> ConvertListCOMcategoryToListDALcategory(List<ComCategory> categories)
         {
             List<Categories_tbl> cats = new List<Categories_tbl>();
-            foreach (Comcategory cat in categories)
+            foreach (ComCategory cat in categories)
             {
                 cats.Add(ConvertCOMcategoryToDALcategory(cat));
             }
             return cats;
         }
 
-        public static List<Comcategory> ConvertListDALcategoryToListCOMcategory(List<Categories_tbl> categories)
+        public static List<ComCategory> ConvertListDALcategoryToListCOMcategory(List<Categories_tbl> categories)
         {
-            List<Comcategory> cats = new List<Comcategory>();
+            List<ComCategory> cats = new List<ComCategory>();
             foreach (Categories_tbl cat in categories)
             {
                 cats.Add(ConvertDALcategoryToCOMcategory(cat));

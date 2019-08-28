@@ -67,5 +67,13 @@ namespace DAL
                 return contex.Images_tbl.Count();
             }
         }
+
+        public static int GetImageIdByURL(string URL)
+        {
+            using (DBEntities context = new DBEntities())
+            {
+                return context.Images_tbl.FirstOrDefault(img => img.URL == URL).ImageID;            
+            }
+        }
     }
 }

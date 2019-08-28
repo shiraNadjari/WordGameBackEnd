@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace COMMON
 {
-  public  class Comcategory
+  public  class ComCategory
     {
         public int CategoryId { get; set; }
         public string CategoryName { get; set; }

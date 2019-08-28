@@ -22,7 +22,7 @@ namespace WebApi.Controllers
         //    return Ok(cat);
         //}
 
-        public List<Comcategory> GetCategories()
+        public List<ComCategory> GetCategories()
         {
             
             return BLLcategory.GetCategories();
@@ -34,9 +34,9 @@ namespace WebApi.Controllers
             return BLLcategory.GetPagesAmountPerCategory(id);
         }
 
-        public IHttpActionResult PostCategory(Comcategory com)
+        public IHttpActionResult PostCategory(ComCategory com)
         {
-            Comcategory c = BLLcategory.GetCategoryById(com.CategoryId);
+            ComCategory c = BLLcategory.GetCategoryById(com.CategoryId);
             if(c!=null)
             {
                 return BadRequest("category already exist");
