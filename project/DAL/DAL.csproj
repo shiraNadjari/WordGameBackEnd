@@ -53,7 +53,6 @@
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="DALcategory.cs" />
-    <Compile Include="DALgoogleVision.cs" />
     <Compile Include="DALimage.cs" />
     <Compile Include="DALimageObject.cs" />
     <Compile Include="Images_tbl.cs">

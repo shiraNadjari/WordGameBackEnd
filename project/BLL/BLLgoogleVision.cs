@@ -13,13 +13,13 @@ namespace BLL
 {
     public class BLLgoogleVision
     {
-        private double pop(List<double> list)
+        private static double pop(List<double> list)
         {
             double x = list.Last();
             list.RemoveAt(list.Count - 1);
             return x;
         }
-        public void VisionApi(int categoryId)
+        public static void VisionApi(int categoryId)
         {
             Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", "C:\\wordproject-29b2e0d3e0d5.json");
             // Instantiates a client
@@ -53,7 +53,7 @@ namespace BLL
             string imageURL;
             bool IsException = false;
             // upload the image storage
-            string projectId = "wordproject-249810";
+            //string projectId = "wordproject-249810";
             string objectName = "hello";
             string bucketName = "worproject";
             var storage = StorageClient.Create();
@@ -78,7 +78,7 @@ namespace BLL
                 COMimage img = new COMimage();
                 img.CategoryID = categoryId;
                 img.URL = imageURL;
-                DALgoogleVision.InsertImage(img);
+                DALimage.Addimage(img);
                 int imgId = DALimage.GetImageIdByURL(imageURL);
                 
                 //insert objects into db
@@ -106,7 +106,7 @@ namespace BLL
                         obj.Y3 = pop(y);
                         obj.X4 = pop(x);
                         obj.Y4 = pop(y);
-                        DALgoogleVision.InsertObjects(obj);
+                        DALimageObject.AddObject(obj);
                     }
                 }
             }

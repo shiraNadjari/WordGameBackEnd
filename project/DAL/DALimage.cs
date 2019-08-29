@@ -25,11 +25,20 @@ namespace DAL
             }
         }
 
+        
+
         public static List<COMimage> Getimages()
         {
             using (DBEntities context = new DBEntities())
             {
                 return MAPPER.ConvertListDAlimageToListCOMimage(context.Images_tbl.ToList());
+            }
+        }
+        public static List<COMimage> GetImagesByCategoryId(int categoryId)
+        {
+            using (DBEntities context = new DBEntities())
+            {
+                return Getimages().FindAll(img => img.CategoryID == categoryId);
             }
         }
 

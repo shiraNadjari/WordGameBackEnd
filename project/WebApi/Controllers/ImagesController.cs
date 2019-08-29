@@ -33,7 +33,7 @@ namespace WebApi.Controllers
             return ImageMat.CreateMat(BLLimage.GetTenNextImages(id, time));
         }
 
-        public IHttpActionResult PostImages(COMimage img)
+        public IHttpActionResult PostImage(COMimage img)
         {
             COMimage im = BLLimage.GetImageById(img.ImageID);
             if (im != null)

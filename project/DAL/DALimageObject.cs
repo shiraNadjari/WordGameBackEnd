@@ -25,12 +25,32 @@ namespace DAL
             }
         }
 
+
         public static List<COMimageObject> Getobjects()
         {
             using (DBEntities context = new DBEntities())
             {
                 return MAPPER.ConvertListDALobjectToListCOMobject(context.Objects_tbl.ToList());
             }
+        }
+
+        public static List<COMimageObject> GetObjectsByCategory(int categoryId)
+        {
+            List<int> ids = new List<int>();
+            List<COMimageObject> objects = new List<COMimageObject>();
+            foreach (COMimage img in DALimage.GetImagesByCategoryId(categoryId))
+            {
+                ids.Add(img.ImageID);
+            }
+            foreach (int imgId in ids)
+            {
+                foreach (COMimageObject obj in Getobjects().FindAll(obj => obj.ImageID == imgId))
+                {
+                    objects.Add(obj);
+                }
+            }
+            //objects.Add()
+            return objects;
         }
 
         public static void RemoveObject(int id)

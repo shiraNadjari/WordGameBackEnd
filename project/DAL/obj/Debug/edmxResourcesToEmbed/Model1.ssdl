@@ -28,6 +28,10 @@
     <Property Name="Y1" Type="float" Nullable="false" />
     <Property Name="X2" Type="float" Nullable="false" />
     <Property Name="Y2" Type="float" Nullable="false" />
+    <Property Name="X3" Type="float" Nullable="false" />
+    <Property Name="Y3" Type="float" Nullable="false" />
+    <Property Name="X4" Type="float" Nullable="false" />
+    <Property Name="Y4" Type="float" Nullable="false" />
     <Property Name="ImageID" Type="int" />
   </EntityType>
   <Association Name="FK_Images_tbl_Categories_tbl">

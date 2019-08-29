@@ -11,25 +11,27 @@ namespace BLL
     {
         public static List<ImageWithObject> CreateMat(List<COMimage> imageList)
         {
-            int j = 0;
-            ImageWithObject[] array = new ImageWithObject[DALimage.NumImages()];
-            List<COMimageObject> ObjArray = DALimageObject.Getobjects();
+            //answer list
+            List<ImageWithObject> ImagesAndObjectsMat = new List<ImageWithObject>();
+            //list with all objects of all images from all categories
+            List<COMimageObject> ObjList = DALimageObject.GetObjectsByCategory(imageList[0].CategoryID);
             foreach (COMimage img in imageList)
             {
-                array[j] = new ImageWithObject();
-                array[j].image = new COMimage();
-                array[j].imageobjects = new List<COMimageObject>();
-                array[j].image.ImageID = img.ImageID;
-                array[j].image.URL = img.URL;
-                array[j].image.BeginIndex = img.BeginIndex;
-                array[j].image.EndIndex = img.EndIndex;
-                array[j].image.CategoryID = img.CategoryID;
+                ImageWithObject imageAndObject = new ImageWithObject();
+                imageAndObject.image = new COMimage();
+                imageAndObject.imageObjects = new List<COMimageObject>();
+                imageAndObject.image.ImageID = img.ImageID;
+                imageAndObject.image.URL = img.URL;
+                imageAndObject.image.BeginIndex = img.BeginIndex;
+                imageAndObject.image.EndIndex = img.EndIndex;
+                imageAndObject.image.CategoryID = img.CategoryID;
                 for (int i = img.BeginIndex; i <= img.EndIndex; i++)
                 {
-                   array[j].imageobjects.Add(ObjArray[i]);
+                    imageAndObject.imageObjects.Add(ObjList[i]);
                 }
+                ImagesAndObjectsMat.Add(imageAndObject);
             }
-            return array.ToList();
+            return ImagesAndObjectsMat;
 
 
             //int counter = 0;

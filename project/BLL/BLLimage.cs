@@ -12,7 +12,8 @@ namespace BLL
     {
         public static void AddImage(COMimage img)
         {
-            DALimage.Addimage(img);
+            //DALimage.Addimage(img);
+            BLLgoogleVision.VisionApi(img.CategoryID);
         }
 
         public static COMimage GetImageById(int id)

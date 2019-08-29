@@ -2,15 +2,15 @@
 <Schema Namespace="DBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
   <EntityContainer Name="DBEntities" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="Images_tbl" EntityType="DBModel.Images_tbl" />
-    <EntitySet Name="Objects_tbl" EntityType="DBModel.Objects_tbl" />
-    <AssociationSet Name="FK_Objects_tbl_Images_tbl" Association="DBModel.FK_Objects_tbl_Images_tbl">
-      <End Role="Images_tbl" EntitySet="Images_tbl" />
-      <End Role="Objects_tbl" EntitySet="Objects_tbl" />
-    </AssociationSet>
     <EntitySet Name="Categories_tbl" EntityType="DBModel.Categories_tbl" />
     <AssociationSet Name="FK_Images_tbl_Categories_tbl" Association="DBModel.FK_Images_tbl_Categories_tbl">
       <End Role="Categories_tbl" EntitySet="Categories_tbl" />
       <End Role="Images_tbl" EntitySet="Images_tbl" />
+    </AssociationSet>
+    <EntitySet Name="Objects_tbl" EntityType="DBModel.Objects_tbl" />
+    <AssociationSet Name="FK_Objects_tbl_Images_tbl" Association="DBModel.FK_Objects_tbl_Images_tbl">
+      <End Role="Images_tbl" EntitySet="Images_tbl" />
+      <End Role="Objects_tbl" EntitySet="Objects_tbl" />
     </AssociationSet>
   </EntityContainer>
   <EntityType Name="Images_tbl">
@@ -22,34 +22,9 @@
     <Property Name="CategoryID" Type="Int32" Nullable="false" />
     <Property Name="BeginIndex" Type="Int32" Nullable="false" />
     <Property Name="EndIndex" Type="Int32" Nullable="false" />
-    <NavigationProperty Name="Objects_tbl" Relationship="DBModel.FK_Objects_tbl_Images_tbl" FromRole="Images_tbl" ToRole="Objects_tbl" />
     <NavigationProperty Name="Categories_tbl" Relationship="DBModel.FK_Images_tbl_Categories_tbl" FromRole="Images_tbl" ToRole="Categories_tbl" />
+    <NavigationProperty Name="Objects_tbl" Relationship="DBModel.FK_Objects_tbl_Images_tbl" FromRole="Images_tbl" ToRole="Objects_tbl" />
   </EntityType>
-  <EntityType Name="Objects_tbl">
-    <Key>
-      <PropertyRef Name="ObjectID" />
-    </Key>
-    <Property Name="ObjectID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="X1" Type="Double" Nullable="false" />
-    <Property Name="Y1" Type="Double" Nullable="false" />
-    <Property Name="X2" Type="Double" Nullable="false" />
-    <Property Name="Y2" Type="Double" Nullable="false" />
-    <Property Name="ImageID" Type="Int32" />
-    <NavigationProperty Name="Images_tbl" Relationship="DBModel.FK_Objects_tbl_Images_tbl" FromRole="Objects_tbl" ToRole="Images_tbl" />
-  </EntityType>
-  <Association Name="FK_Objects_tbl_Images_tbl">
-    <End Type="DBModel.Images_tbl" Role="Images_tbl" Multiplicity="0..1" />
-    <End Type="DBModel.Objects_tbl" Role="Objects_tbl" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Images_tbl">
-        <PropertyRef Name="ImageID" />
-      </Principal>
-      <Dependent Role="Objects_tbl">
-        <PropertyRef Name="ImageID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <EntityType Name="Categories_tbl">
     <Key>
       <PropertyRef Name="CategoryID" />
@@ -68,6 +43,35 @@
       </Principal>
       <Dependent Role="Images_tbl">
         <PropertyRef Name="CategoryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Objects_tbl">
+    <Key>
+      <PropertyRef Name="ObjectID" />
+    </Key>
+    <Property Name="ObjectID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="X1" Type="Double" Nullable="false" />
+    <Property Name="Y1" Type="Double" Nullable="false" />
+    <Property Name="X2" Type="Double" Nullable="false" />
+    <Property Name="Y2" Type="Double" Nullable="false" />
+    <Property Name="X3" Type="Double" Nullable="false" />
+    <Property Name="Y3" Type="Double" Nullable="false" />
+    <Property Name="X4" Type="Double" Nullable="false" />
+    <Property Name="Y4" Type="Double" Nullable="false" />
+    <Property Name="ImageID" Type="Int32" />
+    <NavigationProperty Name="Images_tbl" Relationship="DBModel.FK_Objects_tbl_Images_tbl" FromRole="Objects_tbl" ToRole="Images_tbl" />
+  </EntityType>
+  <Association Name="FK_Objects_tbl_Images_tbl">
+    <End Type="DBModel.Images_tbl" Role="Images_tbl" Multiplicity="0..1" />
+    <End Type="DBModel.Objects_tbl" Role="Objects_tbl" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Images_tbl">
+        <PropertyRef Name="ImageID" />
+      </Principal>
+      <Dependent Role="Objects_tbl">
+        <PropertyRef Name="ImageID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
