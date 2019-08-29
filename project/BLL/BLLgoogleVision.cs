@@ -19,7 +19,7 @@ namespace BLL
             list.RemoveAt(list.Count - 1);
             return x;
         }
-        public static void VisionApi(int categoryId)
+        public static void VisionApi(int categoryId,int UserId)
         {
             Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", "C:\\wordproject-29b2e0d3e0d5.json");
             // Instantiates a client
@@ -78,6 +78,7 @@ namespace BLL
                 COMimage img = new COMimage();
                 img.CategoryID = categoryId;
                 img.URL = imageURL;
+                img.UserId = UserId;
                 DALimage.Addimage(img);
                 int imgId = DALimage.GetImageIdByURL(imageURL);
                 

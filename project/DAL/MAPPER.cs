@@ -9,12 +9,14 @@ namespace DAL
 {
     class MAPPER
     {
+        //image
         public static Images_tbl ConvertCOMimageToDALimage(COMimage image)
         {
             Images_tbl img = new Images_tbl();
             img.CategoryID = image.CategoryID;
             img.ImageID = image.ImageID;
             img.URL = image.URL;
+            img.UserId = image.UserId;
             return img;
         }
 
@@ -24,6 +26,7 @@ namespace DAL
             img.CategoryID = image.CategoryID;
             img.ImageID = image.ImageID;
             img.URL = image.URL;
+            img.UserId = image.UserId;
             return img;
         }
 
@@ -47,7 +50,7 @@ namespace DAL
             return imgs;
         }
 
-        ////////
+        ////////objects
         public static Objects_tbl ConvertCOMobjectToDALobject(COMimageObject obj)
         {
             Objects_tbl o = new Objects_tbl();
@@ -104,7 +107,7 @@ namespace DAL
 
         ////////////
         ///
-        public static Categories_tbl ConvertCOMcategoryToDALcategory(ComCategory category)
+        public static Categories_tbl ConvertCOMcategoryToDALcategory(COMCategory category)
         {
             Categories_tbl cat = new Categories_tbl();
             cat.CategoryID = category.CategoryId;
@@ -113,33 +116,75 @@ namespace DAL
             return cat;
         }
 
-        public static ComCategory ConvertDALcategoryToCOMcategory(Categories_tbl category)
+        public static COMCategory ConvertDALcategoryToCOMcategory(Categories_tbl category)
         {
-            ComCategory cat = new ComCategory();
+            COMCategory cat = new COMCategory();
             cat.CategoryId = category.CategoryID;
             cat.CategoryName = category.CategoryName;
             cat.ImageURL = category.ImageURL;
             return cat;
         }
 
-        public static List<Categories_tbl> ConvertListCOMcategoryToListDALcategory(List<ComCategory> categories)
+        public static List<Categories_tbl> ConvertListCOMcategoryToListDALcategory(List<COMCategory> categories)
         {
             List<Categories_tbl> cats = new List<Categories_tbl>();
-            foreach (ComCategory cat in categories)
+            foreach (COMCategory cat in categories)
             {
                 cats.Add(ConvertCOMcategoryToDALcategory(cat));
             }
             return cats;
         }
 
-        public static List<ComCategory> ConvertListDALcategoryToListCOMcategory(List<Categories_tbl> categories)
+        public static List<COMCategory> ConvertListDALcategoryToListCOMcategory(List<Categories_tbl> categories)
         {
-            List<ComCategory> cats = new List<ComCategory>();
+            List<COMCategory> cats = new List<COMCategory>();
             foreach (Categories_tbl cat in categories)
             {
                 cats.Add(ConvertDALcategoryToCOMcategory(cat));
             }
             return cats;
+        }
+
+
+        //user
+        public static Users_tbl ConvertCOMuserToDALuser(COMuser user)
+        {
+            Users_tbl u = new Users_tbl();
+            u.UserId = user.UserId;
+            u.CategoryName = user.CategoryName;
+            u.Email = user.Email;
+            u.Password = user.Password;
+            return u;
+        }
+
+        public static COMuser ConvertDALuserToCOMuser(Users_tbl user)
+        {
+            COMuser u = new COMuser();
+            u.UserId = user.UserId;
+            u.CategoryName = user.CategoryName;
+            u.Email = user.Email;
+            u.Password = user.Password;
+            return u;
+        }
+
+        public static List<Users_tbl> ConvertListCOMuserToListDALuser(List<COMuser> users)
+        {
+            List<Users_tbl> us = new List<Users_tbl>();
+            foreach (COMuser u in users)
+            {
+                us.Add(ConvertCOMuserToDALuser(u));
+            }
+            return us;
+        }
+
+        public static List<COMuser> ConvertListDALuserToListCOMuser(List<Users_tbl> users)
+        {
+            List<COMuser> us = new List<COMuser>();
+            foreach (Users_tbl u in users)
+            {
+                us.Add(ConvertDALuserToCOMuser(u));
+            }
+            return us;
         }
     }
 }

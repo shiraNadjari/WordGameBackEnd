@@ -1,17 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
   <EntityContainerMapping StorageEntityContainer="DBModelStoreContainer" CdmEntityContainer="DBEntities">
-    <EntitySetMapping Name="Images_tbl">
-      <EntityTypeMapping TypeName="DBModel.Images_tbl">
-        <MappingFragment StoreEntitySet="Images_tbl">
-          <ScalarProperty Name="EndIndex" ColumnName="EndIndex" />
-          <ScalarProperty Name="BeginIndex" ColumnName="BeginIndex" />
-          <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
-          <ScalarProperty Name="URL" ColumnName="URL" />
-          <ScalarProperty Name="ImageID" ColumnName="ImageID" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="Categories_tbl">
       <EntityTypeMapping TypeName="DBModel.Categories_tbl">
         <MappingFragment StoreEntitySet="Categories_tbl">
@@ -35,6 +24,28 @@
           <ScalarProperty Name="X1" ColumnName="X1" />
           <ScalarProperty Name="Name" ColumnName="Name" />
           <ScalarProperty Name="ObjectID" ColumnName="ObjectID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Images_tbl">
+      <EntityTypeMapping TypeName="DBModel.Images_tbl">
+        <MappingFragment StoreEntitySet="Images_tbl">
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="EndIndex" ColumnName="EndIndex" />
+          <ScalarProperty Name="BeginIndex" ColumnName="BeginIndex" />
+          <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+          <ScalarProperty Name="URL" ColumnName="URL" />
+          <ScalarProperty Name="ImageID" ColumnName="ImageID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users_tbl">
+      <EntityTypeMapping TypeName="DBModel.Users_tbl">
+        <MappingFragment StoreEntitySet="Users_tbl">
+          <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

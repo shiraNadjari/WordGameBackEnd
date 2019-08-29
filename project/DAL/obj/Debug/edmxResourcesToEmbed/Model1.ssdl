@@ -17,6 +17,7 @@
     <Property Name="CategoryID" Type="int" Nullable="false" />
     <Property Name="BeginIndex" Type="int" Nullable="false" />
     <Property Name="EndIndex" Type="int" Nullable="false" />
+    <Property Name="UserId" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="Objects_tbl">
     <Key>
@@ -34,6 +35,15 @@
     <Property Name="Y4" Type="float" Nullable="false" />
     <Property Name="ImageID" Type="int" />
   </EntityType>
+  <EntityType Name="Users_tbl">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="UserId" Type="int" Nullable="false" />
+    <Property Name="Email" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Password" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="CategoryName" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
   <Association Name="FK_Images_tbl_Categories_tbl">
     <End Role="Categories_tbl" Type="Self.Categories_tbl" Multiplicity="1" />
     <End Role="Images_tbl" Type="Self.Images_tbl" Multiplicity="*" />
@@ -43,6 +53,18 @@
       </Principal>
       <Dependent Role="Images_tbl">
         <PropertyRef Name="CategoryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Images_tbl_Users_tbl">
+    <End Role="Users_tbl" Type="Self.Users_tbl" Multiplicity="1" />
+    <End Role="Images_tbl" Type="Self.Images_tbl" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users_tbl">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="Images_tbl">
+        <PropertyRef Name="UserId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -62,8 +84,13 @@
     <EntitySet Name="Categories_tbl" EntityType="Self.Categories_tbl" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Images_tbl" EntityType="Self.Images_tbl" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Objects_tbl" EntityType="Self.Objects_tbl" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Users_tbl" EntityType="Self.Users_tbl" Schema="dbo" store:Type="Tables" />
     <AssociationSet Name="FK_Images_tbl_Categories_tbl" Association="Self.FK_Images_tbl_Categories_tbl">
       <End Role="Categories_tbl" EntitySet="Categories_tbl" />
+      <End Role="Images_tbl" EntitySet="Images_tbl" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Images_tbl_Users_tbl" Association="Self.FK_Images_tbl_Users_tbl">
+      <End Role="Users_tbl" EntitySet="Users_tbl" />
       <End Role="Images_tbl" EntitySet="Images_tbl" />
     </AssociationSet>
     <AssociationSet Name="FK_Objects_tbl_Images_tbl" Association="Self.FK_Objects_tbl_Images_tbl">

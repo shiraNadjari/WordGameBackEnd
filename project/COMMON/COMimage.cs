@@ -13,5 +13,6 @@ namespace COMMON
         public int CategoryID { get; set; }
         public int BeginIndex { get; set; }
         public int EndIndex { get; set; }
+        public int UserId { get; set; }
     }
 }

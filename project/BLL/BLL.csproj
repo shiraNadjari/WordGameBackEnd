@@ -88,6 +88,7 @@
     <Compile Include="BLLimage.cs" />
     <Compile Include="BLLobject.cs" />
     <Compile Include="BLLgoogleVision.cs" />
+    <Compile Include="BLLuser.cs" />
     <Compile Include="ImageMat.cs" />
     <Compile Include="ImageWithObject.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

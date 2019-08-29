@@ -13,7 +13,7 @@ namespace BLL
         {
             //answer list
             List<ImageWithObject> ImagesAndObjectsMat = new List<ImageWithObject>();
-            //list with all objects of all images from all categories
+            //list with all objects of all images from current category
             List<COMimageObject> ObjList = DALimageObject.GetObjectsByCategory(imageList[0].CategoryID);
             foreach (COMimage img in imageList)
             {

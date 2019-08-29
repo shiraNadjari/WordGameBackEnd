@@ -22,6 +22,7 @@
           <Property Name="CategoryID" Type="int" Nullable="false" />
           <Property Name="BeginIndex" Type="int" Nullable="false" />
           <Property Name="EndIndex" Type="int" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Objects_tbl">
           <Key>
@@ -39,6 +40,15 @@
           <Property Name="Y4" Type="float" Nullable="false" />
           <Property Name="ImageID" Type="int" />
         </EntityType>
+        <EntityType Name="Users_tbl">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="Email" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Password" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CategoryName" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
         <Association Name="FK_Images_tbl_Categories_tbl">
           <End Role="Categories_tbl" Type="Self.Categories_tbl" Multiplicity="1" />
           <End Role="Images_tbl" Type="Self.Images_tbl" Multiplicity="*" />
@@ -48,6 +58,18 @@
             </Principal>
             <Dependent Role="Images_tbl">
               <PropertyRef Name="CategoryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Images_tbl_Users_tbl">
+          <End Role="Users_tbl" Type="Self.Users_tbl" Multiplicity="1" />
+          <End Role="Images_tbl" Type="Self.Images_tbl" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users_tbl">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Images_tbl">
+              <PropertyRef Name="UserId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -67,8 +89,13 @@
           <EntitySet Name="Categories_tbl" EntityType="Self.Categories_tbl" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Images_tbl" EntityType="Self.Images_tbl" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Objects_tbl" EntityType="Self.Objects_tbl" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Users_tbl" EntityType="Self.Users_tbl" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_Images_tbl_Categories_tbl" Association="Self.FK_Images_tbl_Categories_tbl">
             <End Role="Categories_tbl" EntitySet="Categories_tbl" />
+            <End Role="Images_tbl" EntitySet="Images_tbl" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Images_tbl_Users_tbl" Association="Self.FK_Images_tbl_Users_tbl">
+            <End Role="Users_tbl" EntitySet="Users_tbl" />
             <End Role="Images_tbl" EntitySet="Images_tbl" />
           </AssociationSet>
           <AssociationSet Name="FK_Objects_tbl_Images_tbl" Association="Self.FK_Objects_tbl_Images_tbl">
@@ -81,30 +108,23 @@
     <edmx:ConceptualModels>
       <Schema Namespace="DBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityContainer Name="DBEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Images_tbl" EntityType="DBModel.Images_tbl" />
           <EntitySet Name="Categories_tbl" EntityType="DBModel.Categories_tbl" />
+          <EntitySet Name="Objects_tbl" EntityType="DBModel.Objects_tbl" />
+          <EntitySet Name="Images_tbl" EntityType="DBModel.Images_tbl" />
+          <EntitySet Name="Users_tbl" EntityType="DBModel.Users_tbl" />
           <AssociationSet Name="FK_Images_tbl_Categories_tbl" Association="DBModel.FK_Images_tbl_Categories_tbl">
             <End Role="Categories_tbl" EntitySet="Categories_tbl" />
             <End Role="Images_tbl" EntitySet="Images_tbl" />
           </AssociationSet>
-          <EntitySet Name="Objects_tbl" EntityType="DBModel.Objects_tbl" />
+          <AssociationSet Name="FK_Images_tbl_Users_tbl" Association="DBModel.FK_Images_tbl_Users_tbl">
+            <End Role="Users_tbl" EntitySet="Users_tbl" />
+            <End Role="Images_tbl" EntitySet="Images_tbl" />
+          </AssociationSet>
           <AssociationSet Name="FK_Objects_tbl_Images_tbl" Association="DBModel.FK_Objects_tbl_Images_tbl">
             <End Role="Images_tbl" EntitySet="Images_tbl" />
             <End Role="Objects_tbl" EntitySet="Objects_tbl" />
           </AssociationSet>
         </EntityContainer>
-        <EntityType Name="Images_tbl">
-          <Key>
-            <PropertyRef Name="ImageID" />
-          </Key>
-          <Property Name="ImageID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="URL" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="CategoryID" Type="Int32" Nullable="false" />
-          <Property Name="BeginIndex" Type="Int32" Nullable="false" />
-          <Property Name="EndIndex" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Categories_tbl" Relationship="DBModel.FK_Images_tbl_Categories_tbl" FromRole="Images_tbl" ToRole="Categories_tbl" />
-          <NavigationProperty Name="Objects_tbl" Relationship="DBModel.FK_Objects_tbl_Images_tbl" FromRole="Images_tbl" ToRole="Objects_tbl" />
-        </EntityType>
         <EntityType Name="Categories_tbl">
           <Key>
             <PropertyRef Name="CategoryID" />
@@ -114,18 +134,6 @@
           <Property Name="ImageURL" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Images_tbl" Relationship="DBModel.FK_Images_tbl_Categories_tbl" FromRole="Categories_tbl" ToRole="Images_tbl" />
         </EntityType>
-        <Association Name="FK_Images_tbl_Categories_tbl">
-          <End Type="DBModel.Categories_tbl" Role="Categories_tbl" Multiplicity="1" />
-          <End Type="DBModel.Images_tbl" Role="Images_tbl" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Categories_tbl">
-              <PropertyRef Name="CategoryID" />
-            </Principal>
-            <Dependent Role="Images_tbl">
-              <PropertyRef Name="CategoryID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityType Name="Objects_tbl">
           <Key>
             <PropertyRef Name="ObjectID" />
@@ -143,6 +151,54 @@
           <Property Name="ImageID" Type="Int32" />
           <NavigationProperty Name="Images_tbl" Relationship="DBModel.FK_Objects_tbl_Images_tbl" FromRole="Objects_tbl" ToRole="Images_tbl" />
         </EntityType>
+        <EntityType Name="Images_tbl">
+          <Key>
+            <PropertyRef Name="ImageID" />
+          </Key>
+          <Property Name="ImageID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="URL" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="CategoryID" Type="Int32" Nullable="false" />
+          <Property Name="BeginIndex" Type="Int32" Nullable="false" />
+          <Property Name="EndIndex" Type="Int32" Nullable="false" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Categories_tbl" Relationship="DBModel.FK_Images_tbl_Categories_tbl" FromRole="Images_tbl" ToRole="Categories_tbl" />
+          <NavigationProperty Name="Users_tbl" Relationship="DBModel.FK_Images_tbl_Users_tbl" FromRole="Images_tbl" ToRole="Users_tbl" />
+          <NavigationProperty Name="Objects_tbl" Relationship="DBModel.FK_Objects_tbl_Images_tbl" FromRole="Images_tbl" ToRole="Objects_tbl" />
+        </EntityType>
+        <EntityType Name="Users_tbl">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="Email" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CategoryName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Images_tbl" Relationship="DBModel.FK_Images_tbl_Users_tbl" FromRole="Users_tbl" ToRole="Images_tbl" />
+        </EntityType>
+        <Association Name="FK_Images_tbl_Categories_tbl">
+          <End Type="DBModel.Categories_tbl" Role="Categories_tbl" Multiplicity="1" />
+          <End Type="DBModel.Images_tbl" Role="Images_tbl" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Categories_tbl">
+              <PropertyRef Name="CategoryID" />
+            </Principal>
+            <Dependent Role="Images_tbl">
+              <PropertyRef Name="CategoryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Images_tbl_Users_tbl">
+          <End Type="DBModel.Users_tbl" Role="Users_tbl" Multiplicity="1" />
+          <End Type="DBModel.Images_tbl" Role="Images_tbl" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users_tbl">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Images_tbl">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Objects_tbl_Images_tbl">
           <End Type="DBModel.Images_tbl" Role="Images_tbl" Multiplicity="0..1" />
           <End Type="DBModel.Objects_tbl" Role="Objects_tbl" Multiplicity="*" />
@@ -161,17 +217,6 @@
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="DBModelStoreContainer" CdmEntityContainer="DBEntities">
-          <EntitySetMapping Name="Images_tbl">
-            <EntityTypeMapping TypeName="DBModel.Images_tbl">
-              <MappingFragment StoreEntitySet="Images_tbl">
-                <ScalarProperty Name="EndIndex" ColumnName="EndIndex" />
-                <ScalarProperty Name="BeginIndex" ColumnName="BeginIndex" />
-                <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
-                <ScalarProperty Name="URL" ColumnName="URL" />
-                <ScalarProperty Name="ImageID" ColumnName="ImageID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Categories_tbl">
             <EntityTypeMapping TypeName="DBModel.Categories_tbl">
               <MappingFragment StoreEntitySet="Categories_tbl">
@@ -195,6 +240,28 @@
                 <ScalarProperty Name="X1" ColumnName="X1" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="ObjectID" ColumnName="ObjectID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Images_tbl">
+            <EntityTypeMapping TypeName="DBModel.Images_tbl">
+              <MappingFragment StoreEntitySet="Images_tbl">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="EndIndex" ColumnName="EndIndex" />
+                <ScalarProperty Name="BeginIndex" ColumnName="BeginIndex" />
+                <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+                <ScalarProperty Name="URL" ColumnName="URL" />
+                <ScalarProperty Name="ImageID" ColumnName="ImageID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users_tbl">
+            <EntityTypeMapping TypeName="DBModel.Users_tbl">
+              <MappingFragment StoreEntitySet="Users_tbl">
+                <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

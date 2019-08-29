@@ -9,7 +9,7 @@ namespace DAL
 {
    public class DALcategory
     {
-        public static void AddCategory(ComCategory cat)
+        public static void AddCategory(COMCategory cat)
         {
             using (DBEntities context = new DBEntities())
             {
@@ -18,7 +18,7 @@ namespace DAL
             }
         }
 
-        public static ComCategory GetCategoryById(int id)
+        public static COMCategory GetCategoryById(int id)
         {
             using (DBEntities context = new DBEntities())
             {
@@ -26,7 +26,7 @@ namespace DAL
             }
         }
 
-        public static List<ComCategory> GetCategories()
+        public static List<COMCategory> GetCategories()
         {
             using (DBEntities context = new DBEntities())
             {

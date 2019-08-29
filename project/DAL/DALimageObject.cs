@@ -38,18 +38,9 @@ namespace DAL
         {
             List<int> ids = new List<int>();
             List<COMimageObject> objects = new List<COMimageObject>();
-            foreach (COMimage img in DALimage.GetImagesByCategoryId(categoryId))
-            {
-                ids.Add(img.ImageID);
-            }
-            foreach (int imgId in ids)
-            {
-                foreach (COMimageObject obj in Getobjects().FindAll(obj => obj.ImageID == imgId))
-                {
-                    objects.Add(obj);
-                }
-            }
-            //objects.Add()
+            //return all objects in all images in specific category
+            DALimage.GetImagesByCategoryId(categoryId).ForEach(img => ids.Add(img.ImageID));
+            ids.ForEach(id=>objects.AddRange(Getobjects().FindAll(obj => obj.ImageID == id)));
             return objects;
         }
 

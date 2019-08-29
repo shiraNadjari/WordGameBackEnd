@@ -40,10 +40,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ComCategory.cs" />
+    <Compile Include="COMCategory.cs" />
     <Compile Include="COMimage.cs" />
     <Compile Include="COMimageObject.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="COMuser.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

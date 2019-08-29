@@ -27,10 +27,13 @@ namespace WebApi.Controllers
             return BLLimage.Getimages();
         }
 
-        public List<ImageWithObject> GetTenNextImages(int id,int time)
+        public IHttpActionResult GetTenNextImages(int id,int time)
         {
             //time is current page number in this category images
-            return ImageMat.CreateMat(BLLimage.GetTenNextImages(id, time));
+            if (BLLimage.GetTenNextImages(id, time) != null)
+                return Ok(ImageMat.CreateMat(BLLimage.GetTenNextImages(id, time)));
+            else
+                return BadRequest("no more pictures for this category.");
         }
 
         public IHttpActionResult PostImage(COMimage img)
