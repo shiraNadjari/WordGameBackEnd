@@ -19,7 +19,7 @@ namespace BLL
             list.RemoveAt(list.Count - 1);
             return x;
         }
-        public static void VisionApi(int categoryId,int UserId)
+        public static List<string> VisionApi(int categoryId,int UserId)
         {
             Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", "C:\\wordproject-29b2e0d3e0d5.json");
             // Instantiates a client
@@ -70,7 +70,7 @@ namespace BLL
                 IsException = true;
                 throw;
             }
-
+            List<string> ans = new List<string>();
             // if image in storage
             if (!IsException)
             {
@@ -108,13 +108,15 @@ namespace BLL
                         obj.X4 = pop(x);
                         obj.Y4 = pop(y);
                         DALimageObject.AddObject(obj);
+                        ans.Add(annotation.Name);
                     }
                 }
             }
-            
+
             //{ { "mid": "/m/02xwb", "name": "Fruit", "score": 0.83356, "boundingPoly": { "normalizedVertices": [ { "x": 0.8784594, "y": 0.02347669 }, { "x": 0.994234145, "y": 0.02347669 }, { "x": 0.994234145, "y": 0.374120831 }, { "x": 0.8784594, "y": 0.374120831 } ] } }}
 
- 
+
+            return ans;
 
         }
         public void ReadJson(Object json)

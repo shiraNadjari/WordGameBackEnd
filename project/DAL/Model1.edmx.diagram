@@ -8,10 +8,10 @@
         <EntityTypeShape EntityType="DBModel.Categories_tbl" Width="1.5" PointX="0.75" PointY="1.375" />
         <EntityTypeShape EntityType="DBModel.Objects_tbl" Width="1.5" PointX="6" PointY="0.5" />
         <EntityTypeShape EntityType="DBModel.Images_tbl" Width="1.5" PointX="4.25" PointY="0.5" />
-        <EntityTypeShape EntityType="DBModel.Users_tbl" Width="1.5" PointX="2.5" PointY="2" />
         <AssociationConnector Association="DBModel.FK_Images_tbl_Categories_tbl" />
-        <AssociationConnector Association="DBModel.FK_Images_tbl_Users_tbl" />
         <AssociationConnector Association="DBModel.FK_Objects_tbl_Images_tbl" />
+        <EntityTypeShape EntityType="DBModel.Users_tbl" Width="1.5" PointX="0.75" PointY="4.875" />
+        <AssociationConnector Association="DBModel.FK_Images_tbl_Users_tbl" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

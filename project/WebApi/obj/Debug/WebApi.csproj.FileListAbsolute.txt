@@ -351,3 +351,6 @@ C:\Users\shira_000\Desktop\projectGoogle\WordGameBackend\WordGameBackEnd\project
 C:\Users\shira_000\Desktop\projectGoogle\WordGameBackend\WordGameBackEnd\project\WebApi\bin\Newtonsoft.Json.dll
 C:\Users\shira_000\Desktop\projectGoogle\WordGameBackend\WordGameBackEnd\project\WebApi\bin\BLL.dll.config
 C:\Users\shira_000\Desktop\projectGoogle\WordGameBackend\WordGameBackEnd\project\WebApi\bin\Newtonsoft.Json.xml
+C:\Users\ריקי\Desktop\WordGameBackend\WordGameBackEnd\project\WebApi\bin\Newtonsoft.Json.dll
+C:\Users\ריקי\Desktop\WordGameBackend\WordGameBackEnd\project\WebApi\bin\BLL.dll.config
+C:\Users\ריקי\Desktop\WordGameBackend\WordGameBackEnd\project\WebApi\bin\Newtonsoft.Json.xml
