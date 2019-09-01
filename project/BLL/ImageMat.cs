@@ -11,8 +11,11 @@ namespace BLL
     {
         public static List<ImageWithObject> CreateMat(List<COMimage> imageList)
         {
+            if (imageList.Count() <= 0)
+                return null;
             //answer list
             List<ImageWithObject> ImagesAndObjectsMat = new List<ImageWithObject>();
+            
             //list with all objects of all images from current category
             List<COMimageObject> ObjList = DALimageObject.GetObjectsByCategory(imageList[0].CategoryID);
             foreach (COMimage img in imageList)

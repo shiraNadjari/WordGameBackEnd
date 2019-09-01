@@ -30,7 +30,10 @@ namespace WebApi.Controllers
         public IHttpActionResult GetTenNextImages(int id,int time)
         {
             //time is current page number in this category images
-            if (BLLimage.GetTenNextImages(id, time) != null)
+            List<COMimage> list = BLLimage.GetTenNextImages(id, time);
+            if (list == null)
+                return BadRequest("fail to load images");
+            if (list.Count()>0 )
                 return Ok(ImageMat.CreateMat(BLLimage.GetTenNextImages(id, time)));
             else
                 return BadRequest("no more pictures for this category.");

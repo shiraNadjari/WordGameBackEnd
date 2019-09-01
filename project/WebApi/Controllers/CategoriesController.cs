@@ -31,7 +31,9 @@ namespace WebApi.Controllers
         //[Route("api/GetPagesAmountPerCategory/{id}")]
         public int GetPagesAmountPerCategory(int id)
         {
-            return BLLcategory.GetPagesAmountPerCategory(id);
+            int num;
+            num= BLLcategory.GetPagesAmountPerCategory(id);
+            return num;
         }
 
         public IHttpActionResult PostCategory(COMCategory com)
