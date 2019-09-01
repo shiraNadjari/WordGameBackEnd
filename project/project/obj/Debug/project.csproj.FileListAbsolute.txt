@@ -84,3 +84,7 @@ C:\Users\ריקי\Desktop\WordGameBackend\WordGameBackEnd\project\project\bin\De
 C:\Users\ריקי\Desktop\WordGameBackend\WordGameBackEnd\project\project\bin\Debug\System.Interactive.Async.xml
 C:\Users\ריקי\Desktop\WordGameBackend\WordGameBackEnd\project\project\bin\Debug\Grpc.Auth.pdb
 C:\Users\ריקי\Desktop\WordGameBackend\WordGameBackEnd\project\project\bin\Debug\Grpc.Auth.xml
+C:\Users\ריקי\Desktop\WordGameBackend\WordGameBackEnd\project\project\bin\Debug\BLL.dll.config
+C:\Users\ריקי\Desktop\WordGameBackend\WordGameBackEnd\project\project\obj\Debug\project.Form1.resources
+C:\Users\ריקי\Desktop\WordGameBackend\WordGameBackEnd\project\project\obj\Debug\project.Properties.Resources.resources
+C:\Users\ריקי\Desktop\WordGameBackend\WordGameBackEnd\project\project\obj\Debug\project.csproj.GenerateResource.cache

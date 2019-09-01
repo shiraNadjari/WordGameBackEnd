@@ -143,3 +143,6 @@ C:\Users\shira_000\Desktop\projectGoogle\WordGameBackend\WordGameBackEnd\project
 C:\Users\shira_000\Desktop\projectGoogle\WordGameBackend\WordGameBackEnd\project\BLL\bin\Debug\BLL.dll.config
 C:\Users\shira_000\Desktop\projectGoogle\WordGameBackend\WordGameBackEnd\project\BLL\bin\Debug\Newtonsoft.Json.dll
 C:\Users\shira_000\Desktop\projectGoogle\WordGameBackend\WordGameBackEnd\project\BLL\bin\Debug\Newtonsoft.Json.xml
+C:\Users\ריקי\Desktop\WordGameBackend\WordGameBackEnd\project\BLL\bin\Debug\BLL.dll.config
+C:\Users\ריקי\Desktop\WordGameBackend\WordGameBackEnd\project\BLL\bin\Debug\Newtonsoft.Json.dll
+C:\Users\ריקי\Desktop\WordGameBackend\WordGameBackEnd\project\BLL\bin\Debug\Newtonsoft.Json.xml

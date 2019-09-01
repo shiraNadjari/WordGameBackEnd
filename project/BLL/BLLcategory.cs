@@ -25,6 +25,11 @@ namespace BLL
             return DALcategory.GetCategories();
         }
 
+        public static COMCategory GetCategoryIdByCategoryName(string categoryName)
+        {
+            return DALcategory.GetCategories().FirstOrDefault(cat => cat.CategoryName == categoryName);
+        }
+
         public static int GetPagesAmountPerCategory(int categoryId)
         {
             return DALcategory.GetPagesAmountPerCategory(categoryId);

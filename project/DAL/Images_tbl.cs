@@ -28,8 +28,8 @@ namespace DAL
         public int UserId { get; set; }
     
         public virtual Categories_tbl Categories_tbl { get; set; }
-        public virtual Users_tbl Users_tbl { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Objects_tbl> Objects_tbl { get; set; }
+        public virtual Users_tbl Users_tbl { get; set; }
     }
 }
