@@ -70,17 +70,20 @@ namespace BLL
                 throw (e);
             }
             List<string> ans = new List<string>();
+            COMimage img = new COMimage();
+            int c = 0;
+            int imgId = -1;
             // if image in storage
             if (!IsException)
             {
                 //insert image info db
-                COMimage img = new COMimage();
                 img.CategoryID = categoryId;
                 img.URL = imageURL;
                 img.UserId = UserId;
+                DALimageObject.Refresh();
+                img.BeginIndex = BLLobject.GetObjects().Count;
                 DALimage.Addimage(img);
-                int imgId = DALimage.GetImageIdByURL(imageURL);
-                
+                imgId = DALimage.GetImageIdByURL(img.URL);
                 //insert objects into db
                 foreach (var annotation in response)
                 {
@@ -100,26 +103,23 @@ namespace BLL
                             obj.ImageID = imgId;
                             obj.Name = annotation.Name;
 
-                            obj.X1 = pop(x);
-                            obj.Y1 = pop(y);
-                            obj.X2 = pop(x);
-                            obj.Y2 = pop(y);
-                            obj.X3 = pop(x);
-                            obj.Y3 = pop(y);
-                            obj.X4 = pop(x);
-                            obj.Y4 = pop(y);
+                            obj.X1 = x[0];
+                            obj.Y1 = y[0];
+                            obj.X2 = x[1];
+                            obj.Y2 = y[1];
+                            obj.X3 = x[2];
+                            obj.Y3 = y[2];
+                            obj.X4 = x[3];
+                            obj.Y4 = y[3];
                             DALimageObject.AddObject(obj);
+                            c++;
                             ans.Add(annotation.Name);
                         }
                     }
                 }
             }
-
-            //{ { "mid": "/m/02xwb", "name": "Fruit", "score": 0.83356, "boundingPoly": { "normalizedVertices": [ { "x": 0.8784594, "y": 0.02347669 }, { "x": 0.994234145, "y": 0.02347669 }, { "x": 0.994234145, "y": 0.374120831 }, { "x": 0.8784594, "y": 0.374120831 } ] } }}
-
-
+            BLLimage.UpdateEndIndex(imgId, img.BeginIndex+c);
             return ans;
-
         }
         public void ReadJson(Object json)
         {

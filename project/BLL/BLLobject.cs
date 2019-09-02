@@ -23,12 +23,14 @@ namespace BLL
         public static bool CheckObjectExists(List<double> x,List<double> y,int imgId)
         {
             List<COMimageObject> objects = GetObjects().FindAll(obj => obj.ImageID == imgId);
+            if (objects.Count == 0)
+                return false;
             foreach (COMimageObject obj in objects)
             {
                 if (obj.X1 == x[0] && obj.Y1 == y[0] && obj.X2 == x[1] && obj.Y2 == y[1] && obj.X3 == x[2] && obj.Y3 == y[2] && obj.X4 == x[3] && obj.Y4 == y[3])
-                    return false;
+                    return true;
             }
-            return true;
+            return false;
         }
 
         public static List<COMimageObject> GetObjects()

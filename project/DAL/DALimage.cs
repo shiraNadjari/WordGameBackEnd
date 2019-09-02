@@ -56,6 +56,23 @@ namespace DAL
             }
         }
 
+        public static void UpdateEndIndex(int imgId,int end)
+        {
+            using (DBEntities context = new DBEntities())
+            {
+                context.Images_tbl.FirstOrDefault(img => img.ImageID == imgId).EndIndex = end;
+                context.SaveChanges();
+            }
+        }
+
+        public static void Refresh()
+        {
+            using (DBEntities context = new DBEntities())
+            {
+                context.Entry(context.Images_tbl).Reload();
+            }
+        }
+
         public static void Removeimage(int id)
         {
             using (DBEntities contex = new DBEntities())

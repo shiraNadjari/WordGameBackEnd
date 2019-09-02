@@ -39,6 +39,10 @@ namespace BLL
             return list;
         }
 
+        public static void UpdateEndIndex(int imgId,int end)
+        {
+            DALimage.UpdateEndIndex(imgId, end);
+        }
         public static void RemoveImage(int id)
         {
             DALimage.Removeimage(id);

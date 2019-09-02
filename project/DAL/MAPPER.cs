@@ -17,6 +17,8 @@ namespace DAL
             img.ImageID = image.ImageID;
             img.URL = image.URL;
             img.UserId = image.UserId;
+            img.BeginIndex = image.BeginIndex;
+            img.EndIndex = image.EndIndex;
             return img;
         }
 
@@ -27,6 +29,8 @@ namespace DAL
             img.ImageID = image.ImageID;
             img.URL = image.URL;
             img.UserId = image.UserId;
+            img.BeginIndex = image.BeginIndex;
+            img.EndIndex = image.EndIndex;
             return img;
         }
 

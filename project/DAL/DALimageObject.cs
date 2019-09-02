@@ -44,6 +44,21 @@ namespace DAL
             return objects;
         }
 
+        public static void Refresh()
+        {
+            using (DBEntities context = new DBEntities())
+            {
+               // context.Entry(context.Images_tbl).Reload();
+
+                foreach (var entity in context.ChangeTracker.Entries())
+                {
+                    entity.Reload();
+                }
+            }
+
+
+        }
+
         public static void RemoveObject(int id)
         {
             using (DBEntities contex = new DBEntities())
