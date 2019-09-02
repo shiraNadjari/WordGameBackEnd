@@ -10,7 +10,7 @@
         <EntityTypeShape EntityType="DBModel.Images_tbl" Width="1.5" PointX="4.25" PointY="0.5" />
         <AssociationConnector Association="DBModel.FK_Images_tbl_Categories_tbl" />
         <AssociationConnector Association="DBModel.FK_Objects_tbl_Images_tbl" />
-        <EntityTypeShape EntityType="DBModel.Users_tbl" Width="1.5" PointX="0.75" PointY="4.875" />
+        <EntityTypeShape EntityType="DBModel.Users_tbl" Width="1.5" PointX="2.5" PointY="2.75" />
         <AssociationConnector Association="DBModel.FK_Images_tbl_Users_tbl" />
         </Diagram>
     </edmx:Diagrams>

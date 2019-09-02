@@ -19,14 +19,15 @@ namespace BLL
             list.RemoveAt(list.Count - 1);
             return x;
         }
-        public static List<string> VisionApi(int categoryId,int UserId)
+        static int counter = 1;
+        public static List<string> VisionApi(int categoryId,int UserId,string URL)
         {
             Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", "C:\\wordproject-29b2e0d3e0d5.json");
             // Instantiates a client
             var client = ImageAnnotatorClient.Create();
 
             // Load the image file into memory
-            var image = Image.FromFile(@"C: \Users\shira_000\Desktop\blabla.jpg");
+            var image = Image.FromFile(URL);
             // Performs label detection on the image file
             var response = client.DetectLocalizedObjects(image);
             //found most common word in objects list 
@@ -53,22 +54,20 @@ namespace BLL
             string imageURL;
             bool IsException = false;
             // upload the image storage
-            //string projectId = "wordproject-249810";
-            string objectName = "hello";
+            //----------------
+            string imageName = BLLcategory.GetCategoryById(categoryId).CategoryName+counter++;
             string bucketName = "worproject";
             var storage = StorageClient.Create();
-            using (var f = File.OpenRead(@"C:\Users\shira_000\Desktop\blabla.jpg"))
+            using (var f = File.OpenRead(URL))
             try
             {
-                var res=storage.UploadObject(bucketName, "blaaaaaa", null, f);
-                Console.WriteLine($"Uploaded {objectName}.");
-                imageURL = res.SelfLink;
+                var res=storage.UploadObject(bucketName, imageName, null, f);
+                    imageURL = "https://storage.cloud.google.com/" + bucketName + "/" + imageName + ".jpg";
             }
-            catch (Exception)
+            catch (Exception e)
             {
-                Console.WriteLine("your image didnot load.\n");
                 IsException = true;
-                throw;
+                throw (e);
             }
             List<string> ans = new List<string>();
             // if image in storage
@@ -85,7 +84,7 @@ namespace BLL
                 //insert objects into db
                 foreach (var annotation in response)
                 {
-                    if(annotation.Name!=common)
+                    if (annotation.Name != common)
                     {
                         List<double> x = new List<double>();
                         List<double> y = new List<double>();
@@ -95,20 +94,23 @@ namespace BLL
                             x.Add(item.X);
                             y.Add(item.Y);
                         }
-                        COMimageObject obj = new COMimageObject();
-                        obj.ImageID = imgId;
-                        obj.Name = annotation.Name;
+                        if (!(BLLobject.CheckObjectExists(x, y, imgId)))
+                        {
+                            COMimageObject obj = new COMimageObject();
+                            obj.ImageID = imgId;
+                            obj.Name = annotation.Name;
 
-                        obj.X1 = pop(x);
-                        obj.Y1 = pop(y);
-                        obj.X2 = pop(x);
-                        obj.Y2 = pop(y);
-                        obj.X3 = pop(x);
-                        obj.Y3 = pop(y);
-                        obj.X4 = pop(x);
-                        obj.Y4 = pop(y);
-                        DALimageObject.AddObject(obj);
-                        ans.Add(annotation.Name);
+                            obj.X1 = pop(x);
+                            obj.Y1 = pop(y);
+                            obj.X2 = pop(x);
+                            obj.Y2 = pop(y);
+                            obj.X3 = pop(x);
+                            obj.Y3 = pop(y);
+                            obj.X4 = pop(x);
+                            obj.Y4 = pop(y);
+                            DALimageObject.AddObject(obj);
+                            ans.Add(annotation.Name);
+                        }
                     }
                 }
             }

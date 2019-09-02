@@ -24,7 +24,6 @@ namespace WebApi.Controllers
 
         public List<COMCategory> GetCategories()
         {
-            BLLgoogleVision.VisionApi(1,1);
             return BLLcategory.GetCategories();
         }
 
