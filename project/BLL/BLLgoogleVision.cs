@@ -55,7 +55,7 @@ namespace BLL
             bool IsException = false;
             // upload the image storage
             //----------------
-            string imageName = BLLcategory.GetCategoryById(categoryId).CategoryName+counter++;
+            string imageName = BLLcategory.GetCategoryById(categoryId).CategoryName+counter++ +".jpg";
             string bucketName = "worproject";
             var storage = StorageClient.Create();
             using (var f = File.OpenRead(URL))

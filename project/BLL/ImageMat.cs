@@ -17,7 +17,7 @@ namespace BLL
             List<ImageWithObject> ImagesAndObjectsMat = new List<ImageWithObject>();
             
             //list with all objects of all images from current category
-            List<COMimageObject> ObjList = DALimageObject.GetObjectsByCategory(imageList[0].CategoryID);
+            List<COMimageObject> ObjList = DALimageObject.Getobjects();
             foreach (COMimage img in imageList)
             {
                 ImageWithObject imageAndObject = new ImageWithObject();
