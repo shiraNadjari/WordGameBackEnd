@@ -6,6 +6,7 @@ using System.Net.Http;
 using System.Web.Http;
 using COMMON;
 using BLL;
+using WindowsFormsApp1;
 
 namespace WebApi.Controllers
 {
@@ -42,7 +43,7 @@ namespace WebApi.Controllers
             {
                 return BadRequest("category already exist");
             }
-             BLLcategory.AddCategory(com);
+             BLLcategory.AddCategory(com,Form1.categoriesCounter);
              return Ok();
         }
         public void DeleteCategory(int id)

@@ -213,6 +213,10 @@
       <Project>{46897c28-c8ae-422c-a21a-4d6fe17deca9}</Project>
       <Name>COMMON</Name>
     </ProjectReference>
+    <ProjectReference Include="..\WindowsFormsApp1\WindowsFormsApp1.csproj">
+      <Project>{20c51772-1e08-44b1-bd17-bcfa9596417f}</Project>
+      <Name>WindowsFormsApp1</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

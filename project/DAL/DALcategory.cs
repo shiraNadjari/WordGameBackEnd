@@ -42,6 +42,15 @@ namespace DAL
             }
         }
 
+        public static void UpdateURL(int catId, string url)
+        {
+            using (DBEntities context = new DBEntities())
+            {
+                context.Categories_tbl.FirstOrDefault(cat => cat.CategoryID == catId).ImageURL = url;
+                context.SaveChanges();
+            }
+        }
+
         public static void RemoveCategory(int id)
         {
             using (DBEntities contex = new DBEntities())

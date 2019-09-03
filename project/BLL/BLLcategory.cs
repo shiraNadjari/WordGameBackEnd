@@ -10,9 +10,11 @@ namespace BLL
 {
     public class BLLcategory
     {
-        public static void AddCategory(COMCategory cat)
+        public static void AddCategory(COMCategory cat,Dictionary<string,int> categoriesCounter)
         {
             DALcategory.AddCategory(cat);
+            cat.ImageURL = BLLgoogleVision.Storage(GetCategoryIdByCategoryName(cat.CategoryName).CategoryId, cat.ImageURL,categoriesCounter, true);
+            UpdateURL(GetCategoryIdByCategoryName(cat.CategoryName).CategoryId, cat.ImageURL);
         }
 
         public static COMCategory GetCategoryById(int id)
@@ -35,6 +37,10 @@ namespace BLL
             return DALcategory.GetPagesAmountPerCategory(categoryId);
         }
 
+        public static void UpdateURL(int catId,string url)
+        {
+            DALcategory.UpdateURL(catId, url);
+        }
         public static void RemoveCategory(int id)
         {
             DALcategory.RemoveCategory(id);

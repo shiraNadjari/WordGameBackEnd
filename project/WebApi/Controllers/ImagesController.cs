@@ -6,6 +6,7 @@ using System.Net.Http;
 using System.Web.Http;
 using COMMON;
 using BLL;
+using WindowsFormsApp1;
 
 namespace WebApi.Controllers
 {
@@ -46,7 +47,7 @@ namespace WebApi.Controllers
             {
                 return BadRequest("image already exist");
             }
-            BLLimage.AddImage(img);
+            BLLimage.AddImage(img,Form1.categoriesCounter);
             return Ok();
         }
 

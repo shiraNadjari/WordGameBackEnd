@@ -13,19 +13,38 @@ namespace BLL
 {
     public class BLLgoogleVision
     {
-        private static double pop(List<double> list)
+        public static bool IsException = false;
+        public static string Storage(int catId,string URL,Dictionary<string,int> categoriesCounter,bool IsMainImg=false)
         {
-            double x = list.Last();
-            list.RemoveAt(list.Count - 1);
-            return x;
+            Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", "C:\\wordproject-29b2e0d3e0d5.json");
+            // upload the image storage
+            //----------------
+            string imageName;
+            if (!IsMainImg)
+                imageName = BLLcategory.GetCategoryById(catId).CategoryName + categoriesCounter[BLLcategory.GetCategoryById(catId).CategoryName]++ + ".jpg";
+            else
+                imageName = "MAIN"+BLLcategory.GetCategoryById(catId).CategoryName + ".jpg";
+            string bucketName = "wordproject";
+            var storage = StorageClient.Create();
+            using (var f = File.OpenRead(URL))
+                try
+                {
+                    var res = storage.UploadObject(bucketName, imageName, null, f);
+                    URL = "https://storage.cloud.google.com/" + bucketName + "/" + imageName;
+                }
+                catch (Exception e)
+                {
+                    IsException = true;
+                    throw (e);
+                }
+            return URL;
         }
-        static int counter = 1;
-        public static List<string> VisionApi(int categoryId,int UserId,string URL)
+
+        public static List<string> VisionApi(int categoryId,int UserId,string URL,Dictionary<string,int> categoriesCounter)
         {
             Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", "C:\\wordproject-29b2e0d3e0d5.json");
             // Instantiates a client
             var client = ImageAnnotatorClient.Create();
-
             // Load the image file into memory
             var image = Image.FromFile(URL);
             // Performs label detection on the image file
@@ -51,24 +70,7 @@ namespace BLL
                     countingDic.Add(annotation.Name, 1);
                 }
             }
-            string imageURL;
-            bool IsException = false;
-            // upload the image storage
-            //----------------
-            string imageName = BLLcategory.GetCategoryById(categoryId).CategoryName+counter++ +".jpg";
-            string bucketName = "worproject";
-            var storage = StorageClient.Create();
-            using (var f = File.OpenRead(URL))
-            try
-            {
-                var res=storage.UploadObject(bucketName, imageName, null, f);
-                    imageURL = "https://storage.cloud.google.com/" + bucketName + "/" + imageName + ".jpg";
-            }
-            catch (Exception e)
-            {
-                IsException = true;
-                throw (e);
-            }
+            string imgUrl=Storage(categoryId,URL,categoriesCounter);
             List<string> ans = new List<string>();
             COMimage img = new COMimage();
             int c = 0;
@@ -78,7 +80,7 @@ namespace BLL
             {
                 //insert image info db
                 img.CategoryID = categoryId;
-                img.URL = imageURL;
+                img.URL =imgUrl;
                 img.UserId = UserId;
                 DALimageObject.Refresh();
                 img.BeginIndex = BLLobject.GetObjects().Count;

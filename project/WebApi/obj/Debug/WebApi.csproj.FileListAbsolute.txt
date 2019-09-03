@@ -556,3 +556,6 @@ C:\Users\ריקי\Desktop\WordGameBackend\WordGameBackEnd\project\WebApi\bin\Sys
 C:\Users\ריקי\Desktop\WordGameBackend\WordGameBackEnd\project\WebApi\bin\System.Numerics.Vectors.xml
 C:\Users\ריקי\Desktop\WordGameBackend\WordGameBackEnd\project\WebApi\bin\System.Runtime.CompilerServices.Unsafe.xml
 C:\Users\ריקי\Desktop\WordGameBackend\WordGameBackEnd\project\WebApi\bin\System.Web.Http.Cors.xml
+C:\Users\ריקי\Desktop\WordGameBackend\WordGameBackEnd\project\WebApi\bin\WindowsFormsApp1.exe
+C:\Users\ריקי\Desktop\WordGameBackend\WordGameBackEnd\project\WebApi\bin\WindowsFormsApp1.pdb
+C:\Users\ריקי\Desktop\WordGameBackend\WordGameBackEnd\project\WebApi\bin\WindowsFormsApp1.exe.config

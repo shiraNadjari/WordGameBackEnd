@@ -19,6 +19,7 @@ namespace WindowsFormsApp1
             InitializeComponent();
         }
         string path;
+
         private void button2_Click(object sender, EventArgs e)
         {
             saveFileDialog1.ShowDialog();
@@ -90,7 +91,7 @@ namespace WindowsFormsApp1
             COMCategory cat = new COMCategory();
             cat.CategoryName = textBox6.Text;
             cat.ImageURL = path;
-            BLLcategory.AddCategory(cat);
+            BLLcategory.AddCategory(cat,categoriesCounter);
             groupBox2.Visible = false;
             textBox6.Text = string.Empty;
         }
@@ -102,7 +103,7 @@ namespace WindowsFormsApp1
             img.CategoryID = Convert.ToInt32(comboBox1.SelectedValue);
             img.URL = path;
             label10.Text = "";
-            foreach (string objName in BLLimage.AddImage(img))
+            foreach (string objName in BLLimage.AddImage(img,categoriesCounter))
             {
                 label10.Text += objName + "\n";
             }
@@ -134,6 +135,17 @@ namespace WindowsFormsApp1
         {
             groupBox3.Visible = false;
 
+        }
+        public static Dictionary<string, int> categoriesCounter = new Dictionary<string, int>();
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            int x = 0;
+            foreach (COMCategory cat in BLLcategory.GetCategories())
+            {
+                x = BLLimage.Getimages().FindAll(img => img.CategoryID == cat.CategoryId).Count();
+                categoriesCounter.Add(cat.CategoryName, x);
+            }
         }
     }
 }
