@@ -16,7 +16,7 @@ namespace BLL
         public static bool IsException = false;
         public static string Storage(int catId,string URL,Dictionary<string,int> categoriesCounter,bool IsMainImg=false)
         {
-            Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", "C:\\wordproject-29b2e0d3e0d5.json");
+            Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", @"C:\wordproject-29b2e0d3e0d5.json");
             // upload the image storage
             //----------------
             string imageName;
@@ -42,7 +42,7 @@ namespace BLL
 
         public static List<string> VisionApi(int categoryId,int UserId,string URL,Dictionary<string,int> categoriesCounter)
         {
-            Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", "C:\\wordproject-29b2e0d3e0d5.json");
+            Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", @"C:\wordproject-29b2e0d3e0d5.json");
             // Instantiates a client
             var client = ImageAnnotatorClient.Create();
             // Load the image file into memory
@@ -113,6 +113,7 @@ namespace BLL
                             obj.Y3 = y[2];
                             obj.X4 = x[3];
                             obj.Y4 = y[3];
+                            BLLtextToSpeach.TextToSpeach(obj.Name);
                             DALimageObject.AddObject(obj);
                             c++;
                             ans.Add(annotation.Name);

@@ -69,6 +69,7 @@ namespace DAL
             o.Y3 = obj.Y3;
             o.X4 = obj.X4;
             o.Y4 = obj.Y4;
+            o.VoiceURL = obj.VoiceURL;
             return o;
         }
 
@@ -86,6 +87,7 @@ namespace DAL
             o.Y3 = obj.Y3;
             o.X4 = obj.X4;
             o.Y4 = obj.Y4;
+            o.VoiceURL = obj.VoiceURL;
             return o;
         }
 

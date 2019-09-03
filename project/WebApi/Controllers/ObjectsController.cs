@@ -26,11 +26,6 @@ namespace WebApi.Controllers
             return BLLobject.GetObjects();
         }
 
-        //public List<COMimageObject> GetImageObjectsByImageId(int imageId)
-        //{
-        //    return BLLobject.GetObjects.
-        //}
-
         public IHttpActionResult PostObject(COMimageObject obj)
         {
             COMimageObject o = BLLobject.GetObjectById(obj.ObjectId);

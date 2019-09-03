@@ -26,8 +26,8 @@ namespace DAL
         }
     
         public virtual DbSet<Categories_tbl> Categories_tbl { get; set; }
-        public virtual DbSet<Objects_tbl> Objects_tbl { get; set; }
         public virtual DbSet<Images_tbl> Images_tbl { get; set; }
         public virtual DbSet<Users_tbl> Users_tbl { get; set; }
+        public virtual DbSet<Objects_tbl> Objects_tbl { get; set; }
     }
 }

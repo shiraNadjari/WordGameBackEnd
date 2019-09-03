@@ -10,23 +10,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="Objects_tbl">
-      <EntityTypeMapping TypeName="DBModel.Objects_tbl">
-        <MappingFragment StoreEntitySet="Objects_tbl">
-          <ScalarProperty Name="ImageID" ColumnName="ImageID" />
-          <ScalarProperty Name="Y4" ColumnName="Y4" />
-          <ScalarProperty Name="X4" ColumnName="X4" />
-          <ScalarProperty Name="Y3" ColumnName="Y3" />
-          <ScalarProperty Name="X3" ColumnName="X3" />
-          <ScalarProperty Name="Y2" ColumnName="Y2" />
-          <ScalarProperty Name="X2" ColumnName="X2" />
-          <ScalarProperty Name="Y1" ColumnName="Y1" />
-          <ScalarProperty Name="X1" ColumnName="X1" />
-          <ScalarProperty Name="Name" ColumnName="Name" />
-          <ScalarProperty Name="ObjectID" ColumnName="ObjectID" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="Images_tbl">
       <EntityTypeMapping TypeName="DBModel.Images_tbl">
         <MappingFragment StoreEntitySet="Images_tbl">
@@ -46,6 +29,24 @@
           <ScalarProperty Name="Password" ColumnName="Password" />
           <ScalarProperty Name="Email" ColumnName="Email" />
           <ScalarProperty Name="UserId" ColumnName="UserId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Objects_tbl">
+      <EntityTypeMapping TypeName="DBModel.Objects_tbl">
+        <MappingFragment StoreEntitySet="Objects_tbl">
+          <ScalarProperty Name="VoiceURL" ColumnName="VoiceURL" />
+          <ScalarProperty Name="ImageID" ColumnName="ImageID" />
+          <ScalarProperty Name="Y4" ColumnName="Y4" />
+          <ScalarProperty Name="X4" ColumnName="X4" />
+          <ScalarProperty Name="Y3" ColumnName="Y3" />
+          <ScalarProperty Name="X3" ColumnName="X3" />
+          <ScalarProperty Name="Y2" ColumnName="Y2" />
+          <ScalarProperty Name="X2" ColumnName="X2" />
+          <ScalarProperty Name="Y1" ColumnName="Y1" />
+          <ScalarProperty Name="X1" ColumnName="X1" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ObjectID" ColumnName="ObjectID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

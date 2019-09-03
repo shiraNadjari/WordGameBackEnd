@@ -368,3 +368,4 @@ C:\Users\ריקי\Desktop\WordGameBackend\WordGameBackEnd\project\WindowsFormsAp
 C:\Users\ריקי\Desktop\WordGameBackend\WordGameBackEnd\project\WindowsFormsApp1\bin\Debug\System.Memory.xml
 C:\Users\ריקי\Desktop\WordGameBackend\WordGameBackEnd\project\WindowsFormsApp1\bin\Debug\System.Numerics.Vectors.xml
 C:\Users\ריקי\Desktop\WordGameBackend\WordGameBackEnd\project\WindowsFormsApp1\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+C:\Users\ריקי\Desktop\WordGameBackend\WordGameBackEnd\project\WindowsFormsApp1\bin\Debug\Google.Cloud.TextToSpeech.V1.dll

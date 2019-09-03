@@ -34,6 +34,7 @@
     <Property Name="X4" Type="float" Nullable="false" />
     <Property Name="Y4" Type="float" Nullable="false" />
     <Property Name="ImageID" Type="int" />
+    <Property Name="VoiceURL" Type="varchar(max)" />
   </EntityType>
   <EntityType Name="Users_tbl">
     <Key>

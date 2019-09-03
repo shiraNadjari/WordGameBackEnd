@@ -38,7 +38,7 @@ namespace DAL
         {
             using (DBEntities context = new DBEntities())
             {
-                return DALimage.Getimages().Where(img => img.CategoryID == categoryId).Count()/10;
+                return (DALimage.Getimages().Where(img => img.CategoryID == categoryId).Count()/10)+1;
             }
         }
 

@@ -63,6 +63,9 @@
     <Reference Include="Google.Cloud.Storage.V1">
       <HintPath>..\WebApi\bin\Google.Cloud.Storage.V1.dll</HintPath>
     </Reference>
+    <Reference Include="Google.Cloud.TextToSpeech.V1">
+      <HintPath>..\WebApi\bin\Google.Cloud.TextToSpeech.V1.dll</HintPath>
+    </Reference>
     <Reference Include="Google.Cloud.Vision.V1">
       <HintPath>..\WebApi\bin\Google.Cloud.Vision.V1.dll</HintPath>
     </Reference>
@@ -88,6 +91,7 @@
     <Compile Include="BLLimage.cs" />
     <Compile Include="BLLobject.cs" />
     <Compile Include="BLLgoogleVision.cs" />
+    <Compile Include="BLLtextToSpeach.cs" />
     <Compile Include="BLLuser.cs" />
     <Compile Include="ImageMat.cs" />
     <Compile Include="ImageWithObject.cs" />

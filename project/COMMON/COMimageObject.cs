@@ -18,8 +18,7 @@ namespace COMMON
         public double Y3 { get; set; }
         public double X4 { get; set; }
         public double Y4 { get; set; }
-
-
         public int ImageID { get; set; }
+        public string VoiceURL { get; set; }
     }
 }
