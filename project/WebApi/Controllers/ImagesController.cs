@@ -47,7 +47,7 @@ namespace WebApi.Controllers
             {
                 return BadRequest("image already exist");
             }
-            BLLimage.AddImage(img,Form1.categoriesCounter);
+            BLLimage.AddImage(img,Form1.categoriesCounter,Form1.voicesCounter);
             return Ok();
         }
 

@@ -559,3 +559,6 @@ C:\Users\ריקי\Desktop\WordGameBackend\WordGameBackEnd\project\WebApi\bin\Sys
 C:\Users\ריקי\Desktop\WordGameBackend\WordGameBackEnd\project\WebApi\bin\WindowsFormsApp1.exe
 C:\Users\ריקי\Desktop\WordGameBackend\WordGameBackEnd\project\WebApi\bin\WindowsFormsApp1.pdb
 C:\Users\ריקי\Desktop\WordGameBackend\WordGameBackEnd\project\WebApi\bin\WindowsFormsApp1.exe.config
+C:\Users\ריקי\Desktop\WordGameBackend\WordGameBackEnd\project\WebApi\bin\Google.Cloud.TextToSpeech.V1.dll
+C:\Users\ריקי\Desktop\WordGameBackend\WordGameBackEnd\project\WebApi\bin\Google.Cloud.TextToSpeech.V1.pdb
+C:\Users\ריקי\Desktop\WordGameBackend\WordGameBackEnd\project\WebApi\bin\Google.Cloud.TextToSpeech.V1.xml
