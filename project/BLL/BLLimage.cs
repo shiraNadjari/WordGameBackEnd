@@ -10,10 +10,10 @@ namespace BLL
 {
    public class BLLimage
     {
-        public static List<string> AddImage(COMimage img,Dictionary<string,int> categoriesCounter) 
+        public static List<string> AddImage(COMimage img,Dictionary<string,int> categoriesCounter, Dictionary<string, int> voicesCounter) 
         {
             //DALimage.Addimage(img);
-            return BLLgoogleVision.VisionApi(img.CategoryID,img.UserId,img.URL,categoriesCounter);
+            return BLLgoogleVision.VisionApi(img.CategoryID,img.UserId,img.URL,categoriesCounter,voicesCounter);
         }
 
         public static COMimage GetImageById(int id)

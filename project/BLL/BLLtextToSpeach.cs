@@ -40,12 +40,12 @@ public class BLLtextToSpeach
         });
         string url = "";
         // Write the binary AudioContent of the response to an MP3 file.
-        //using (Stream output = File.Create("sample.mp3"))
-        //{
-        //    response.AudioContent.WriteTo(output);
-        //    url = output.Name;
-        //    Console.WriteLine($"Audio content written to file 'sample.mp3'");
-        //}
-        return "0";
+        using (FileStream output = File.Create("tmp.mp3"))
+        {
+            response.AudioContent.WriteTo(output);
+            url = output.Name;
+            Console.WriteLine($"Audio content written to file 'sample.mp3'");
+        }
+        return url;
     }
 }

@@ -103,7 +103,7 @@ namespace WindowsFormsApp1
             img.CategoryID = Convert.ToInt32(comboBox1.SelectedValue);
             img.URL = path;
             label10.Text = "";
-            foreach (string objName in BLLimage.AddImage(img,categoriesCounter))
+            foreach (string objName in BLLimage.AddImage(img,categoriesCounter,voicesCounter))
             {
                 label10.Text += objName + "\n";
             }
@@ -137,6 +137,8 @@ namespace WindowsFormsApp1
 
         }
         public static Dictionary<string, int> categoriesCounter = new Dictionary<string, int>();
+        public static Dictionary<string, int> voicesCounter = new Dictionary<string, int>();
+
 
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -145,6 +147,21 @@ namespace WindowsFormsApp1
             {
                 x = BLLimage.Getimages().FindAll(img => img.CategoryID == cat.CategoryId).Count();
                 categoriesCounter.Add(cat.CategoryName, x);
+            }
+            foreach (COMCategory cat in BLLcategory.GetCategories())
+            {
+                List<COMimageObject> objects = new List<COMimageObject>();
+                //List <COMimage> images= BLLimage.Getimages().FindAll(img => img.CategoryID == cat.CategoryId);
+                //foreach (COMimage img in images)
+                //{
+                //    foreach (COMimageObject obj in BLLobject.GetObjects().FindAll(obj => obj.ImageID == img.ImageID))
+                //    {
+                //        objects.Add(obj);
+                //    }
+                //}
+                BLLimage.Getimages().FindAll(img => img.CategoryID == cat.CategoryId).ForEach(img => objects.AddRange(BLLobject.GetObjects().FindAll(obj => obj.ImageID == img.ImageID)));
+                x = objects.Count;
+                voicesCounter.Add(cat.CategoryName, x);
             }
         }
     }
