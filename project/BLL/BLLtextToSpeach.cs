@@ -15,7 +15,7 @@ public class BLLtextToSpeach
         //----------------
         string voiceName;
         voiceName = "voice" + BLLcategory.GetCategoryById(catId).CategoryName + voicesCounter[BLLcategory.GetCategoryById(catId).CategoryName]++ + ".mp3";
-        string bucketName = "objectsound";
+        string bucketName = "objectsvoices";
         var storage = StorageClient.Create();
         using (var f = File.OpenRead(URL))
         {

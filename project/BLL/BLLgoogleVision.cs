@@ -115,10 +115,10 @@ namespace BLL
                             obj.Y3 = y[2];
                             obj.X4 = x[3];
                             obj.Y4 = y[3];
-                            obj.VoiceURL = BLLtextToSpeach.TextToSpeach(obj.Name);
+                            //obj.VoiceURL = BLLtextToSpeach.TextToSpeach(obj.Name);
                             try
                             {
-                                BLLtextToSpeach.VoiceStorage(BLLimage.GetImageById(obj.ImageID).CategoryID, obj.VoiceURL, voicesCounter);
+                                obj.VoiceURL=BLLtextToSpeach.VoiceStorage(BLLimage.GetImageById(obj.ImageID).CategoryID, BLLtextToSpeach.TextToSpeach(obj.Name), voicesCounter);
 
                             }
                             catch (Exception e)
