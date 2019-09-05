@@ -38,6 +38,10 @@ namespace BLL
             return DALimageObject.Getobjects();
         }
 
+        public static void UpdateVoiceURL(int objId,string url)
+        {
+            DALimageObject.UpdateVoiceURL(objId, url);
+        }
         public static void RemoveObject(int id)
         {
             DALimageObject.RemoveObject(id);

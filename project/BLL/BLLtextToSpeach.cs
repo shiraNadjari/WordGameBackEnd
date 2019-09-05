@@ -1,9 +1,36 @@
 ﻿using System;
 using System.IO;
 using Google.Cloud.TextToSpeech.V1;
+using BLL;
+using Google.Cloud.Storage.V1;
+using System.Collections.Generic;
+using COMMON;
 
 public class BLLtextToSpeach
 {
+    public static string VoiceStorage(int catId, string URL, Dictionary<string, int> voicesCounter)
+    {
+        Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", @"C:\wordproject-29b2e0d3e0d5.json");
+        // upload the image storage
+        //----------------
+        string voiceName;
+        voiceName = "voice" + BLLcategory.GetCategoryById(catId).CategoryName + voicesCounter[BLLcategory.GetCategoryById(catId).CategoryName]++ + ".mp3";
+        string bucketName = "objectsound";
+        var storage = StorageClient.Create();
+        using (var f = File.OpenRead(URL))
+        {
+            try
+            {
+                var res = storage.UploadObject(bucketName, voiceName, null, f);
+                URL = "https://storage.cloud.google.com/" + bucketName + "/" + voiceName;
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
+        return URL;
+    }
     public static string TextToSpeach(string text)
     {
         Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", @"C:\TextToSpeach-b2d8743c4197.json");
@@ -48,4 +75,26 @@ public class BLLtextToSpeach
         }
         return url;
     }
+
+public static void UpdateUrl(Dictionary<string,int> voicesCounter)
+    {
+        foreach (COMimageObject obj in BLLobject.GetObjects())
+        {
+            if (obj.VoiceURL == null)
+            {
+                try
+                {
+                    string url = TextToSpeach(obj.Name);
+                    url = BLLtextToSpeach.VoiceStorage(BLLimage.GetImageById(obj.ImageID).CategoryID, url, voicesCounter);
+                    BLLobject.UpdateVoiceURL(obj.ObjectId, url);
+                }
+                catch (Exception)
+                {
+
+                    throw;
+                }
+            }
+        }
+    }
 }
+    

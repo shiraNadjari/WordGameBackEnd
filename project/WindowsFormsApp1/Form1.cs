@@ -164,5 +164,10 @@ namespace WindowsFormsApp1
                 voicesCounter.Add(cat.CategoryName, x);
             }
         }
+
+        private void button12_Click(object sender, EventArgs e)
+        {
+            BLLtextToSpeach.UpdateUrl(voicesCounter);
+        }
     }
 }

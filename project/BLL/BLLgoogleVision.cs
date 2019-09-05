@@ -39,29 +39,7 @@ namespace BLL
             return URL;
         }
 
-        public static string VoiceStorage(int catId,string URL,Dictionary<string, int> voicesCounter)
-        {
-            Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", @"C:\wordproject-29b2e0d3e0d5.json");
-            // upload the image storage
-            //----------------
-            string voiceName;
-            voiceName = "voice"+BLLcategory.GetCategoryById(catId).CategoryName + voicesCounter[BLLcategory.GetCategoryById(catId).CategoryName]++ + ".mp3";
-            string bucketName = "objectsound";
-            var storage = StorageClient.Create();
-            using (var f = File.OpenRead(URL))
-            {
-                try
-                {
-                    var res = storage.UploadObject(bucketName, voiceName, null, f);
-                    URL = "https://storage.cloud.google.com/" + bucketName + "/" + voiceName;
-                }
-                catch (Exception e)
-                {
-                    throw e;
-                }
-            }
-            return URL;
-        }
+        
 
         public static List<string> VisionApi(int categoryId,int UserId,string URL,Dictionary<string,int> categoriesCounter, Dictionary<string, int> voicesCounter)
         {
@@ -129,7 +107,6 @@ namespace BLL
                             COMimageObject obj = new COMimageObject();
                             obj.ImageID = imgId;
                             obj.Name = annotation.Name;
-
                             obj.X1 = x[0];
                             obj.Y1 = y[0];
                             obj.X2 = x[1];
@@ -141,7 +118,7 @@ namespace BLL
                             obj.VoiceURL = BLLtextToSpeach.TextToSpeach(obj.Name);
                             try
                             {
-                                VoiceStorage(BLLimage.GetImageById(obj.ImageID).CategoryID, obj.VoiceURL, voicesCounter);
+                                BLLtextToSpeach.VoiceStorage(BLLimage.GetImageById(obj.ImageID).CategoryID, obj.VoiceURL, voicesCounter);
 
                             }
                             catch (Exception e)

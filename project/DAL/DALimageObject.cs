@@ -44,6 +44,15 @@ namespace DAL
             return objects;
         }
 
+        public static void UpdateVoiceURL(int objId,string url)
+        {
+            using (DBEntities context = new DBEntities())
+            {
+                context.Objects_tbl.FirstOrDefault(obj => obj.ObjectID == objId).VoiceURL = url;
+                context.SaveChanges();
+            }
+        }
+
         public static void Refresh()
         {
             using (DBEntities context = new DBEntities())
@@ -55,8 +64,6 @@ namespace DAL
                     entity.Reload();
                 }
             }
-
-
         }
 
         public static void RemoveObject(int id)
