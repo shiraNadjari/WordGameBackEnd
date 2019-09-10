@@ -22,16 +22,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="Users_tbl">
-      <EntityTypeMapping TypeName="DBModel.Users_tbl">
-        <MappingFragment StoreEntitySet="Users_tbl">
-          <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
-          <ScalarProperty Name="Password" ColumnName="Password" />
-          <ScalarProperty Name="Email" ColumnName="Email" />
-          <ScalarProperty Name="UserId" ColumnName="UserId" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="Objects_tbl">
       <EntityTypeMapping TypeName="DBModel.Objects_tbl">
         <MappingFragment StoreEntitySet="Objects_tbl">
@@ -47,6 +37,17 @@
           <ScalarProperty Name="X1" ColumnName="X1" />
           <ScalarProperty Name="Name" ColumnName="Name" />
           <ScalarProperty Name="ObjectID" ColumnName="ObjectID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users_tbl">
+      <EntityTypeMapping TypeName="DBModel.Users_tbl">
+        <MappingFragment StoreEntitySet="Users_tbl">
+          <ScalarProperty Name="ImageURL" ColumnName="ImageURL" />
+          <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

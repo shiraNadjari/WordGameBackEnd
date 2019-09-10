@@ -15,14 +15,14 @@ public class BLLtextToSpeach
         //----------------
         string voiceName;
         voiceName = "voice" + BLLcategory.GetCategoryById(catId).CategoryName + voicesCounter[BLLcategory.GetCategoryById(catId).CategoryName]++ + ".mp3";
-        string bucketName = "objectsvoices";
+        string bucketName = "objectsound";
         var storage = StorageClient.Create();
         using (var f = File.OpenRead(URL))
         {
             try
             {
                 var res = storage.UploadObject(bucketName, voiceName, null, f);
-                URL = "https://storage.cloud.google.com/" + bucketName + "/" + voiceName;
+                URL = "https://storage.googleapis.com/" + bucketName + "/" + voiceName;
             }
             catch (Exception e)
             {
@@ -48,7 +48,8 @@ public class BLLtextToSpeach
         VoiceSelectionParams voice = new VoiceSelectionParams
         {
             LanguageCode = "en-US",
-            SsmlGender = SsmlVoiceGender.Neutral
+            SsmlGender = SsmlVoiceGender.Neutral,
+            Name = "en-US-Wavenet-F",
         };
 
         // Select the type of audio file you want returned.

@@ -160,6 +160,7 @@ namespace DAL
             u.CategoryName = user.CategoryName;
             u.Email = user.Email;
             u.Password = user.Password;
+            u.ImageURL = user.ImageURL;
             return u;
         }
 
@@ -170,6 +171,7 @@ namespace DAL
             u.CategoryName = user.CategoryName;
             u.Email = user.Email;
             u.Password = user.Password;
+            u.ImageURL = user.ImageURL;
             return u;
         }
 

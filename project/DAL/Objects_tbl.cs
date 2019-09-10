@@ -24,7 +24,7 @@ namespace DAL
         public double Y3 { get; set; }
         public double X4 { get; set; }
         public double Y4 { get; set; }
-        public Nullable<int> ImageID { get; set; }
+        public int ImageID { get; set; }
         public string VoiceURL { get; set; }
     
         public virtual Images_tbl Images_tbl { get; set; }

@@ -5,12 +5,12 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="2aa42970893b4b3d832087f7a837b6d3" Name="Diagram1">
-        <EntityTypeShape EntityType="DBModel.Categories_tbl" Width="1.5" PointX="1.5" PointY="0.5" />
+        <EntityTypeShape EntityType="DBModel.Categories_tbl" Width="1.5" PointX="0.5" PointY="0.5" />
         <EntityTypeShape EntityType="DBModel.Images_tbl" Width="1.5" PointX="4.75" PointY="0.5" />
         <AssociationConnector Association="DBModel.FK_Images_tbl_Categories_tbl" />
-        <EntityTypeShape EntityType="DBModel.Users_tbl" Width="1.5" PointX="3.125" PointY="0.5" />
+        <EntityTypeShape EntityType="DBModel.Objects_tbl" Width="1.5" PointX="6.625" PointY="0.625" />
+        <EntityTypeShape EntityType="DBModel.Users_tbl" Width="1.5" PointX="2.25" PointY="0.625" />
         <AssociationConnector Association="DBModel.FK_Images_tbl_Users_tbl" />
-        <EntityTypeShape EntityType="DBModel.Objects_tbl" Width="1.5" PointX="6.625" PointY="0.5" />
         <AssociationConnector Association="DBModel.FK_Objects_tbl_Images_tbl" />
         </Diagram>
     </edmx:Diagrams>

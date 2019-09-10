@@ -7,12 +7,12 @@
       <End Role="Categories_tbl" EntitySet="Categories_tbl" />
       <End Role="Images_tbl" EntitySet="Images_tbl" />
     </AssociationSet>
+    <EntitySet Name="Objects_tbl" EntityType="DBModel.Objects_tbl" />
     <EntitySet Name="Users_tbl" EntityType="DBModel.Users_tbl" />
     <AssociationSet Name="FK_Images_tbl_Users_tbl" Association="DBModel.FK_Images_tbl_Users_tbl">
       <End Role="Users_tbl" EntitySet="Users_tbl" />
       <End Role="Images_tbl" EntitySet="Images_tbl" />
     </AssociationSet>
-    <EntitySet Name="Objects_tbl" EntityType="DBModel.Objects_tbl" />
     <AssociationSet Name="FK_Objects_tbl_Images_tbl" Association="DBModel.FK_Objects_tbl_Images_tbl">
       <End Role="Images_tbl" EntitySet="Images_tbl" />
       <End Role="Objects_tbl" EntitySet="Objects_tbl" />
@@ -53,28 +53,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <EntityType Name="Users_tbl">
-    <Key>
-      <PropertyRef Name="UserId" />
-    </Key>
-    <Property Name="UserId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Email" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="Password" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="CategoryName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-    <NavigationProperty Name="Images_tbl" Relationship="DBModel.FK_Images_tbl_Users_tbl" FromRole="Users_tbl" ToRole="Images_tbl" />
-  </EntityType>
-  <Association Name="FK_Images_tbl_Users_tbl">
-    <End Type="DBModel.Users_tbl" Role="Users_tbl" Multiplicity="1" />
-    <End Type="DBModel.Images_tbl" Role="Images_tbl" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Users_tbl">
-        <PropertyRef Name="UserId" />
-      </Principal>
-      <Dependent Role="Images_tbl">
-        <PropertyRef Name="UserId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <EntityType Name="Objects_tbl">
     <Key>
       <PropertyRef Name="ObjectID" />
@@ -89,12 +67,35 @@
     <Property Name="Y3" Type="Double" Nullable="false" />
     <Property Name="X4" Type="Double" Nullable="false" />
     <Property Name="Y4" Type="Double" Nullable="false" />
-    <Property Name="ImageID" Type="Int32" />
-    <Property Name="VoiceURL" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="ImageID" Type="Int32" Nullable="false" />
+    <Property Name="VoiceURL" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="Images_tbl" Relationship="DBModel.FK_Objects_tbl_Images_tbl" FromRole="Objects_tbl" ToRole="Images_tbl" />
   </EntityType>
+  <EntityType Name="Users_tbl">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="UserId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Email" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Password" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="CategoryName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ImageURL" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Images_tbl" Relationship="DBModel.FK_Images_tbl_Users_tbl" FromRole="Users_tbl" ToRole="Images_tbl" />
+  </EntityType>
+  <Association Name="FK_Images_tbl_Users_tbl">
+    <End Type="DBModel.Users_tbl" Role="Users_tbl" Multiplicity="1" />
+    <End Type="DBModel.Images_tbl" Role="Images_tbl" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users_tbl">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="Images_tbl">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_Objects_tbl_Images_tbl">
-    <End Type="DBModel.Images_tbl" Role="Images_tbl" Multiplicity="0..1" />
+    <End Type="DBModel.Images_tbl" Role="Images_tbl" Multiplicity="1" />
     <End Type="DBModel.Objects_tbl" Role="Objects_tbl" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Images_tbl">

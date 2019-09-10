@@ -26,15 +26,15 @@ namespace BLL
             return DALimage.Getimages();
         }
 
-        public static List<COMimage> GetTenNextImages(int categoryId,int time)
+        public static List<COMimage> GetTwelveNextImages(int categoryId,int time)
         {
             //ten next images in this category- in accordance to time- current page number
             List<COMimage> list = new List<COMimage>();
-            int count = DALimage.GetTenNextImages(categoryId).Count;
+            int count = DALimage.GetTwelveNextImages(categoryId).Count;
             count -= time * 10;
             for (int i = 10*time; i < (count<10? (10 * time)+count:(10*time)+10); i++)
             {
-                list.Add(DALimage.GetTenNextImages(categoryId)[i]);
+                list.Add(DALimage.GetTwelveNextImages(categoryId)[i]);
             }
             return list;
         }

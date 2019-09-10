@@ -24,6 +24,7 @@ namespace DAL
         public string Email { get; set; }
         public string Password { get; set; }
         public string CategoryName { get; set; }
+        public string ImageURL { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Images_tbl> Images_tbl { get; set; }

@@ -33,8 +33,8 @@
     <Property Name="Y3" Type="float" Nullable="false" />
     <Property Name="X4" Type="float" Nullable="false" />
     <Property Name="Y4" Type="float" Nullable="false" />
-    <Property Name="ImageID" Type="int" />
-    <Property Name="VoiceURL" Type="varchar(max)" />
+    <Property Name="ImageID" Type="int" Nullable="false" />
+    <Property Name="VoiceURL" Type="varchar(max)" Nullable="false" />
   </EntityType>
   <EntityType Name="Users_tbl">
     <Key>
@@ -44,6 +44,7 @@
     <Property Name="Email" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="Password" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="CategoryName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="ImageURL" Type="varchar(max)" Nullable="false" />
   </EntityType>
   <Association Name="FK_Images_tbl_Categories_tbl">
     <End Role="Categories_tbl" Type="Self.Categories_tbl" Multiplicity="1" />
@@ -70,7 +71,7 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_Objects_tbl_Images_tbl">
-    <End Role="Images_tbl" Type="Self.Images_tbl" Multiplicity="0..1" />
+    <End Role="Images_tbl" Type="Self.Images_tbl" Multiplicity="1" />
     <End Role="Objects_tbl" Type="Self.Objects_tbl" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Images_tbl">

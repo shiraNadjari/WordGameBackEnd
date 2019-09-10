@@ -65,6 +65,7 @@ namespace WindowsFormsApp1
                 user.CategoryName = textBox3.Text;
                 user.Email = textBox1.Text;
                 user.Password = textBox2.Text;
+                user.ImageURL = @"C:\Users\ריקי\Desktop\pictures\stationary\1.jpg";
                 try
                 {
                     BLLuser.AddUser(user);
@@ -91,7 +92,16 @@ namespace WindowsFormsApp1
             COMCategory cat = new COMCategory();
             cat.CategoryName = textBox6.Text;
             cat.ImageURL = path;
-            BLLcategory.AddCategory(cat,categoriesCounter);
+            BLLcategory.AddCategory(cat, categoriesCounter);
+            int catId = BLLcategory.GetCategoryIdByCategoryName(cat.CategoryName);
+            try
+            {
+                BLLcategory.UpdateURL(catId, BLLgoogleVision.Storage(catId, cat.ImageURL, categoriesCounter, true));
+            }
+            catch (Exception)
+            {
+                throw;
+            }
             groupBox2.Visible = false;
             textBox6.Text = string.Empty;
         }
@@ -168,6 +178,16 @@ namespace WindowsFormsApp1
         private void button12_Click(object sender, EventArgs e)
         {
             BLLtextToSpeach.UpdateUrl(voicesCounter);
+        }
+
+        private void button13_Click(object sender, EventArgs e)
+        {
+            //BLLgoogleVision.AddUserImage();
+        }
+
+        private void button14_Click(object sender, EventArgs e)
+        {
+            BLLgoogleVision.createBucket();
         }
     }
 }

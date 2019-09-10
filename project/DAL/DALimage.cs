@@ -42,7 +42,7 @@ namespace DAL
             }
         }
 
-        public static List<COMimage> GetTenNextImages(int categoryId)
+        public static List<COMimage> GetTwelveNextImages(int categoryId)
         {
             //return list with all images objects in this category
             using (DBEntities context = new DBEntities())
