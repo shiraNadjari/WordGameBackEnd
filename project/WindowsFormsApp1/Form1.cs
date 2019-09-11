@@ -177,17 +177,37 @@ namespace WindowsFormsApp1
 
         private void button12_Click(object sender, EventArgs e)
         {
-            BLLtextToSpeach.UpdateUrl(voicesCounter);
+            //BLLtextToSpeach.UpdateUrl(voicesCounter);
         }
 
-        private void button13_Click(object sender, EventArgs e)
+        public static List<COMimageObject> objs;
+
+        private void button15_Click(object sender, EventArgs e)
         {
-            //BLLgoogleVision.AddUserImage();
+            label3.Text = "";
+            label3.Name = "";
+            COMimage img = new COMimage();
+            img.UserId = Convert.ToInt32(comboBox3.SelectedValue);
+            img.CategoryID = Convert.ToInt32(comboBox1.SelectedValue);
+            img.URL = path;
+            try
+            {
+                objs = BLLimage.GetImageFromUserReturnObjectsList(img);
+                BLLgoogleVision.UserImageStorageAndDB(img);
+                foreach (var item in objs)
+                {
+                    label3.Text += item.Name + "\n";
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
         }
 
         private void button14_Click(object sender, EventArgs e)
         {
-            BLLgoogleVision.createBucket();
+            //WebApi.Controllers.UsersController.postObjects(215,objs);
         }
     }
 }

@@ -8,13 +8,23 @@ using COMMON;
 
 public class BLLtextToSpeach
 {
-    public static string VoiceStorage(int catId, string URL, Dictionary<string, int> voicesCounter)
+    public static string VoiceStorage(int userId,int catId, string URL, Dictionary<string, int> voicesCounter)
     {
         Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", @"C:\wordproject-29b2e0d3e0d5.json");
         // upload the image storage
         //----------------
         string voiceName;
-        voiceName = "voice" + BLLcategory.GetCategoryById(catId).CategoryName + voicesCounter[BLLcategory.GetCategoryById(catId).CategoryName]++ + ".mp3";
+        if(voicesCounter.Count>0)
+            voiceName = "voice" + BLLcategory.GetCategoryById(catId).CategoryName + voicesCounter[BLLcategory.GetCategoryById(catId).CategoryName]++ + ".mp3";
+        else
+        {
+            List<COMimageObject> objs = new List<COMimageObject>();
+            foreach (COMimage img in BLLimage.Getimages().FindAll(img => img.UserId == userId))
+            {
+                objs.AddRange(BLLobject.GetObjects().FindAll(obj => obj.ImageID == img.ImageID));
+            }
+            voiceName = "voice"+ BLLcategory.GetCategoryById(catId).CategoryName + objs.Count + ".mp3";
+        }
         string bucketName = "objectsound";
         var storage = StorageClient.Create();
         using (var f = File.OpenRead(URL))
@@ -77,25 +87,24 @@ public class BLLtextToSpeach
         return url;
     }
 
-public static void UpdateUrl(Dictionary<string,int> voicesCounter)
-    {
-        foreach (COMimageObject obj in BLLobject.GetObjects())
-        {
-            if (obj.VoiceURL == null)
-            {
-                try
-                {
-                    string url = TextToSpeach(obj.Name);
-                    url = BLLtextToSpeach.VoiceStorage(BLLimage.GetImageById(obj.ImageID).CategoryID, url, voicesCounter);
-                    BLLobject.UpdateVoiceURL(obj.ObjectId, url);
-                }
-                catch (Exception)
-                {
+    //public static void UpdateUrl(Dictionary<string,int> voicesCounter)
+    //    {
+    //        foreach (COMimageObject obj in BLLobject.GetObjects())
+    //        {
+    //            if (obj.VoiceURL == null)
+    //            {
+    //                try
+    //                {
+    //                    string url = TextToSpeach(obj.Name);
+    //                    url = BLLtextToSpeach.VoiceStorage(BLLimage.GetImageById(obj.ImageID).CategoryID, url, voicesCounter);
+    //                    BLLobject.UpdateVoiceURL(obj.ObjectId, url);
+    //                }
+    //                catch (Exception)
+    //                {
 
-                    throw;
-                }
-            }
-        }
-    }
+    //                    throw;
+    //                }
+    //            }
+    //        }
+    //    }
 }
-    

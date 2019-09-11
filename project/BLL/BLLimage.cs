@@ -16,6 +16,12 @@ namespace BLL
             return BLLgoogleVision.VisionApi(img.CategoryID,img.UserId,img.URL,categoriesCounter,voicesCounter);
         }
 
+        public static List<COMimageObject> GetImageFromUserReturnObjectsList(COMimage img)
+        {
+            //GetImageFromUserReturnObjectsList
+            return BLLgoogleVision.CustomVisionApi(img);
+        }
+
         public static COMimage GetImageById(int id)
         {
             return DALimage.GetImageById(id);
@@ -43,6 +49,12 @@ namespace BLL
         {
             DALimage.UpdateEndIndex(imgId, end);
         }
+
+        public static void UpdateURL(int imgId,string url)
+        {
+            DALimage.UpdateURL(imgId, url);
+        }
+
         public static void RemoveImage(int id)
         {
             DALimage.Removeimage(id);

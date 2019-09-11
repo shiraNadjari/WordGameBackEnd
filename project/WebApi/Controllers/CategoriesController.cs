@@ -31,19 +31,19 @@ namespace WebApi.Controllers
         public int GetPagesAmountPerCategory(int id)
         {
             int num;
-            num= BLLcategory.GetPagesAmountPerCategory(id);
+            num = BLLcategory.GetPagesAmountPerCategory(id);
             return num;
         }
 
         public IHttpActionResult PostCategory(COMCategory com)
         {
             COMCategory c = BLLcategory.GetCategoryById(com.CategoryId);
-            if(c!=null)
+            if (c != null)
             {
                 return BadRequest("category already exist");
             }
-             BLLcategory.AddCategory(com,Form1.categoriesCounter);
-             return Ok();
+            BLLcategory.AddCategory(com, Form1.categoriesCounter);
+            return Ok();
         }
         public void DeleteCategory(int id)
         {

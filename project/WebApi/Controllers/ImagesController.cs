@@ -28,7 +28,7 @@ namespace WebApi.Controllers
             return BLLimage.Getimages();
         }
 
-        public IHttpActionResult GetTwelveNextImages(int id,int time)
+        public IHttpActionResult GetTwelveNextImages(int id, int time)
         {
             //time is current page number in this category images
             List<COMimage> list = BLLimage.GetTwelveNextImages(id, time);
@@ -47,7 +47,7 @@ namespace WebApi.Controllers
             {
                 return BadRequest("image already exist");
             }
-            BLLimage.AddImage(img,Form1.categoriesCounter,Form1.voicesCounter);
+            BLLimage.AddImage(img, Form1.categoriesCounter, Form1.voicesCounter);
             return Ok();
         }
 

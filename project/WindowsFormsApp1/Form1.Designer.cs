@@ -63,8 +63,10 @@
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
             this.button12 = new System.Windows.Forms.Button();
             this.button13 = new System.Windows.Forms.Button();
-            this.button14 = new System.Windows.Forms.Button();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.button15 = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
+            this.button14 = new System.Windows.Forms.Button();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -397,15 +399,33 @@
             this.button13.TabIndex = 10;
             this.button13.Text = "add image";
             this.button13.UseVisualStyleBackColor = true;
-            this.button13.Click += new System.EventHandler(this.button13_Click);
+            // 
+            // button15
+            // 
+            this.button15.Location = new System.Drawing.Point(699, 12);
+            this.button15.Name = "button15";
+            this.button15.Size = new System.Drawing.Size(89, 79);
+            this.button15.TabIndex = 12;
+            this.button15.Text = "insert image and storage it, and return all objects.";
+            this.button15.UseVisualStyleBackColor = true;
+            this.button15.Click += new System.EventHandler(this.button15_Click);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(13, 88);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(35, 13);
+            this.label3.TabIndex = 13;
+            this.label3.Text = "label3";
             // 
             // button14
             // 
-            this.button14.Location = new System.Drawing.Point(72, 369);
+            this.button14.Location = new System.Drawing.Point(16, 369);
             this.button14.Name = "button14";
-            this.button14.Size = new System.Drawing.Size(158, 82);
-            this.button14.TabIndex = 11;
-            this.button14.Text = "create bucket";
+            this.button14.Size = new System.Drawing.Size(266, 69);
+            this.button14.TabIndex = 14;
+            this.button14.Text = "postObjects(int id,List<COMimageObject> objs)";
             this.button14.UseVisualStyleBackColor = true;
             this.button14.Click += new System.EventHandler(this.button14_Click);
             // 
@@ -415,6 +435,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.button14);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.button15);
             this.Controls.Add(this.button13);
             this.Controls.Add(this.button12);
             this.Controls.Add(this.groupBox2);
@@ -433,6 +455,7 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -473,8 +496,10 @@
         private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.Button button12;
         private System.Windows.Forms.Button button13;
-        private System.Windows.Forms.Button button14;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
+        private System.Windows.Forms.Button button15;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Button button14;
     }
 }
 

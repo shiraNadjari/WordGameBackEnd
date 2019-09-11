@@ -51,12 +51,9 @@ namespace BLL
     }
     public class BLLgoogleVision
     {
-
         public static string Storage(int catId, string URL, Dictionary<string, int> categoriesCounter, bool IsMainImg = false)
         {
             Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", @"C:\wordproject-29b2e0d3e0d5.json");
-            // upload the image storage
-            //----------------
             string imageName;
             if (!IsMainImg)
                 imageName = BLLcategory.GetCategoryById(catId).CategoryName + categoriesCounter[BLLcategory.GetCategoryById(catId).CategoryName]++ + ".jpg";
@@ -76,62 +73,40 @@ namespace BLL
                 }
             return URL;
         }
+   
+        //public void CreateDir(string FolderName)
+        //{
+        //    if (!FolderName.EndsWith("/"))
+        //        FolderName += "/";
+        //    var uploadStream = new MemoryStream(Encoding.UTF8.GetBytes(""));
+        //    Storage.Objects.Insert(
+        //        bucket: BucketName,
+        //        stream: uploadStream,
+        //        contentType: "application/x-directory",
+        //        body: new Google.Apis.Storage.v1.Data.Object() { Name = FolderName }
+        //        ).Upload();
+        //}
 
-        public static string ImageUserStorage(int UserId, string URL, int counter)
+        public static string UserImageStorage(COMimage image)
         {
+            int counter = BLLimage.Getimages().FindAll(img => img.UserId == image.UserId).Count;
             Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", @"C:\wordproject-29b2e0d3e0d5.json");
-            // upload the image storage
-            string ImageName = BLLuser.GetUserById(UserId).CategoryName + UserId.ToString() + "-" + counter.ToString() + ".jpg";
-            string bucketName = "objectsound";
+            string imageName = BLLuser.GetUserById(image.UserId).CategoryName + counter + ".jpg";
+            string bucketName = "users_images_bucket2";
+            string folderName = "user"+image.UserId;
             var storage = StorageClient.Create();
-            using (var f = File.OpenRead(URL))
-            {
+            using (var f = File.OpenRead(image.URL))
                 try
                 {
-                    // var res = storage.UploadObject(bucketName, voiceName, null, f);
-                    // URL = "https://storage.googleapis.com/" + bucketName + "/" + voiceName;
-                }
-                catch (Exception e)
-                {
-                    throw e;
-                }
-            }
-            return URL;
-        }
-
-        public static string CustomStorage(int catId, string url, int counter, int userId)
-        {
-            Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", @"C:\wordproject-29b2e0d3e0d5.json");
-            // upload the image storage
-            string imageName = BLLuser.GetUserById(userId).CategoryName + counter.ToString() + ".jpg";
-            string bucketName = "wordproject";
-            string projectId = "wordproject-249810";
-            var storage = StorageClient.Create();
-            //storage.CreateBucket(projectId,)
-            using (var f = File.OpenRead(url))
-                try
-                {
-                    var res = storage.UploadObject(bucketName, imageName, null, f);
-                    url = "https://storage.googleapis.com/" + bucketName + "/" + imageName;
+                    var res = storage.UploadObject(bucketName, imageName, null,f);
+                        //(bucketName +"/"+ folderName, imageName, null, f);
+                    image.URL="https://storage.googleapis.com/" + bucketName + "/" + imageName;
                 }
                 catch (Exception)
                 {
                     throw;
                 }
-            return url;
-        }
-
-        public static void AddUserImage(string url, int userId, int counter)
-        {
-            COMimage img = new COMimage();
-            img.CategoryID = BLLcategory.GetCategoryIdByCategoryName("Custom");
-            img.UserId = userId;
-            //CustomStorage(img.CategoryID, url, counter);
-        }
-
-        public static void createBucket()
-        {
-
+            return image.URL;
         }
 
         public static List<string> VisionApi(int categoryId, int UserId, string URL, Dictionary<string, int> categoriesCounter, Dictionary<string, int> voicesCounter)
@@ -214,33 +189,6 @@ namespace BLL
                         finalList.Add(bounding, annotation.Name);
                     else
                         help = true;
-                    //if (!(BLLobject.CheckObjectExists(x, y, imgId)))
-                    //{
-                    //    COMimageObject obj = new COMimageObject();
-                    //    obj.ImageID = imgId;
-                    //    obj.Name = annotation.Name;
-                    //    obj.X1 = x[0];
-                    //    obj.Y1 = y[0];
-                    //    obj.X2 = x[1];
-                    //    obj.Y2 = y[1];
-                    //    obj.X3 = x[2];
-                    //    obj.Y3 = y[2];
-                    //    obj.X4 = x[3];
-                    //    obj.Y4 = y[3];
-                    //    //obj.VoiceURL = BLLtextToSpeach.TextToSpeach(obj.Name);
-                    //    try
-                    //    {
-                    //        obj.VoiceURL = BLLtextToSpeach.VoiceStorage(BLLimage.GetImageById(obj.ImageID).CategoryID, BLLtextToSpeach.TextToSpeach(obj.Name), voicesCounter);
-
-                    //    }
-                    //    catch (Exception e)
-                    //    {
-                    //        throw e;
-                    //    }
-                    //    DALimageObject.AddObject(obj);
-                    //    c++;
-                    //    ans.Add(annotation.Name);
-                    //}
                 }
                 foreach (var item in finalList)
                 {
@@ -257,7 +205,7 @@ namespace BLL
                     obj.Y4 = item.Key.Y4;
                     try
                     {
-                        obj.VoiceURL = BLLtextToSpeach.VoiceStorage(BLLimage.GetImageById(obj.ImageID).CategoryID, BLLtextToSpeach.TextToSpeach(obj.Name), voicesCounter);
+                        obj.VoiceURL = BLLtextToSpeach.VoiceStorage(UserId,BLLimage.GetImageById(obj.ImageID).CategoryID, BLLtextToSpeach.TextToSpeach(obj.Name), voicesCounter);
 
                     }
                     catch (Exception e)
@@ -275,6 +223,58 @@ namespace BLL
             }
             BLLimage.UpdateEndIndex(imgId, img.BeginIndex + c);
             return ans;
+        }
+
+        //send image to vision api and return all objects detected
+        //wirhout insert them into database
+        public static List<COMimageObject> CustomVisionApi(COMimage img)
+        {
+            Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", @"C:\wordproject-29b2e0d3e0d5.json");
+            // Instantiates a client
+            var client = ImageAnnotatorClient.Create();
+            // Load the image file into memory
+            var image = Image.FromFile(img.URL);
+            // Performs label detection on the image file
+            var response = client.DetectLocalizedObjects(image);
+            List<COMimageObject> objects = new List<COMimageObject>();
+            foreach (var annotation in response)
+            {
+                COMimageObject obj = new COMimageObject();
+                obj.ImageID = img.ImageID;
+                obj.Name = annotation.Name;
+                obj.VoiceURL = "";
+                obj.X1 = annotation.BoundingPoly.NormalizedVertices[0].X;
+                obj.X2 = annotation.BoundingPoly.NormalizedVertices[1].X;
+                obj.X3 = annotation.BoundingPoly.NormalizedVertices[2].X;
+                obj.X4 = annotation.BoundingPoly.NormalizedVertices[3].X;
+                obj.Y1 = annotation.BoundingPoly.NormalizedVertices[0].Y;
+                obj.Y2 = annotation.BoundingPoly.NormalizedVertices[1].Y;
+                obj.Y3 = annotation.BoundingPoly.NormalizedVertices[2].Y;
+                obj.Y4 = annotation.BoundingPoly.NormalizedVertices[3].Y;
+                objects.Add(obj);
+            }
+            return objects;
+        }
+
+        //storage image and insert it into atabase without
+        //insert its objects into db yet.
+        public static void UserImageStorageAndDB(COMimage img)
+        {
+            int imgId;
+            try
+            {
+                //image storage
+                img.URL = UserImageStorage(img);
+                //insert image into db
+                DALimageObject.Refresh();
+                img.BeginIndex = BLLobject.GetObjects().Count;
+                DALimage.Addimage(img);//insert image into db
+                imgId = DALimage.GetImageIdByURL(img.URL);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
         }
     }
 }

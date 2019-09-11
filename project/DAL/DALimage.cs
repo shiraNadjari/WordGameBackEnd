@@ -65,6 +65,15 @@ namespace DAL
             }
         }
 
+        public static void UpdateURL(int imgId, string url)
+        {
+            using (DBEntities context = new DBEntities())
+            {
+                context.Images_tbl.FirstOrDefault(img => img.ImageID == imgId).URL = url;
+                context.SaveChanges();
+            }
+        }
+
         public static void Refresh()
         {
             using (DBEntities context = new DBEntities())
