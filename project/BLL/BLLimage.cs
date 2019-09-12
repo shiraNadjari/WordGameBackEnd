@@ -37,8 +37,8 @@ namespace BLL
             //ten next images in this category- in accordance to time- current page number
             List<COMimage> list = new List<COMimage>();
             int count = DALimage.GetTwelveNextImages(categoryId).Count;
-            count -= time * 10;
-            for (int i = 10*time; i < (count<10? (10 * time)+count:(10*time)+10); i++)
+            count -= time * 12;
+            for (int i = 12*time; i < (count<12? (12 * time)+count:(12*time)+12); i++)
             {
                 list.Add(DALimage.GetTwelveNextImages(categoryId)[i]);
             }

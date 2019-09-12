@@ -26,7 +26,7 @@ namespace WebApi.Controllers
             return BLLobject.GetObjects();
         }
 
-        public IHttpActionResult PostObject(COMimageObject obj)
+        public IHttpActionResult PostObject([FromBody]COMimageObject obj)
         {
             COMimageObject o = BLLobject.GetObjectById(obj.ObjectId);
             if (o != null)

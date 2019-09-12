@@ -29,8 +29,8 @@ namespace WebApi.Controllers
 
         //insert image to db and storage without inserting its objects.
         //return objects list
-        [HttpGet]
-        public List<COMimageObject> InsertImageReturnObjects(int id, int catId, string url)
+        [HttpPost]
+        public List<COMimageObject> InsertImageReturnObjects([FromBody] string url,[FromUri] int id,[FromUri] int catId )
         {
             try
             {
@@ -48,36 +48,36 @@ namespace WebApi.Controllers
             }
         }
                                     //imgId
-        public static void postObjects(int id, List<COMimageObject> objs)
-        {
-            try
-            {
-                Dictionary<string, int> dic = new Dictionary<string, int>();
-                foreach (COMimageObject item in objs)
-                {
-                    item.ImageID = id;
-                    item.VoiceURL = BLLtextToSpeach.VoiceStorage(BLLimage.GetImageById(id).UserId,BLLimage.GetImageById(id).CategoryID, BLLtextToSpeach.TextToSpeach(item.Name), dic);
-                    BLLobject.AddObject(item);
-                }
-                //return Ok();
-            }
-            catch (Exception)
-            {
-                //return BadRequest();
-                throw;
-            }
-        }
+        //public static void postObjects(int id,[FromBody] List<COMimageObject> objs)
+        //{
+        //    try
+        //    {
+        //        Dictionary<string, int> dic = new Dictionary<string, int>();
+        //        foreach (COMimageObject item in objs)
+        //        {
+        //            item.ImageID = id;
+        //            item.VoiceURL = BLLtextToSpeach.VoiceStorage(BLLimage.GetImageById(id).UserId,BLLimage.GetImageById(id).CategoryID, BLLtextToSpeach.TextToSpeach(item.Name), dic);
+        //            BLLobject.AddObject(item);
+        //        }
+        //        //return Ok();
+        //    }
+        //    catch (Exception)
+        //    {
+        //        //return BadRequest();
+        //        throw;
+        //    }
+        //}
 
-        public IHttpActionResult PostUser(COMuser user)
-        {
-            COMuser u = BLLuser.GetUserById(user.UserId);
-            if (u != null)
-            {
-                return BadRequest("user already exist");
-            }
-            BLLuser.AddUser(user);
-            return Ok();
-        }
+        //public IHttpActionResult PostUser([FromBody]COMuser user)
+        //{
+        //    COMuser u = BLLuser.GetUserById(user.UserId);
+        //    if (u != null)
+        //    {
+        //        return BadRequest("user already exist");
+        //    }
+        //    BLLuser.AddUser(user);
+        //    return Ok();
+        //}
 
         public void DeleteUser(int id)
         {

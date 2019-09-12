@@ -27,7 +27,6 @@ namespace WebApi.Controllers
         {
             return BLLimage.Getimages();
         }
-
         public IHttpActionResult GetTwelveNextImages(int id, int time)
         {
             //time is current page number in this category images
@@ -40,8 +39,9 @@ namespace WebApi.Controllers
                 return BadRequest("no more pictures for this category.");
         }
 
-        public IHttpActionResult PostImage(COMimage img)
-        {
+
+        public IHttpActionResult PostImage([FromBody] COMimage img)
+         {
             COMimage im = BLLimage.GetImageById(img.ImageID);
             if (im != null)
             {

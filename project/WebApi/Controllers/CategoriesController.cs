@@ -35,7 +35,7 @@ namespace WebApi.Controllers
             return num;
         }
 
-        public IHttpActionResult PostCategory(COMCategory com)
+        public IHttpActionResult PostCategory([FromBody] COMCategory com)
         {
             COMCategory c = BLLcategory.GetCategoryById(com.CategoryId);
             if (c != null)
