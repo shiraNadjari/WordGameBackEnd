@@ -209,5 +209,11 @@ namespace WindowsFormsApp1
         {
             //WebApi.Controllers.UsersController.postObjects(215,objs);
         }
+
+        private void button16_Click(object sender, EventArgs e)
+        {
+            string url = BLLtextToSpeach.VoiceStorage(11, 45, BLLtextToSpeach.TextToSpeach(textBox7.Text), Convert.ToInt32(numericUpDown2.Value));
+            BLLobject.UpdateVoiceURL(Convert.ToInt32(numericUpDown1.Value),url);
+        }
     }
 }
