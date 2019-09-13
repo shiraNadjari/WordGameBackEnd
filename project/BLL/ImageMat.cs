@@ -28,15 +28,15 @@ namespace BLL
                 imageAndObject.image.BeginIndex = img.BeginIndex;
                 imageAndObject.image.EndIndex = img.EndIndex;
                 imageAndObject.image.CategoryID = img.CategoryID;
-                for (int i = img.BeginIndex; i < img.EndIndex; i++)
-                {
-                    imageAndObject.imageObjects.Add(ObjList[i]);
-                }
+                //for (int i = img.BeginIndex; i < img.EndIndex; i++)
+                //{
+                //    imageAndObject.imageObjects.Add(ObjList[i]);
+                //}
+                List<COMimageObject> objs = BLLobject.GetObjects().FindAll(obj => obj.ImageID == img.ImageID);
+                objs.ForEach(obj => imageAndObject.imageObjects.Add(obj));
                 ImagesAndObjectsMat.Add(imageAndObject);
             }
             return ImagesAndObjectsMat;
-
-
             //int counter = 0;
             //ImageWithObject[] array = new ImageWithObject[DALimage.NumImages()];
             //var ImageArray = DALimage.Getimages();
