@@ -88,9 +88,6 @@ C:\Users\shira_000\Desktop\projectGoogle\WordGameBackend\WordGameBackEnd\project
 C:\Users\shira_000\Desktop\projectGoogle\WordGameBackend\WordGameBackEnd\project\BLL\bin\Debug\System.Runtime.InteropServices.RuntimeInformation.dll
 C:\Users\shira_000\Desktop\projectGoogle\WordGameBackend\WordGameBackEnd\project\BLL\bin\Debug\EntityFramework.dll
 C:\Users\shira_000\Desktop\projectGoogle\WordGameBackend\WordGameBackEnd\project\BLL\bin\Debug\System.Interactive.Async.dll
-C:\Users\shira_000\Desktop\projectGoogle\WordGameBackend\WordGameBackEnd\project\BLL\bin\Debug\Grpc.Core.Api.dll
-C:\Users\shira_000\Desktop\projectGoogle\WordGameBackend\WordGameBackEnd\project\BLL\bin\Debug\Grpc.Core.dll
-C:\Users\shira_000\Desktop\projectGoogle\WordGameBackend\WordGameBackEnd\project\BLL\bin\Debug\Grpc.Auth.dll
 C:\Users\shira_000\Desktop\projectGoogle\WordGameBackend\WordGameBackEnd\project\BLL\bin\Debug\COMMON.pdb
 C:\Users\shira_000\Desktop\projectGoogle\WordGameBackend\WordGameBackEnd\project\BLL\bin\Debug\DAL.pdb
 C:\Users\shira_000\Desktop\projectGoogle\WordGameBackend\WordGameBackEnd\project\BLL\bin\Debug\DAL.dll.config
@@ -120,12 +117,6 @@ C:\Users\shira_000\Desktop\projectGoogle\WordGameBackend\WordGameBackEnd\project
 C:\Users\shira_000\Desktop\projectGoogle\WordGameBackend\WordGameBackEnd\project\BLL\bin\Debug\Google.Protobuf.xml
 C:\Users\shira_000\Desktop\projectGoogle\WordGameBackend\WordGameBackEnd\project\BLL\bin\Debug\EntityFramework.xml
 C:\Users\shira_000\Desktop\projectGoogle\WordGameBackend\WordGameBackEnd\project\BLL\bin\Debug\System.Interactive.Async.xml
-C:\Users\shira_000\Desktop\projectGoogle\WordGameBackend\WordGameBackEnd\project\BLL\bin\Debug\Grpc.Core.Api.pdb
-C:\Users\shira_000\Desktop\projectGoogle\WordGameBackend\WordGameBackEnd\project\BLL\bin\Debug\Grpc.Core.Api.xml
-C:\Users\shira_000\Desktop\projectGoogle\WordGameBackend\WordGameBackEnd\project\BLL\bin\Debug\Grpc.Core.pdb
-C:\Users\shira_000\Desktop\projectGoogle\WordGameBackend\WordGameBackEnd\project\BLL\bin\Debug\Grpc.Core.xml
-C:\Users\shira_000\Desktop\projectGoogle\WordGameBackend\WordGameBackEnd\project\BLL\bin\Debug\Grpc.Auth.pdb
-C:\Users\shira_000\Desktop\projectGoogle\WordGameBackend\WordGameBackEnd\project\BLL\bin\Debug\Grpc.Auth.xml
 C:\Users\shira_000\Desktop\projectGoogle\WordGameBackend\WordGameBackEnd\project\BLL\obj\Debug\BLL.csprojResolveAssemblyReference.cache
 C:\Users\shira_000\Desktop\projectGoogle\WordGameBackend\WordGameBackEnd\project\BLL\obj\Debug\BLL.csproj.CoreCompileInputs.cache
 C:\Users\shira_000\Desktop\projectGoogle\WordGameBackend\WordGameBackEnd\project\BLL\obj\Debug\BLL.csproj.CopyComplete
@@ -140,3 +131,6 @@ C:\Users\ריקי\Desktop\WordGameBackend\WordGameBackEnd\project\BLL\bin\Debug\
 C:\Users\ריקי\Desktop\WordGameBackend\WordGameBackEnd\project\BLL\bin\Debug\Google.Cloud.TextToSpeech.V1.dll
 C:\Users\ריקי\Desktop\WordGameBackend\WordGameBackEnd\project\BLL\bin\Debug\Google.Cloud.TextToSpeech.V1.pdb
 C:\Users\ריקי\Desktop\WordGameBackend\WordGameBackEnd\project\BLL\bin\Debug\Google.Cloud.TextToSpeech.V1.xml
+C:\Users\shira_000\Desktop\projectGoogle\WordGameBackend\WordGameBackEnd\project\BLL\bin\Debug\Google.Cloud.TextToSpeech.V1.dll
+C:\Users\shira_000\Desktop\projectGoogle\WordGameBackend\WordGameBackEnd\project\BLL\bin\Debug\Google.Cloud.TextToSpeech.V1.pdb
+C:\Users\shira_000\Desktop\projectGoogle\WordGameBackend\WordGameBackEnd\project\BLL\bin\Debug\Google.Cloud.TextToSpeech.V1.xml

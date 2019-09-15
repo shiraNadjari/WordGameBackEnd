@@ -29,17 +29,19 @@ namespace WebApi.Controllers
 
         //insert image to db and storage without inserting its objects.
         //return objects list
-        [HttpPost]
-        public List<COMimageObject> InsertImageReturnObjects([FromBody] string url,[FromUri] int id,[FromUri] int catId )
+        //[HttpPost]
+        //
+        public List<COMimageObject> PostInsertImageReturnObjects([FromBody]COMimage MyBase64, int id, int catId )
         {
             try
             {
+                //string base64 = MyBase64.URL.Substring(23);
                 COMimage img = new COMimage();
                 img.UserId = id;
                 img.CategoryID = catId;
-                img.URL = url;
-                List<COMimageObject> objs = BLLimage.GetImageFromUserReturnObjectsList(img);
-                BLLgoogleVision.UserImageStorageAndDB(img);
+                img.URL = "";
+                List<COMimageObject> objs = BLLimage.GetImageFromUserReturnObjectsList(img, MyBase64.URL);
+               
                 return objs;
             }
             catch (Exception)
@@ -47,26 +49,31 @@ namespace WebApi.Controllers
                 throw;
             }
         }
-                                    //imgId
-        //public static void postObjects(int id,[FromBody] List<COMimageObject> objs)
-        //{
-        //    try
-        //    {
-        //        Dictionary<string, int> dic = new Dictionary<string, int>();
-        //        foreach (COMimageObject item in objs)
-        //        {
-        //            item.ImageID = id;
-        //            item.VoiceURL = BLLtextToSpeach.VoiceStorage(BLLimage.GetImageById(id).UserId,BLLimage.GetImageById(id).CategoryID, BLLtextToSpeach.TextToSpeach(item.Name), dic);
-        //            BLLobject.AddObject(item);
-        //        }
-        //        //return Ok();
-        //    }
-        //    catch (Exception)
-        //    {
-        //        //return BadRequest();
-        //        throw;
-        //    }
-        //}
+        //imgId
+        public static void postObjects( [FromBody] List<COMimageObject> objs,int id,int catid,string  MyBase64)
+        {
+            try
+            {
+                COMimage img = new COMimage();
+                img.UserId = id;
+                img.CategoryID = catid;
+                img.URL = "";
+                BLLgoogleVision.UserImageStorageAndDB(img,MyBase64);
+                Dictionary<string, int> dic = new Dictionary<string, int>();
+                foreach (COMimageObject item in objs)
+                {
+                    item.ImageID = id;
+                    item.VoiceURL = BLLtextToSpeach.VoiceStorage(BLLimage.GetImageById(id).UserId, BLLimage.GetImageById(id).CategoryID, BLLtextToSpeach.TextToSpeach(item.Name), dic);
+                    BLLobject.AddObject(item);
+                }
+                //return Ok();
+            }
+            catch (Exception)
+            {
+                //return BadRequest();
+                throw;
+            }
+        }
 
         //public IHttpActionResult PostUser([FromBody]COMuser user)
         //{

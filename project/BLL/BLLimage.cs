@@ -16,10 +16,10 @@ namespace BLL
             return BLLgoogleVision.VisionApi(img.CategoryID,img.UserId,img.URL,categoriesCounter,voicesCounter);
         }
 
-        public static List<COMimageObject> GetImageFromUserReturnObjectsList(COMimage img)
+        public static List<COMimageObject> GetImageFromUserReturnObjectsList(COMimage img,string base64)
         {
             //GetImageFromUserReturnObjectsList
-            return BLLgoogleVision.CustomVisionApi(img);
+            return BLLgoogleVision.CustomVisionApi(img, base64);
         }
 
         public static COMimage GetImageById(int id)
