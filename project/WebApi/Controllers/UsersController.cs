@@ -50,7 +50,7 @@ namespace WebApi.Controllers
             }
         }
         //imgId
-        public static void postObjects( [FromBody] List<COMimageObject> objs,int id,int catid,string  MyBase64)
+        public static void postObjects( [FromBody] List<COMimageObject> objs, int id,int catid)
         {
             try
             {
@@ -58,7 +58,7 @@ namespace WebApi.Controllers
                 img.UserId = id;
                 img.CategoryID = catid;
                 img.URL = "";
-                BLLgoogleVision.UserImageStorageAndDB(img,MyBase64);
+                BLLgoogleVision.UserImageStorageAndDB(img,objs[0].VoiceURL);
                 Dictionary<string, int> dic = new Dictionary<string, int>();
                 foreach (COMimageObject item in objs)
                 {
