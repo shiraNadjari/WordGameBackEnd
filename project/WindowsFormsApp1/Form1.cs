@@ -192,8 +192,8 @@ namespace WindowsFormsApp1
             img.URL = path;
             try
             {
-                objs = BLLimage.GetImageFromUserReturnObjectsList(img);
-                BLLgoogleVision.UserImageStorageAndDB(img);
+                //objs = BLLimage.GetImageFromUserReturnObjectsList(img);
+               // BLLgoogleVision.UserImageStorageAndDB(img);
                 foreach (var item in objs)
                 {
                     label3.Text += item.Name + "\n";

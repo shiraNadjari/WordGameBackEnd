@@ -303,8 +303,6 @@ C:\Users\shira_000\Desktop\projectGoogle\WordGameBackend\WordGameBackEnd\project
 C:\Users\shira_000\Desktop\projectGoogle\WordGameBackend\WordGameBackEnd\project\WebApi\bin\DAL.dll
 C:\Users\shira_000\Desktop\projectGoogle\WordGameBackend\WordGameBackEnd\project\WebApi\bin\BLL.pdb
 C:\Users\shira_000\Desktop\projectGoogle\WordGameBackend\WordGameBackEnd\project\WebApi\bin\COMMON.pdb
-C:\Users\shira_000\Desktop\projectGoogle\WordGameBackend\WordGameBackEnd\project\WebApi\bin\EntityFramework.xml
-C:\Users\shira_000\Desktop\projectGoogle\WordGameBackend\WordGameBackEnd\project\WebApi\bin\EntityFramework.SqlServer.xml
 C:\Users\shira_000\Desktop\projectGoogle\WordGameBackend\WordGameBackEnd\project\WebApi\bin\Google.Api.CommonProtos.pdb
 C:\Users\shira_000\Desktop\projectGoogle\WordGameBackend\WordGameBackEnd\project\WebApi\bin\Google.Api.CommonProtos.xml
 C:\Users\shira_000\Desktop\projectGoogle\WordGameBackend\WordGameBackEnd\project\WebApi\bin\Google.Api.Gax.pdb
@@ -562,9 +560,18 @@ C:\Users\ריקי\Desktop\WordGameBackend\WordGameBackEnd\project\WebApi\bin\Goo
 C:\Users\ריקי\Desktop\WordGameBackend\WordGameBackEnd\project\WebApi\bin\WindowsFormsApp1.exe
 C:\Users\ריקי\Desktop\WordGameBackend\WordGameBackEnd\project\WebApi\bin\WindowsFormsApp1.pdb
 C:\Users\ריקי\Desktop\WordGameBackend\WordGameBackEnd\project\WebApi\bin\WindowsFormsApp1.exe.config
+
 C:\Users\ריקי\Desktop\WordGameBackend\WordGameBackEnd\project\WebApi\bin\Google.Cloud.Datastore.V1.dll
 C:\Users\ריקי\Desktop\WordGameBackend\WordGameBackEnd\project\WebApi\bin\MySqlConnector.dll
 C:\Users\ריקי\Desktop\WordGameBackend\WordGameBackEnd\project\WebApi\bin\System.Threading.Tasks.Extensions.dll
 C:\Users\ריקי\Desktop\WordGameBackend\WordGameBackEnd\project\WebApi\bin\Google.Cloud.Datastore.V1.pdb
 C:\Users\ריקי\Desktop\WordGameBackend\WordGameBackEnd\project\WebApi\bin\Google.Cloud.Datastore.V1.xml
 C:\Users\ריקי\Desktop\WordGameBackend\WordGameBackEnd\project\WebApi\bin\System.Threading.Tasks.Extensions.xml
+
+C:\Users\shira_000\Desktop\projectGoogle\WordGameBackend\WordGameBackEnd\project\WebApi\bin\Google.Cloud.TextToSpeech.V1.dll
+C:\Users\shira_000\Desktop\projectGoogle\WordGameBackend\WordGameBackEnd\project\WebApi\bin\WindowsFormsApp1.exe
+C:\Users\shira_000\Desktop\projectGoogle\WordGameBackend\WordGameBackEnd\project\WebApi\bin\WindowsFormsApp1.pdb
+C:\Users\shira_000\Desktop\projectGoogle\WordGameBackend\WordGameBackEnd\project\WebApi\bin\WindowsFormsApp1.exe.config
+C:\Users\shira_000\Desktop\projectGoogle\WordGameBackend\WordGameBackEnd\project\WebApi\bin\Google.Cloud.TextToSpeech.V1.pdb
+C:\Users\shira_000\Desktop\projectGoogle\WordGameBackend\WordGameBackEnd\project\WebApi\bin\Google.Cloud.TextToSpeech.V1.xml
+

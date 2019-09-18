@@ -79,7 +79,9 @@ public class BLLtextToSpeach
         });
         string url = "";
         // Write the binary AudioContent of the response to an MP3 file.
-        using (FileStream output = File.Create("tmp.mp3"))
+        string path = System.IO.Path.GetTempFileName();
+      
+        using (FileStream output = File.OpenWrite(path))
         {
             response.AudioContent.WriteTo(output);
             url = output.Name;
