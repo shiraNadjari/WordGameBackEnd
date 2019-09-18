@@ -303,8 +303,6 @@ C:\Users\shira_000\Desktop\projectGoogle\WordGameBackend\WordGameBackEnd\project
 C:\Users\shira_000\Desktop\projectGoogle\WordGameBackend\WordGameBackEnd\project\WebApi\bin\DAL.dll
 C:\Users\shira_000\Desktop\projectGoogle\WordGameBackend\WordGameBackEnd\project\WebApi\bin\BLL.pdb
 C:\Users\shira_000\Desktop\projectGoogle\WordGameBackend\WordGameBackEnd\project\WebApi\bin\COMMON.pdb
-C:\Users\shira_000\Desktop\projectGoogle\WordGameBackend\WordGameBackEnd\project\WebApi\bin\EntityFramework.xml
-C:\Users\shira_000\Desktop\projectGoogle\WordGameBackend\WordGameBackEnd\project\WebApi\bin\EntityFramework.SqlServer.xml
 C:\Users\shira_000\Desktop\projectGoogle\WordGameBackend\WordGameBackEnd\project\WebApi\bin\Google.Api.CommonProtos.pdb
 C:\Users\shira_000\Desktop\projectGoogle\WordGameBackend\WordGameBackEnd\project\WebApi\bin\Google.Api.CommonProtos.xml
 C:\Users\shira_000\Desktop\projectGoogle\WordGameBackend\WordGameBackEnd\project\WebApi\bin\Google.Api.Gax.pdb

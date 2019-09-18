@@ -11,7 +11,6 @@ C:\Users\ריקי\Desktop\WordGameBackend\WordGameBackEnd\project\COMMON\obj\Deb
 C:\Users\ריקי\Desktop\WordGameBackend\WordGameBackEnd\project\COMMON\obj\Debug\COMMON.csprojAssemblyReference.cache
 C:\Users\shira_000\Desktop\projectGoogle\WordGameBackend\WordGameBackEnd\project\COMMON\bin\Debug\COMMON.dll
 C:\Users\shira_000\Desktop\projectGoogle\WordGameBackend\WordGameBackEnd\project\COMMON\bin\Debug\COMMON.pdb
-C:\Users\shira_000\Desktop\projectGoogle\WordGameBackend\WordGameBackEnd\project\COMMON\obj\Debug\COMMON.csprojResolveAssemblyReference.cache
 C:\Users\shira_000\Desktop\projectGoogle\WordGameBackend\WordGameBackEnd\project\COMMON\obj\Debug\COMMON.csproj.CoreCompileInputs.cache
 C:\Users\shira_000\Desktop\projectGoogle\WordGameBackend\WordGameBackEnd\project\COMMON\obj\Debug\COMMON.dll
 C:\Users\shira_000\Desktop\projectGoogle\WordGameBackend\WordGameBackEnd\project\COMMON\obj\Debug\COMMON.pdb

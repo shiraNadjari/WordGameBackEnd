@@ -9,14 +9,14 @@ namespace BLL
 {
    public class ImageMat
     {
-        public static List<ImageWithObject> CreateMat(List<COMimage> imageList)
+        public static List<ImageWithObject> CreateMat(List<COMimage> imageList,bool IsAllImages=false)
         {
             if (imageList.Count() <= 0)
                 return null;
             //answer list
             List<ImageWithObject> ImagesAndObjectsMat = new List<ImageWithObject>();
             
-            //list with all objects of all images from current category
+            //list with all objects of all images from all categories
             List<COMimageObject> ObjList = DALimageObject.Getobjects();
             foreach (COMimage img in imageList)
             {

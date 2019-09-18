@@ -1,4 +1,5 @@
 ﻿using System;
+//using System.Drawing;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,6 +8,7 @@ using Google.Cloud.Vision.V1;
 using System.IO;
 using Google.Cloud.Storage.V1;
 using DAL;
+//using System.Drawing;
 using COMMON;
 using Google.Apis.Auth.OAuth2;
 namespace BLL
@@ -121,16 +123,32 @@ namespace BLL
                 }
             return image.URL;
         }
+        //get btm image , rotate it and return byte[]
+        public static byte[] RotateImage(System.Drawing.Bitmap btm)
+        {
+            byte[] a=null;
+            System.Drawing.ImageConverter converter = new System.Drawing.ImageConverter();
+            //return (byte[])converter.ConvertTo(img, typeof(byte[]));
+            if (btm != null)
+            {
+                btm.RotateFlip(System.Drawing.RotateFlipType.Rotate180FlipY);
+                btm.RotateFlip(System.Drawing.RotateFlipType.Rotate180FlipX);
 
+                //convert btm to image-Google.Cloud.Vision.V1
+                a = (byte[])converter.ConvertTo(btm, typeof(byte[]));
+            }
+            return a;
+        }
         public static List<string> VisionApi(int categoryId, int UserId, string URL, Dictionary<string, int> categoriesCounter, Dictionary<string, int> voicesCounter)
         {
             Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", @"C:\wordproject-29b2e0d3e0d5.json");
             // Instantiates a client
             var client = ImageAnnotatorClient.Create();
             // Load the image file into memory
+          
             var image = Image.FromFile(URL);
             // Performs label detection on the image file
-            var response = client.DetectLocalizedObjects(image);
+            var response = client.DetectLocalizedObjects(image);//
             //found most common word in objects list 
             Dictionary<string, int> countingDic = new Dictionary<string, int>();
             string common = string.Empty;
@@ -246,8 +264,20 @@ namespace BLL
             // Instantiates a client
             var client = ImageAnnotatorClient.Create();
             // Load the image file into memory
-            var byte1 =Convert.FromBase64String( base64);
-            var image = Image.FromBytes(byte1);
+            byte[] byteBuffer = Convert.FromBase64String(base64);
+
+            System.Drawing.Bitmap bitmap1 = null;
+            //convert byte[] to bitmap
+            MemoryStream memoryStream = new MemoryStream(byteBuffer);
+            memoryStream.Position = 0;
+            bitmap1 = (System.Drawing.Bitmap)System.Drawing.Bitmap.FromStream(memoryStream);
+            memoryStream.Close();
+            memoryStream = null;
+            byteBuffer = null;
+            //rotate the image-bitmap , return byte[]
+            var res = RotateImage(bitmap1);
+            var image = Image.FromBytes(res);//convert to image
+
             // Performs label detection on the image file
             var response = client.DetectLocalizedObjects(image);
             List<COMimageObject> objects = new List<COMimageObject>();
@@ -272,7 +302,7 @@ namespace BLL
 
         //storage image and insert it into atabase without
         //insert its objects into db yet.
-        public static void UserImageStorageAndDB(COMimage img,string base64)
+        public static int UserImageStorageAndDB(COMimage img,string base64)
         {
             int imgId;
             try
@@ -289,6 +319,7 @@ namespace BLL
             {
                 throw;
             }
+            return imgId;
         }
     }
 }
