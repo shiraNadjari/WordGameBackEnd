@@ -215,5 +215,10 @@ namespace WindowsFormsApp1
             //string url = BLLtextToSpeach.VoiceStorage(11, 45, BLLtextToSpeach.TextToSpeach(textBox7.Text), Convert.ToInt32(numericUpDown2.Value));
           //  BLLobject.UpdateVoiceURL(Convert.ToInt32(numericUpDown1.Value),url);
         }
+
+        private void button17_Click(object sender, EventArgs e)
+        {
+            BLLcategory.RemoveCategory(Convert.ToInt32(numericUpDown3.Value));
+        }
     }
 }

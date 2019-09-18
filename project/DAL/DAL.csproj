@@ -39,6 +39,12 @@
     <Reference Include="Google.Api.Gax.Grpc">
       <HintPath>..\WebApi\bin\Google.Api.Gax.Grpc.dll</HintPath>
     </Reference>
+    <Reference Include="Google.Cloud.BigQuery.V2">
+      <HintPath>..\ConsoleApp1\bin\Debug\Google.Cloud.BigQuery.V2.dll</HintPath>
+    </Reference>
+    <Reference Include="MySqlConnector">
+      <HintPath>..\ConsoleApp1\bin\Debug\MySqlConnector.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
