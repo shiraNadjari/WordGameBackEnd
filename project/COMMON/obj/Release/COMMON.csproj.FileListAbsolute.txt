@@ -1,0 +1,6 @@
+C:\Users\shira_000\Desktop\WordGameBackend\WordGameBackEnd\project\COMMON\bin\Release\COMMON.dll
+C:\Users\shira_000\Desktop\WordGameBackend\WordGameBackEnd\project\COMMON\bin\Release\COMMON.pdb
+C:\Users\shira_000\Desktop\WordGameBackend\WordGameBackEnd\project\COMMON\obj\Release\COMMON.csprojResolveAssemblyReference.cache
+C:\Users\shira_000\Desktop\WordGameBackend\WordGameBackEnd\project\COMMON\obj\Release\COMMON.csproj.CoreCompileInputs.cache
+C:\Users\shira_000\Desktop\WordGameBackend\WordGameBackEnd\project\COMMON\obj\Release\COMMON.dll
+C:\Users\shira_000\Desktop\WordGameBackend\WordGameBackEnd\project\COMMON\obj\Release\COMMON.pdb
