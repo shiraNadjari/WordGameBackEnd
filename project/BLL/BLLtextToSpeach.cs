@@ -10,7 +10,7 @@ public class BLLtextToSpeach
 {//
     public static string VoiceStorage(int userId,int catId, string URL, Dictionary<string, int> voicesCounter)
     {
-        Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", @"C:\wordproject-29b2e0d3e0d5.json");
+        Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS",Directory.GetCurrentDirectory()+ @"\wordproject-29b2e0d3e0d5.json");
         // upload the image storage
         //----------------
         string voiceName;

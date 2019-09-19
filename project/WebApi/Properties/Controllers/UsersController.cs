@@ -118,7 +118,7 @@ namespace WebApi.Controllers
         //        throw;
         //    }
         //}
-        public List<COMimageObject> PostInsertImageReturnObjects([FromBody]COMimage MyBase64, int id, int catId)
+        public List<COMimageObject> PostInsertImageReturnObjects([FromBody]string MyBase64, int id, int catId)
         {
             try
             {
@@ -127,7 +127,9 @@ namespace WebApi.Controllers
                 img.UserId = id;
                 img.CategoryID = catId;
                 img.URL = "";
-                List<COMimageObject> objs = BLLimage.GetImageFromUserReturnObjectsList(img, MyBase64.URL);
+                var httpRequest = HttpContext.Current.Request;
+                //httpRequest.ReadEntityBodyMode();
+                List<COMimageObject> objs = BLLimage.GetImageFromUserReturnObjectsList(img, MyBase64);
 
                 return objs;
             }

@@ -92,7 +92,7 @@ namespace BLL
         public static string UserImageStorage(COMimage image,string base64)
         {
             int counter = BLLimage.Getimages().FindAll(img => img.UserId == image.UserId).Count;
-            Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", @"C:\wordproject-29b2e0d3e0d5.json");
+            Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS",@"C:\wordproject-29b2e0d3e0d5.json");
 
             string imageName = BLLuser.GetUserById(image.UserId).CategoryName + counter + ".jpg";
 
@@ -260,7 +260,8 @@ namespace BLL
         //wirhout insert them into database
         public static List<COMimageObject> CustomVisionApi(COMimage img,string base64)
         {
-            Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", @"C:\wordproject-29b2e0d3e0d5.json");
+            //Directory.GetCurrentDirectory() +
+            Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", @"C:\wordproject-29b2e0d3e0d5.json"); 
             // Instantiates a client
             var client = ImageAnnotatorClient.Create();
             // Load the image file into memory
