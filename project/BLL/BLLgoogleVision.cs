@@ -184,7 +184,7 @@ namespace BLL
                 img.CategoryID = categoryId;
                 img.URL = imgUrl;
                 img.UserId = UserId;
-                DALimageObject.Refresh();
+                //DALimageObject.Refresh();
                 img.BeginIndex = BLLobject.GetObjects().Count;
                 DALimage.Addimage(img);
                 imgId = DALimage.GetImageIdByURL(img.URL);

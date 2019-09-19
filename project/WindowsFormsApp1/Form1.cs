@@ -17,6 +17,7 @@ namespace WindowsFormsApp1
         public Form1()
         {
             InitializeComponent();
+            Load();
         }
         string path;
 
@@ -65,7 +66,7 @@ namespace WindowsFormsApp1
                 user.CategoryName = textBox3.Text;
                 user.Email = textBox1.Text;
                 user.Password = textBox2.Text;
-                user.ImageURL = @"C:\Users\ריקי\Desktop\pictures\stationary\1.jpg";
+                user.ImageURL = BLLcategory.GetCategoryById(6).ImageURL;
                 try
                 {
                     BLLuser.AddUser(user);
@@ -149,8 +150,7 @@ namespace WindowsFormsApp1
         public static Dictionary<string, int> categoriesCounter = new Dictionary<string, int>();
         public static Dictionary<string, int> voicesCounter = new Dictionary<string, int>();
 
-
-        private void Form1_Load(object sender, EventArgs e)
+        public void Load()
         {
             int x = 0;
             foreach (COMCategory cat in BLLcategory.GetCategories())
@@ -173,6 +173,11 @@ namespace WindowsFormsApp1
                 x = objects.Count;
                 voicesCounter.Add(cat.CategoryName, x);
             }
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            Load();
         }
 
         private void button12_Click(object sender, EventArgs e)
@@ -220,5 +225,38 @@ namespace WindowsFormsApp1
         {
             BLLcategory.RemoveCategory(Convert.ToInt32(numericUpDown3.Value));
         }
+
+        private void button18_Click(object sender, EventArgs e)
+        {
+            BLLuser.RemoveUser(Convert.ToInt32(numericUpDown4.Value));
+        }
+
+        private void button19_Click(object sender, EventArgs e)
+        {
+            BLLimage.RemoveImage(Convert.ToInt32(numericUpDown5.Value));
+        }
+
+        private void button20_Click(object sender, EventArgs e)
+        {
+            foreach (COMimageObject item in BLLobject.GetObjects().FindAll(obj=>obj.ImageID==Convert.ToInt32(numericUpDown6.Value)))
+            {
+                BLLobject.RemoveObject(item.ObjectId);
+            }
+        }
+
+        private void button21_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void Form1_Load_1(object sender, EventArgs e)
+        {
+            Load();
+        }
+
+        //private void Form1_Load_2(object sender, EventArgs e)
+        //{
+
+        //}
     }
 }
