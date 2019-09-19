@@ -236,7 +236,7 @@ namespace BLL
                     obj.Y4 = item.Key.Y4;
                     try
                     {
-                        obj.VoiceURL = BLLtextToSpeach.VoiceStorage(UserId,BLLimage.GetImageById(obj.ImageID).CategoryID, BLLtextToSpeach.TextToSpeach(obj.Name), voicesCounter);
+                        //obj.VoiceURL = BLLtextToSpeach.VoiceStorage(UserId,BLLimage.GetImageById(obj.ImageID).CategoryID, BLLtextToSpeach.TextToSpeach(obj.Name), voicesCounter);
 
                     }
                     catch (Exception e)

@@ -50,6 +50,7 @@ namespace BLL
             //DALimage.UpdateEndIndex(imgId, end);
         }
 
+
         public static void UpdateURL(int imgId,string url)
         {
             DALimage.UpdateURL(imgId, url);

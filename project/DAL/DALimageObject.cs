@@ -165,6 +165,21 @@ namespace DAL
             }
         }
 
+        public static void UpdateNameAndVoiceURL(int objId,int voiceNumber,string newName,string newurl)
+        {
+            
+            using (var connection = new MySqlConnection(csb.ConnectionString))
+            {
+                connection.Open();
+                MySqlCommand update_name_and_voiceurl = new MySqlCommand("UPDATE Objects_tbl SET objectName=@objName,voiceURL=@VoiceURL WHERE objectId=@objId;",connection);
+                update_name_and_voiceurl.Parameters.AddWithValue("objName", newName);
+                update_name_and_voiceurl.Parameters.AddWithValue("VoiceURL", newurl);
+                update_name_and_voiceurl.Parameters.AddWithValue("objId", objId);
+                update_name_and_voiceurl.ExecuteNonQuery();
+                connection.Close();
+            }
+        }
+
         public static void Refresh()
         {
             using (DBEntities context = new DBEntities())

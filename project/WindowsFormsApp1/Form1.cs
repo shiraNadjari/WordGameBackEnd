@@ -254,6 +254,26 @@ namespace WindowsFormsApp1
             Load();
         }
 
+        private void button13_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button22_Click(object sender, EventArgs e)
+        {
+            BLLobject.UpdateNameAndVoiceURL(Convert.ToInt32(numericUpDown7.Value), Convert.ToInt32(numericUpDown8.Value), textBox8.Text);
+            textBox8.Text = "";
+            numericUpDown7.Value = 0;
+            numericUpDown8.Value = 0;
+
+        }
+
+        private void delete_Click(object sender, EventArgs e)
+        {
+            BLLobject.RemoveObject(Convert.ToInt32(numericUpDown9.Value));
+            numericUpDown9.Value = 0;
+        }
+
         //private void Form1_Load_2(object sender, EventArgs e)
         //{
 

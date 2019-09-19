@@ -42,6 +42,12 @@ namespace BLL
         {
             DALimageObject.UpdateVoiceURL(objId, url);
         }
+        public static void UpdateNameAndVoiceURL(int objId,int voiceNumber,string newname)
+        {
+            string url= BLLtextToSpeach.TextToSpeach(newname);
+            url = BLLtextToSpeach.VoiceStorage(1, BLLimage.GetImageById(BLLobject.GetObjectById(objId).ImageID).CategoryID, url, voiceNumber);
+            DALimageObject.UpdateNameAndVoiceURL(objId, voiceNumber, newname, url);
+        }
         public static void RemoveObject(int id)
         {
             DALimageObject.RemoveObject(id);
