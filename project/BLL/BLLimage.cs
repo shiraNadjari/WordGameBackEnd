@@ -47,8 +47,9 @@ namespace BLL
 
         public static void UpdateEndIndex(int imgId,int end)
         {
-            DALimage.UpdateEndIndex(imgId, end);
+            //DALimage.UpdateEndIndex(imgId, end);
         }
+
 
         public static void UpdateURL(int imgId,string url)
         {

@@ -25,23 +25,10 @@ namespace DAL
             //SslMode = MySqlSslMode.VerifyCA,
             SslMode = MySqlSslMode.None
         };
-        private static void Main()
-        {
-            using (var connection = new MySqlConnection(csb.ConnectionString))
-            {
-                Int64 categoryId = nextCategoryId();
-                connection.Open();
-                //MySqlCommand insert_table = new MySqlCommand("DELETE FROM Categories_tbl WHERE categoryId = '2';", connection);
-                MySqlCommand insert_table = new MySqlCommand("INSERT INTO Categories_tbl (categoryName, imageURL, categoryId) values ('Food', 'https://storage.googleapis.com/wordproject/MAINFood.jpg', @categoryId);", connection);
-                //insert_table.Parameters.AddWithValue("categoryId", categoryId);
-                insert_table.ExecuteNonQuery();
-                connection.Close();
-            }
-        }
 
         public static Int64 nextCategoryId()
         {
-            int x = 0;
+            int x = -1;
             using (var connection = new MySqlConnection(csb.ConnectionString))
             {
                 connection.Open();
@@ -51,7 +38,6 @@ namespace DAL
             }
             return x+1;
         }
-        static int tmpcategory = 1;
 
         public static void AddCategory(COMCategory cat)
         {
@@ -65,7 +51,7 @@ namespace DAL
                 Int64 categoryId = nextCategoryId();
                 connection.Open();
                 MySqlCommand insert_table = new MySqlCommand("INSERT INTO Categories_tbl (categoryName, imageURL, categoryId) values (@categoryName, @imageURL, @categoryId);", connection);
-                insert_table.Parameters.AddWithValue("categoryId", tmpcategory);
+                insert_table.Parameters.AddWithValue("categoryId", categoryId);
                 insert_table.Parameters.AddWithValue("categoryName", cat.CategoryName);
                 insert_table.Parameters.AddWithValue("imageURL", cat.ImageURL);
                 insert_table.ExecuteNonQuery();
@@ -75,9 +61,26 @@ namespace DAL
 
         public static COMCategory GetCategoryById(int id)
         {
-            using (DBEntities context = new DBEntities())
+            //using (DBEntities context = new DBEntities())
+            //{
+            //    return MAPPER.ConvertDALcategoryToCOMcategory(context.Categories_tbl.FirstOrDefault(cat=>cat.CategoryID==id));
+            //}
+            using (var connection = new MySqlConnection(csb.ConnectionString))
             {
-                return MAPPER.ConvertDALcategoryToCOMcategory(context.Categories_tbl.FirstOrDefault(cat=>cat.CategoryID==id));
+                COMCategory c = new COMCategory();
+                connection.Open();
+                MySqlCommand get_category_by_id=new MySqlCommand("SELECT * FROM Categories_tbl WHERE categoryId=@catId;",connection);
+                get_category_by_id.Parameters.AddWithValue("catId", id);
+                using (var reader = get_category_by_id.ExecuteReader())
+                {
+                    if (reader.Read())
+                    {
+                        c.CategoryId = Convert.ToInt32(reader["categoryId"]);
+                        c.CategoryName= Convert.ToString(reader["categoryName"]);
+                        c.ImageURL = Convert.ToString(reader["imageURL"]);
+                    }
+                }
+                return c;
             }
         }
 

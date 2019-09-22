@@ -8,14 +8,14 @@ using COMMON;
 
 public class BLLtextToSpeach
 {//
+    public static string pathcre;
     public static string VoiceStorage(int userId,int catId, string URL, Dictionary<string, int> voicesCounter)
     {
-        Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS",Directory.GetCurrentDirectory()+ @"\wordproject-29b2e0d3e0d5.json");
+        Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", pathcre+@"App_Data\wordproject -29b2e0d3e0d5.json");
         // upload the image storage
         //----------------
         string voiceName;
         if(voicesCounter.Count>0)
-       //
             voiceName = "voice" + BLLcategory.GetCategoryById(catId).CategoryName + voicesCounter[BLLcategory.GetCategoryById(catId).CategoryName]++ + ".mp3";
         else
         {

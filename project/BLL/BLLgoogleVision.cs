@@ -53,9 +53,10 @@ namespace BLL
     }
     public class BLLgoogleVision
     {
+        public static string pathCred;
         public static string Storage(int catId, string URL, Dictionary<string, int> categoriesCounter, bool IsMainImg = false)
         {
-            Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", @"C:\wordproject-29b2e0d3e0d5.json");
+            Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", pathCred + @"App_Data\wordproject-29b2e0d3e0d5.json");
             string imageName;
             if (!IsMainImg)
                 imageName = BLLcategory.GetCategoryById(catId).CategoryName + categoriesCounter[BLLcategory.GetCategoryById(catId).CategoryName]++ + ".jpg";
@@ -92,7 +93,7 @@ namespace BLL
         public static string UserImageStorage(COMimage image,string base64)
         {
             int counter = BLLimage.Getimages().FindAll(img => img.UserId == image.UserId).Count;
-            Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS",@"C:\wordproject-29b2e0d3e0d5.json");
+            Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", pathCred + @"App_Data\wordproject-29b2e0d3e0d5.json");
 
             string imageName = BLLuser.GetUserById(image.UserId).CategoryName + counter + ".jpg";
 
@@ -107,7 +108,7 @@ namespace BLL
                 throw (e);
             }
             //string imageName = "bla2";
-            string bucketName = "users_images_bucket2";
+            string bucketName = "usersimages";
             string folderName = "user"+image.UserId;
             var storage = StorageClient.Create();
             using (var f = File.OpenRead(path))
@@ -184,7 +185,7 @@ namespace BLL
                 img.CategoryID = categoryId;
                 img.URL = imgUrl;
                 img.UserId = UserId;
-                DALimageObject.Refresh();
+                //DALimageObject.Refresh();
                 img.BeginIndex = BLLobject.GetObjects().Count;
                 DALimage.Addimage(img);
                 imgId = DALimage.GetImageIdByURL(img.URL);
@@ -261,7 +262,7 @@ namespace BLL
         public static List<COMimageObject> CustomVisionApi(COMimage img,string base64)
         {
             //Directory.GetCurrentDirectory() +
-            Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", @"C:\wordproject-29b2e0d3e0d5.json"); 
+            Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", pathCred + @"App_Data\wordproject-29b2e0d3e0d5.json"); 
             // Instantiates a client
             var client = ImageAnnotatorClient.Create();
             // Load the image file into memory

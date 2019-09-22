@@ -7,6 +7,9 @@ using System.Web.Http;
 using COMMON;
 using BLL;
 using WindowsFormsApp1;
+using System.IO;
+using Grpc.Core;
+using System.Web;
 
 namespace WebApi.Controllers
 {
@@ -24,8 +27,9 @@ namespace WebApi.Controllers
         }
 
         public List<COMCategory> GetCategories()
-        {
-            return BLLcategory.GetCategories();
+        { 
+            BLLgoogleVision.pathCred=HttpRuntime.AppDomainAppPath;
+            return BLLcategory.GetCategories();   
         }
         [Route("api/Categories/GetPagesAmountPerCategory/{id}")]
         public int GetPagesAmountPerCategory(int id)
