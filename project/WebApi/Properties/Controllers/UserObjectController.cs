@@ -14,7 +14,6 @@ namespace WebApi.Controllers
        // [HttpPost]
         public void PostObjects([FromBody]List<COMimageObject> objs, int id, int catid)
         {
-        
             try
             {
                 COMimage img = new COMimage();
@@ -29,7 +28,6 @@ namespace WebApi.Controllers
                     item.VoiceURL = BLLtextToSpeach.VoiceStorage(id,catid, BLLtextToSpeach.TextToSpeach(item.Name), dic);
                     BLLobject.AddObject(item);
                 }
-                //
             }
             catch (Exception)
             {
@@ -37,6 +35,5 @@ namespace WebApi.Controllers
                 throw;
             }
         }
-
     }
 }

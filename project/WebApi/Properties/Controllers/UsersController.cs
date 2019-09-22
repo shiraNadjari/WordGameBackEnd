@@ -7,14 +7,12 @@ using System.Web.Http;
 using COMMON;
 using BLL;
 using System.Web;
-//using WindowsFormsApp1;
 
 namespace WebApi.Controllers
 {
     [RoutePrefix("api/users")]
     public class UsersController : ApiController
     {
-        
         public IHttpActionResult GetUserById(int id)
         {
             COMuser user = BLLuser.GetUserById(id);
@@ -139,7 +137,6 @@ namespace WebApi.Controllers
 
         public static void PostObjects([FromBody] List<COMimageObject> objs, int id,int catid)
         {
-               
             try
             {
                 COMimage img = new COMimage();

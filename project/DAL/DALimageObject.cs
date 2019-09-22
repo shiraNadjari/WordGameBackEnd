@@ -8,33 +8,50 @@ using MySql.Data.MySqlClient;
 
 namespace DAL
 {
-    public class DALimageObject
+    public class DALimageObject:DAL
     {
-        public static MySqlConnectionStringBuilder csb = new MySqlConnectionStringBuilder
-        {
-            Server = "35.228.221.113",
-            UserID = "root",
-            Password = "root",
-            Database = "database",
-            CertificateFile = @"C:\Users\ריקי\Downloads\client.pfx",
-            CACertificateFile = @"C:\Users\ריקי\Downloads\server-ca.pem",
-            SslCa = @"C:\Users\ריקי\Downloads\server-ca.pem",
-            //SslMode = MySqlSslMode.VerifyCA,
-            SslMode = MySqlSslMode.None
-        };
-
         public static Int64 nextObjectId()
         {
             int x = -1;
             using (var connection = new MySqlConnection(csb.ConnectionString))
             {
-                connection.Open();
-                MySqlCommand count_objects = new MySqlCommand("SELECT COUNT(objectId) FROM Objects_tbl;", connection);
-                x = Convert.ToInt32(count_objects.ExecuteScalar());
+                try
+                {
+                    connection.Open();
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
+                MySqlCommand max_object_id = new MySqlCommand("SELECT MAX(objectId) FROM Objects_tbl;", connection);
+                x = Convert.ToInt32(max_object_id.ExecuteScalar());
                 connection.Close();
             }
-            return x + 1;
+            return x+1;
         }
+
+        public static void fix()
+        {
+            using (var connection = new MySqlConnection(csb.ConnectionString))
+            {
+                List<COMimageObject> objs = new List<COMimageObject>();
+                foreach (COMimage item in DALimage.Getimages().FindAll(img=>img.CategoryID==5))
+                {
+                    objs.AddRange(Getobjects().FindAll(obj => obj.ImageID == item.ImageID)); 
+                }
+                connection.Open();
+                foreach (COMimageObject item in objs)
+                {
+                    MySqlCommand update_name_and_voiceurl = new MySqlCommand("UPDATE Objects_tbl SET voiceURL=@VoiceURL WHERE objectId=@objId;", connection);
+                    update_name_and_voiceurl.Parameters.AddWithValue("VoiceURL", item.VoiceURL.Replace(" ",""));
+                    update_name_and_voiceurl.Parameters.AddWithValue("objId", item.ObjectId);
+                    update_name_and_voiceurl.ExecuteNonQuery();
+                }
+                connection.Close();
+            }
+            
+        }
+
 
         public static void AddObject(COMimageObject obj)
         {
@@ -46,7 +63,16 @@ namespace DAL
             using (var connection = new MySqlConnection(csb.ConnectionString))
             {
                 Int64 objectId = nextObjectId();
+                try
+                {
                 connection.Open();
+
+                }
+                catch (Exception)
+                {
+
+                    throw;
+                }
                 MySqlCommand insert_table = new MySqlCommand("INSERT INTO Objects_tbl SET objectName=@ObjectName,X1=@X1,X2=@X2,X3=@X3,X4=@X4,Y1=@Y1,Y2=@Y2,Y3=@Y3,Y4=@Y4,voiceURL=@VoiceURL,objectId=@ObjectId,imageId=(SELECT imageId FROM Images_tbl WHERE imageId=@imgId);", connection);
                 insert_table.Parameters.AddWithValue("ObjectName", obj.Name);
                 insert_table.Parameters.AddWithValue("X1", obj.X1);
@@ -85,14 +111,14 @@ namespace DAL
                         obj.Name = Convert.ToString(reader["objectName"]);
                         obj.ImageID = Convert.ToInt32(reader["imageId"]);
                         obj.VoiceURL = Convert.ToString(reader["voiceURL"]);
-                        obj.X1 = Convert.ToInt32(reader["X1"]);
-                        obj.X2 = Convert.ToInt32(reader["X2"]);
-                        obj.X3 = Convert.ToInt32(reader["X3"]);
-                        obj.X4 = Convert.ToInt32(reader["X4"]);
-                        obj.Y1 = Convert.ToInt32(reader["Y1"]);
-                        obj.Y2 = Convert.ToInt32(reader["Y2"]);
-                        obj.Y3 = Convert.ToInt32(reader["Y3"]);
-                        obj.Y4 = Convert.ToInt32(reader["Y4"]);
+                        obj.X1 = Convert.ToDouble(reader["X1"]);
+                        obj.X2 = Convert.ToDouble(reader["X2"]);
+                        obj.X3 = Convert.ToDouble(reader["X3"]);
+                        obj.X4 = Convert.ToDouble(reader["X4"]);
+                        obj.Y1 = Convert.ToDouble(reader["Y1"]);
+                        obj.Y2 = Convert.ToDouble(reader["Y2"]);
+                        obj.Y3 = Convert.ToDouble(reader["Y3"]);
+                        obj.Y4 = Convert.ToDouble(reader["Y4"]);
                     }
                 }
                 return obj;
@@ -121,14 +147,14 @@ namespace DAL
                             ObjectId = Convert.ToInt32(reader["objectId"]),
                             Name = Convert.ToString(reader["objectName"]),
                             VoiceURL = Convert.ToString(reader["voiceURL"]),
-                            X1 = Convert.ToInt32(reader["X1"]),
-                            X2 = Convert.ToInt32(reader["X2"]),
-                            X3 = Convert.ToInt32(reader["X3"]),
-                            X4 = Convert.ToInt32(reader["X4"]),
-                            Y1 = Convert.ToInt32(reader["Y1"]),
-                            Y2 = Convert.ToInt32(reader["Y2"]),
-                            Y3 = Convert.ToInt32(reader["Y3"]),
-                            Y4 = Convert.ToInt32(reader["Y4"]),
+                            X1 = Convert.ToDouble(reader["X1"]),
+                            X2 = Convert.ToDouble(reader["X2"]),
+                            X3 = Convert.ToDouble(reader["X3"]),
+                            X4 = Convert.ToDouble(reader["X4"]),
+                            Y1 = Convert.ToDouble(reader["Y1"]),
+                            Y2 = Convert.ToDouble(reader["Y2"]),
+                            Y3 = Convert.ToDouble(reader["Y3"]),
+                            Y4 = Convert.ToDouble(reader["Y4"]),
                         };
                         list.Add(obj);
                     }

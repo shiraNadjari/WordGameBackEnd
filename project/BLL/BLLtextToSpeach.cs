@@ -8,24 +8,23 @@ using COMMON;
 
 public class BLLtextToSpeach
 {//Dictionary<string, int>
-    public static string VoiceStorage(int userId,int catId, string URL, int voicesCounter)
+    public static string VoiceStorage(int userId,int catId, string URL, Dictionary<string, int> voicesCounter)
     {
         Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", @"C:\wordproject-29b2e0d3e0d5.json");
         // upload the image storage
-        //----------------
         string voiceName;
-        //if(voicesCounter.Count>0)
+        if(voicesCounter.Count>0)
         //voicesCounter[BLLcategory.GetCategoryById(catId).CategoryName]++
-        voiceName = "voice" + BLLcategory.GetCategoryById(catId).CategoryName + voicesCounter + ".mp3";
-        //else
-        //{
-        //    List<COMimageObject> objs = new List<COMimageObject>();
-        //    foreach (COMimage img in BLLimage.Getimages().FindAll(img => img.UserId == userId))
-        //    {
-        //        objs.AddRange(BLLobject.GetObjects().FindAll(obj => obj.ImageID == img.ImageID));
-        //    }
-        //    voiceName = "voice" + BLLcategory.GetCategoryById(catId).CategoryName + objs.Count + ".mp3";
-        //}
+        voiceName = "voice" + BLLcategory.GetCategoryById(catId).CategoryName + voicesCounter[BLLcategory.GetCategoryById(catId).CategoryName]++ + ".mp3";
+        else
+        {
+            List<COMimageObject> objs = new List<COMimageObject>();
+            foreach (COMimage img in BLLimage.Getimages().FindAll(img => img.UserId == userId))
+            {
+                objs.AddRange(BLLobject.GetObjects().FindAll(obj => obj.ImageID == img.ImageID));
+            }
+            voiceName = "voice" + BLLcategory.GetCategoryById(catId).CategoryName + objs.Count + ".mp3";
+        }
         string bucketName = "objectsound";
         var storage = StorageClient.Create();
         using (var f = File.OpenRead(URL))
@@ -42,12 +41,13 @@ public class BLLtextToSpeach
         }
         return URL;
     }
+
+    //get text return his temp voiceURL
     public static string TextToSpeach(string text)
     {
         Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", @"C:\TextToSpeach-b2d8743c4197.json");
         // Instantiate a client
         TextToSpeechClient client = TextToSpeechClient.Create();
-
         // Set the text input to be synthesized.
         SynthesisInput input = new SynthesisInput
         {
@@ -89,25 +89,4 @@ public class BLLtextToSpeach
         }
         return url;
     }
-
-    //public static void UpdateUrl(Dictionary<string,int> voicesCounter)
-    //    {
-    //        foreach (COMimageObject obj in BLLobject.GetObjects())
-    //        {
-    //            if (obj.VoiceURL == null)
-    //            {
-    //                try
-    //                {
-    //                    string url = TextToSpeach(obj.Name);
-    //                    url = BLLtextToSpeach.VoiceStorage(BLLimage.GetImageById(obj.ImageID).CategoryID, url, voicesCounter);
-    //                    BLLobject.UpdateVoiceURL(obj.ObjectId, url);
-    //                }
-    //                catch (Exception)
-    //                {
-
-    //                    throw;
-    //                }
-    //            }
-    //        }
-    //    }
 }

@@ -27,6 +27,7 @@ namespace WebApi.Controllers
         {
             return BLLcategory.GetCategories();
         }
+
         [Route("api/Categories/GetPagesAmountPerCategory/{id}")]
         public int GetPagesAmountPerCategory(int id)
         {

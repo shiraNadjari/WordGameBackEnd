@@ -13,8 +13,6 @@ namespace BLL
         public static void AddCategory(COMCategory cat,Dictionary<string,int> categoriesCounter)
         {
             DALcategory.AddCategory(cat);
-            //cat.ImageURL = BLLgoogleVision.Storage(GetCategoryIdByCategoryName(cat.CategoryName).CategoryId, cat.ImageURL,categoriesCounter, true);
-            //UpdateURL(GetCategoryIdByCategoryName(cat.CategoryName).CategoryId, cat.ImageURL);
         }
 
         public static COMCategory GetCategoryById(int id)
@@ -41,6 +39,7 @@ namespace BLL
         {
             DALcategory.UpdateURL(catId, url);
         }
+
         public static void RemoveCategory(int id)
         {
             DALcategory.RemoveCategory(id);

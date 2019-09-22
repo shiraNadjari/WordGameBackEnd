@@ -274,6 +274,21 @@ namespace WindowsFormsApp1
             numericUpDown9.Value = 0;
         }
 
+        private void button23_Click(object sender, EventArgs e)
+        {
+            DAL.DALimageObject.fix();
+        }
+
+        //private void Form1_Load_2(object sender, EventArgs e)
+        //{
+
+        //}
+
+        //private void Form1_Load_3(object sender, EventArgs e)
+        //{
+
+        //}
+
         //private void Form1_Load_2(object sender, EventArgs e)
         //{
 

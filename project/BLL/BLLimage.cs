@@ -12,13 +12,11 @@ namespace BLL
     {
         public static List<string> AddImage(COMimage img,Dictionary<string,int> categoriesCounter, Dictionary<string, int> voicesCounter) 
         {
-            //DALimage.Addimage(img);
             return BLLgoogleVision.VisionApi(img.CategoryID,img.UserId,img.URL,categoriesCounter,voicesCounter);
         }
 
         public static List<COMimageObject> GetImageFromUserReturnObjectsList(COMimage img,string base64)
         {
-            //GetImageFromUserReturnObjectsList
             return BLLgoogleVision.CustomVisionApi(img, base64);
         }
 
@@ -34,7 +32,7 @@ namespace BLL
 
         public static List<COMimage> GetTwelveNextImages(int categoryId,int time)
         {
-            //ten next images in this category- in accordance to time- current page number
+            //twelve next images in this category- in accordance to time- current page number
             List<COMimage> list = new List<COMimage>();
             int count = DALimage.GetTwelveNextImages(categoryId).Count;
             count -= time * 12;
@@ -43,17 +41,6 @@ namespace BLL
                 list.Add(DALimage.GetTwelveNextImages(categoryId)[i]);
             }
             return list;
-        }
-
-        public static void UpdateEndIndex(int imgId,int end)
-        {
-            //DALimage.UpdateEndIndex(imgId, end);
-        }
-
-
-        public static void UpdateURL(int imgId,string url)
-        {
-            DALimage.UpdateURL(imgId, url);
         }
 
         public static void RemoveImage(int id)

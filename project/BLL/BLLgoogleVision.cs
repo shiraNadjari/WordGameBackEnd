@@ -1,5 +1,4 @@
 ﻿using System;
-//using System.Drawing;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,7 +7,6 @@ using Google.Cloud.Vision.V1;
 using System.IO;
 using Google.Cloud.Storage.V1;
 using DAL;
-//using System.Drawing;
 using COMMON;
 using Google.Apis.Auth.OAuth2;
 namespace BLL
@@ -53,6 +51,7 @@ namespace BLL
     }
     public class BLLgoogleVision
     {
+        //storage image in google cloud
         public static string Storage(int catId, string URL, Dictionary<string, int> categoriesCounter, bool IsMainImg = false)
         {
             Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", @"C:\wordproject-29b2e0d3e0d5.json");
@@ -76,26 +75,11 @@ namespace BLL
             return URL;
         }
    
-        //public void CreateDir(string FolderName)
-        //{
-        //    if (!FolderName.EndsWith("/"))
-        //        FolderName += "/";
-        //    var uploadStream = new MemoryStream(Encoding.UTF8.GetBytes(""));
-        //    Storage.Objects.Insert(
-        //        bucket: BucketName,
-        //        stream: uploadStream,
-        //        contentType: "application/x-directory",
-        //        body: new Google.Apis.Storage.v1.Data.Object() { Name = FolderName }
-        //        ).Upload();
-        //}
-
         public static string UserImageStorage(COMimage image,string base64)
         {
             int counter = BLLimage.Getimages().FindAll(img => img.UserId == image.UserId).Count;
             Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", @"C:\wordproject-29b2e0d3e0d5.json");
-
             string imageName = BLLuser.GetUserById(image.UserId).CategoryName + counter + ".jpg";
-
             string path=System.IO.Path.GetTempFileName();
             byte[] byte1 = Convert.FromBase64String(base64);
             try
@@ -145,7 +129,6 @@ namespace BLL
             // Instantiates a client
             var client = ImageAnnotatorClient.Create();
             // Load the image file into memory
-          
             var image = Image.FromFile(URL);
             // Performs label detection on the image file
             var response = client.DetectLocalizedObjects(image);//
@@ -163,7 +146,6 @@ namespace BLL
                         max = countingDic[annotation.Name];
                         common = annotation.Name;
                     }
-
                 }
                 else
                 {
@@ -178,7 +160,6 @@ namespace BLL
             try
             {
                 imgUrl = Storage(categoryId, URL, categoriesCounter);
-
                 // if image in storage
                 //insert image info db
                 img.CategoryID = categoryId;
@@ -190,12 +171,10 @@ namespace BLL
                 imgId = DALimage.GetImageIdByURL(img.URL);
                 //insert objects into db
                 Dictionary<Bounding, string> finalList = new Dictionary<Bounding, string>();
-
                 foreach (var annotation in response)
                 {
                     List<double> x = new List<double>();
                     List<double> y = new List<double>();
-
                     foreach (var item in annotation.BoundingPoly.NormalizedVertices)
                     {
                         x.Add(item.X);
@@ -236,8 +215,7 @@ namespace BLL
                     obj.Y4 = item.Key.Y4;
                     try
                     {
-                        //obj.VoiceURL = BLLtextToSpeach.VoiceStorage(UserId,BLLimage.GetImageById(obj.ImageID).CategoryID, BLLtextToSpeach.TextToSpeach(obj.Name), voicesCounter);
-
+                        obj.VoiceURL = BLLtextToSpeach.VoiceStorage(UserId,BLLimage.GetImageById(obj.ImageID).CategoryID, BLLtextToSpeach.TextToSpeach(obj.Name), voicesCounter);
                     }
                     catch (Exception e)
                     {
@@ -252,7 +230,6 @@ namespace BLL
             {
                 throw e;
             }
-            BLLimage.UpdateEndIndex(imgId, img.BeginIndex + c);
             return ans;
         }
 
@@ -265,7 +242,6 @@ namespace BLL
             var client = ImageAnnotatorClient.Create();
             // Load the image file into memory
             byte[] byteBuffer = Convert.FromBase64String(base64);
-
             System.Drawing.Bitmap bitmap1 = null;
             //convert byte[] to bitmap
             MemoryStream memoryStream = new MemoryStream(byteBuffer);
@@ -277,7 +253,6 @@ namespace BLL
             //rotate the image-bitmap , return byte[]
             var res = RotateImage(bitmap1);
             var image = Image.FromBytes(res);//convert to image
-
             // Performs label detection on the image file
             var response = client.DetectLocalizedObjects(image);
             List<COMimageObject> objects = new List<COMimageObject>();
