@@ -127,20 +127,6 @@ namespace DAL
             }
         }
 
-        public static List<COMimage> GetTwelveNextImages(int categoryId)
-        {
-            //return list with all images in this category
-            using (DBEntities context = new DBEntities())
-            {
-                List<COMimage> list = new List<COMimage>();
-                foreach (Images_tbl item in context.Images_tbl.Where(img => img.CategoryID == categoryId))
-                {
-                    list.Add(MAPPER.ConvertDALimageToCOMimage(item));
-                }
-                return list;
-            }
-        }
-
         public static void UpdateURL(int imgId, string url)
         {
             using (var connection = new MySqlConnection(csb.ConnectionString))

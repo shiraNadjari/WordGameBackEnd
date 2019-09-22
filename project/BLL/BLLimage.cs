@@ -30,19 +30,6 @@ namespace BLL
             return DALimage.Getimages();
         }
 
-        public static List<COMimage> GetTwelveNextImages(int categoryId,int time)
-        {
-            //twelve next images in this category- in accordance to time- current page number
-            List<COMimage> list = new List<COMimage>();
-            int count = DALimage.GetTwelveNextImages(categoryId).Count;
-            count -= time * 12;
-            for (int i = 12*time; i < (count<12? (12 * time)+count:(12*time)+12); i++)
-            {
-                list.Add(DALimage.GetTwelveNextImages(categoryId)[i]);
-            }
-            return list;
-        }
-
         public static void RemoveImage(int id)
         {
             DALimage.Removeimage(id);

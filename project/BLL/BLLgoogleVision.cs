@@ -91,13 +91,13 @@ namespace BLL
                 throw (e);
             }
             //string imageName = "bla2";
-            string bucketName = "users_images_bucket2";
-            string folderName = "user"+image.UserId;
+            string bucketName = "usersimages";
+            //string folderName = "user"+image.UserId;
             var storage = StorageClient.Create();
             using (var f = File.OpenRead(path))
                 try
                 {
-                    var res = storage.UploadObject(bucketName, imageName, "image / jpeg", f);
+                    var res = storage.UploadObject(bucketName, imageName, null, f);
                         //(bucketName +"/"+ folderName, imageName, null, f);
                     image.URL="https://storage.googleapis.com/" + bucketName + "/" + imageName;
                 }
@@ -285,7 +285,7 @@ namespace BLL
                 //image storage
                 img.URL = UserImageStorage(img,base64);
                 //insert image into db
-                DALimageObject.Refresh();
+                //DALimageObject.Refresh();
                 img.BeginIndex = BLLobject.GetObjects().Count;
                 DALimage.Addimage(img);//insert image into db
                 imgId = DALimage.GetImageIdByURL(img.URL);

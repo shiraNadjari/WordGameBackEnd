@@ -23,7 +23,8 @@ public class BLLtextToSpeach
             {
                 objs.AddRange(BLLobject.GetObjects().FindAll(obj => obj.ImageID == img.ImageID));
             }
-            voiceName = "voice" + BLLcategory.GetCategoryById(catId).CategoryName + objs.Count + ".mp3";
+            string add = catId == 6 ? BLLuser.GetUserById(userId).CategoryName : BLLcategory.GetCategoryById(catId).CategoryName;
+            voiceName = "voice" + add + objs.Count + ".mp3";
         }
         string bucketName = "objectsound";
         var storage = StorageClient.Create();

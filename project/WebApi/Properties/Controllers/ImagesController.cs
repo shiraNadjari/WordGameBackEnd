@@ -12,17 +12,6 @@ namespace WebApi.Controllers
 {
     public class ImagesController : ApiController
     {
-        public IHttpActionResult GetTwelveNextImages(int id, int time)
-        {
-            //time is current page number in this category images
-            List<COMimage> list = BLLimage.GetTwelveNextImages(id, time);
-            if (list == null)
-                return BadRequest("fail to load images");
-            if (list.Count > 0)
-                return Ok(ImageMat.CreateMat(list));
-            else
-                return BadRequest("no more pictures for this category.");
-        }
 
         [Route("api/Images/GetImageById/{id}")]
         public IHttpActionResult GetImageById(int id)
