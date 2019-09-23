@@ -16,11 +16,9 @@ C:\Users\ריקי\Desktop\WordGameBackend\WordGameBackEnd\project\BLL\bin\Debug\
 C:\Users\ריקי\Desktop\WordGameBackend\WordGameBackEnd\project\BLL\bin\Debug\BLL.pdb
 C:\Users\ריקי\Desktop\WordGameBackend\WordGameBackEnd\project\BLL\bin\Debug\COMMON.dll
 C:\Users\ריקי\Desktop\WordGameBackend\WordGameBackEnd\project\BLL\bin\Debug\DAL.dll
-C:\Users\ריקי\Desktop\WordGameBackend\WordGameBackEnd\project\BLL\bin\Debug\EntityFramework.dll
 C:\Users\ריקי\Desktop\WordGameBackend\WordGameBackEnd\project\BLL\bin\Debug\COMMON.pdb
 C:\Users\ריקי\Desktop\WordGameBackend\WordGameBackEnd\project\BLL\bin\Debug\DAL.pdb
 C:\Users\ריקי\Desktop\WordGameBackend\WordGameBackEnd\project\BLL\bin\Debug\DAL.dll.config
-C:\Users\ריקי\Desktop\WordGameBackend\WordGameBackEnd\project\BLL\bin\Debug\EntityFramework.xml
 C:\Users\ריקי\Desktop\WordGameBackend\WordGameBackEnd\project\BLL\obj\Debug\BLL.csprojAssemblyReference.cache
 C:\Users\ריקי\Desktop\WordGameBackend\WordGameBackEnd\project\BLL\obj\Debug\BLL.csproj.CoreCompileInputs.cache
 C:\Users\ריקי\Desktop\WordGameBackend\WordGameBackEnd\project\BLL\obj\Debug\BLL.csproj.CopyComplete
@@ -169,7 +167,6 @@ C:\Users\shira_000\Desktop\WordGameBackend\WordGameBackEnd\project\BLL\bin\Debug
 C:\Users\shira_000\Desktop\WordGameBackend\WordGameBackEnd\project\BLL\bin\Debug\Google.Protobuf.dll
 C:\Users\shira_000\Desktop\WordGameBackend\WordGameBackEnd\project\BLL\bin\Debug\System.Runtime.InteropServices.RuntimeInformation.dll
 C:\Users\shira_000\Desktop\WordGameBackend\WordGameBackEnd\project\BLL\bin\Debug\MySqlConnector.dll
-C:\Users\shira_000\Desktop\WordGameBackend\WordGameBackEnd\project\BLL\bin\Debug\EntityFramework.dll
 C:\Users\shira_000\Desktop\WordGameBackend\WordGameBackEnd\project\BLL\bin\Debug\System.Interactive.Async.dll
 C:\Users\shira_000\Desktop\WordGameBackend\WordGameBackEnd\project\BLL\bin\Debug\Newtonsoft.Json.dll
 C:\Users\shira_000\Desktop\WordGameBackend\WordGameBackEnd\project\BLL\bin\Debug\System.Threading.Tasks.Extensions.dll
@@ -208,7 +205,6 @@ C:\Users\shira_000\Desktop\WordGameBackend\WordGameBackEnd\project\BLL\bin\Debug
 C:\Users\shira_000\Desktop\WordGameBackend\WordGameBackEnd\project\BLL\bin\Debug\Google.LongRunning.xml
 C:\Users\shira_000\Desktop\WordGameBackend\WordGameBackEnd\project\BLL\bin\Debug\Google.Protobuf.pdb
 C:\Users\shira_000\Desktop\WordGameBackend\WordGameBackEnd\project\BLL\bin\Debug\Google.Protobuf.xml
-C:\Users\shira_000\Desktop\WordGameBackend\WordGameBackEnd\project\BLL\bin\Debug\EntityFramework.xml
 C:\Users\shira_000\Desktop\WordGameBackend\WordGameBackEnd\project\BLL\bin\Debug\System.Interactive.Async.xml
 C:\Users\shira_000\Desktop\WordGameBackend\WordGameBackEnd\project\BLL\bin\Debug\Newtonsoft.Json.xml
 C:\Users\shira_000\Desktop\WordGameBackend\WordGameBackEnd\project\BLL\bin\Debug\System.Threading.Tasks.Extensions.xml

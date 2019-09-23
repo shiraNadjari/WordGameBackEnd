@@ -11,6 +11,5 @@ namespace BLL
         public COMimage image;
 
         public List<COMimageObject> imageObjects;
-
     }
 }

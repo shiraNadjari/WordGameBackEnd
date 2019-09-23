@@ -8,29 +8,23 @@ using MySql.Data.MySqlClient;
 
 namespace DAL
 {
-    public class DALuser
+    public class DALuser:DAL
     {
-        public static MySqlConnectionStringBuilder csb = new MySqlConnectionStringBuilder
-        {
-            Server = "35.228.221.113",
-            UserID = "root",
-            Password = "root",
-            Database = "database",
-            CertificateFile = @"C:\Users\ריקי\Downloads\client.pfx",
-            CACertificateFile = @"C:\Users\ריקי\Downloads\server-ca.pem",
-            SslCa = @"C:\Users\ריקי\Downloads\server-ca.pem",
-            //SslMode = MySqlSslMode.VerifyCA,
-            SslMode = MySqlSslMode.None
-        };
-
         public static Int64 nextUserId()
         {
             int x = -1;
             using (var connection = new MySqlConnection(csb.ConnectionString))
             {
-                connection.Open();
-                MySqlCommand count_categories = new MySqlCommand("SELECT COUNT(userId) FROM users_tbl;", connection);
-                x = Convert.ToInt32(count_categories.ExecuteScalar());
+                try
+                {
+                    connection.Open();
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
+                MySqlCommand max_user_id = new MySqlCommand("SELECT MAX(userId) FROM users_tbl;", connection);
+                x = Convert.ToInt32(max_user_id.ExecuteScalar());
                 connection.Close();
             }
             return x + 1;

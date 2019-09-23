@@ -20,7 +20,6 @@ C:\Users\shira_000\Desktop\WordGameBackend\WordGameBackEnd\project\BLL\bin\Relea
 C:\Users\shira_000\Desktop\WordGameBackend\WordGameBackEnd\project\BLL\bin\Release\Google.Protobuf.dll
 C:\Users\shira_000\Desktop\WordGameBackend\WordGameBackEnd\project\BLL\bin\Release\System.Runtime.InteropServices.RuntimeInformation.dll
 C:\Users\shira_000\Desktop\WordGameBackend\WordGameBackEnd\project\BLL\bin\Release\MySqlConnector.dll
-C:\Users\shira_000\Desktop\WordGameBackend\WordGameBackEnd\project\BLL\bin\Release\EntityFramework.dll
 C:\Users\shira_000\Desktop\WordGameBackend\WordGameBackEnd\project\BLL\bin\Release\System.Interactive.Async.dll
 C:\Users\shira_000\Desktop\WordGameBackend\WordGameBackEnd\project\BLL\bin\Release\Newtonsoft.Json.dll
 C:\Users\shira_000\Desktop\WordGameBackend\WordGameBackEnd\project\BLL\bin\Release\System.Threading.Tasks.Extensions.dll
@@ -59,7 +58,6 @@ C:\Users\shira_000\Desktop\WordGameBackend\WordGameBackEnd\project\BLL\bin\Relea
 C:\Users\shira_000\Desktop\WordGameBackend\WordGameBackEnd\project\BLL\bin\Release\Google.LongRunning.xml
 C:\Users\shira_000\Desktop\WordGameBackend\WordGameBackEnd\project\BLL\bin\Release\Google.Protobuf.pdb
 C:\Users\shira_000\Desktop\WordGameBackend\WordGameBackEnd\project\BLL\bin\Release\Google.Protobuf.xml
-C:\Users\shira_000\Desktop\WordGameBackend\WordGameBackEnd\project\BLL\bin\Release\EntityFramework.xml
 C:\Users\shira_000\Desktop\WordGameBackend\WordGameBackEnd\project\BLL\bin\Release\System.Interactive.Async.xml
 C:\Users\shira_000\Desktop\WordGameBackend\WordGameBackEnd\project\BLL\bin\Release\Newtonsoft.Json.xml
 C:\Users\shira_000\Desktop\WordGameBackend\WordGameBackEnd\project\BLL\bin\Release\System.Threading.Tasks.Extensions.xml

@@ -147,8 +147,6 @@ C:\Users\ריקי\Desktop\WordGameBackend\WordGameBackEnd\project\WebApi\obj\Deb
 C:\Users\ריקי\Desktop\WordGameBackend\WordGameBackEnd\project\WebApi\obj\Debug\WebApi.csproj.CopyComplete
 C:\Users\ריקי\Desktop\WordGameBackend\WordGameBackEnd\project\WebApi\obj\Debug\WebApi.dll
 C:\Users\ריקי\Desktop\WordGameBackend\WordGameBackEnd\project\WebApi\obj\Debug\WebApi.pdb
-C:\Users\ריקי\Desktop\WordGameBackend\WordGameBackEnd\project\WebApi\bin\EntityFramework.xml
-C:\Users\ריקי\Desktop\WordGameBackend\WordGameBackEnd\project\WebApi\bin\EntityFramework.SqlServer.xml
 C:\Users\ריקי\Desktop\WordGameBackend\WordGameBackEnd\project\WebApi\bin\grpc_csharp_ext.x86.dll
 C:\Users\ריקי\Desktop\WordGameBackend\WordGameBackEnd\project\WebApi\bin\grpc_csharp_ext.x64.dll
 C:\Users\ריקי\Desktop\WordGameBackend\WordGameBackEnd\project\WebApi\bin\libgrpc_csharp_ext.x86.so
@@ -828,3 +826,9 @@ C:\Users\shira_000\Desktop\WordGameBackend\WordGameBackEnd\project\WebApi\obj\De
 C:\Users\shira_000\Desktop\WordGameBackend\WordGameBackEnd\project\WebApi\obj\Debug\WebApi.csproj.CopyComplete
 C:\Users\shira_000\Desktop\WordGameBackend\WordGameBackEnd\project\WebApi\obj\Debug\WebApi.dll
 C:\Users\shira_000\Desktop\WordGameBackend\WordGameBackEnd\project\WebApi\obj\Debug\WebApi.pdb
+C:\Users\ריקי\Desktop\WordGameBackend\WordGameBackEnd\project\WebApi\bin\Google.Apis.Bigquery.v2.dll
+C:\Users\ריקי\Desktop\WordGameBackend\WordGameBackEnd\project\WebApi\bin\Google.Cloud.BigQuery.V2.dll
+C:\Users\ריקי\Desktop\WordGameBackend\WordGameBackEnd\project\WebApi\bin\Google.Apis.Bigquery.v2.pdb
+C:\Users\ריקי\Desktop\WordGameBackend\WordGameBackEnd\project\WebApi\bin\Google.Apis.Bigquery.v2.xml
+C:\Users\ריקי\Desktop\WordGameBackend\WordGameBackEnd\project\WebApi\bin\Google.Cloud.BigQuery.V2.pdb
+C:\Users\ריקי\Desktop\WordGameBackend\WordGameBackEnd\project\WebApi\bin\Google.Cloud.BigQuery.V2.xml

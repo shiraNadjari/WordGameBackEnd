@@ -1,5 +1,4 @@
 ﻿using System;
-//using System.Drawing;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,7 +7,6 @@ using Google.Cloud.Vision.V1;
 using System.IO;
 using Google.Cloud.Storage.V1;
 using DAL;
-//using System.Drawing;
 using COMMON;
 using Google.Apis.Auth.OAuth2;
 namespace BLL
@@ -53,10 +51,12 @@ namespace BLL
     }
     public class BLLgoogleVision
     {
+
         public static string pathCred;
+
         public static string Storage(int catId, string URL, Dictionary<string, int> categoriesCounter, bool IsMainImg = false)
         {
-            Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", pathCred + @"App_Data\wordproject-29b2e0d3e0d5.json");
+            Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", @"C:\keys\wordproject-29b2e0d3e0d5.json");
             string imageName;
             if (!IsMainImg)
                 imageName = BLLcategory.GetCategoryById(catId).CategoryName + categoriesCounter[BLLcategory.GetCategoryById(catId).CategoryName]++ + ".jpg";
@@ -77,26 +77,14 @@ namespace BLL
             return URL;
         }
    
-        //public void CreateDir(string FolderName)
-        //{
-        //    if (!FolderName.EndsWith("/"))
-        //        FolderName += "/";
-        //    var uploadStream = new MemoryStream(Encoding.UTF8.GetBytes(""));
-        //    Storage.Objects.Insert(
-        //        bucket: BucketName,
-        //        stream: uploadStream,
-        //        contentType: "application/x-directory",
-        //        body: new Google.Apis.Storage.v1.Data.Object() { Name = FolderName }
-        //        ).Upload();
-        //}
-
         public static string UserImageStorage(COMimage image,string base64)
         {
             int counter = BLLimage.Getimages().FindAll(img => img.UserId == image.UserId).Count;
-            Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", pathCred + @"App_Data\wordproject-29b2e0d3e0d5.json");
+
+            Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", @"C:\keys\wordproject-29b2e0d3e0d5.json");
+
 
             string imageName = BLLuser.GetUserById(image.UserId).CategoryName + counter + ".jpg";
-
             string path=System.IO.Path.GetTempFileName();
             byte[] byte1 = Convert.FromBase64String(base64);
             try
@@ -109,12 +97,11 @@ namespace BLL
             }
             //string imageName = "bla2";
             string bucketName = "usersimages";
-            string folderName = "user"+image.UserId;
             var storage = StorageClient.Create();
             using (var f = File.OpenRead(path))
                 try
                 {
-                    var res = storage.UploadObject(bucketName, imageName, "image / jpeg", f);
+                    var res = storage.UploadObject(bucketName, imageName, null, f);
                         //(bucketName +"/"+ folderName, imageName, null, f);
                     image.URL="https://storage.googleapis.com/" + bucketName + "/" + imageName;
                 }
@@ -142,11 +129,10 @@ namespace BLL
         }
         public static List<string> VisionApi(int categoryId, int UserId, string URL, Dictionary<string, int> categoriesCounter, Dictionary<string, int> voicesCounter)
         {
-            Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", @"C:\wordproject-29b2e0d3e0d5.json");
+            Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", @"C:\keys\wordproject-29b2e0d3e0d5.json");
             // Instantiates a client
             var client = ImageAnnotatorClient.Create();
             // Load the image file into memory
-          
             var image = Image.FromFile(URL);
             // Performs label detection on the image file
             var response = client.DetectLocalizedObjects(image);//
@@ -164,7 +150,6 @@ namespace BLL
                         max = countingDic[annotation.Name];
                         common = annotation.Name;
                     }
-
                 }
                 else
                 {
@@ -179,7 +164,6 @@ namespace BLL
             try
             {
                 imgUrl = Storage(categoryId, URL, categoriesCounter);
-
                 // if image in storage
                 //insert image info db
                 img.CategoryID = categoryId;
@@ -191,12 +175,10 @@ namespace BLL
                 imgId = DALimage.GetImageIdByURL(img.URL);
                 //insert objects into db
                 Dictionary<Bounding, string> finalList = new Dictionary<Bounding, string>();
-
                 foreach (var annotation in response)
                 {
                     List<double> x = new List<double>();
                     List<double> y = new List<double>();
-
                     foreach (var item in annotation.BoundingPoly.NormalizedVertices)
                     {
                         x.Add(item.X);
@@ -253,7 +235,6 @@ namespace BLL
             {
                 throw e;
             }
-            BLLimage.UpdateEndIndex(imgId, img.BeginIndex + c);
             return ans;
         }
 
@@ -262,12 +243,11 @@ namespace BLL
         public static List<COMimageObject> CustomVisionApi(COMimage img,string base64)
         {
             //Directory.GetCurrentDirectory() +
-            Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", pathCred + @"App_Data\wordproject-29b2e0d3e0d5.json"); 
+            Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS",  @"C:\keys\wordproject-29b2e0d3e0d5.json"); 
             // Instantiates a client
             var client = ImageAnnotatorClient.Create();
             // Load the image file into memory
             byte[] byteBuffer = Convert.FromBase64String(base64);
-
             System.Drawing.Bitmap bitmap1 = null;
             //convert byte[] to bitmap
             MemoryStream memoryStream = new MemoryStream(byteBuffer);
@@ -275,11 +255,10 @@ namespace BLL
             bitmap1 = (System.Drawing.Bitmap)System.Drawing.Bitmap.FromStream(memoryStream);
             memoryStream.Close();
             memoryStream = null;
-            byteBuffer = null;
+           // byteBuffer = null;
             //rotate the image-bitmap , return byte[]
-            var res = RotateImage(bitmap1);
-            var image = Image.FromBytes(res);//convert to image
-
+          //  var res = RotateImage(bitmap1);
+            var image = Image.FromBytes(byteBuffer);//convert to image
             // Performs label detection on the image file
             var response = client.DetectLocalizedObjects(image);
             List<COMimageObject> objects = new List<COMimageObject>();
@@ -312,7 +291,7 @@ namespace BLL
                 //image storage
                 img.URL = UserImageStorage(img,base64);
                 //insert image into db
-                DALimageObject.Refresh();
+                //DALimageObject.Refresh();
                 img.BeginIndex = BLLobject.GetObjects().Count;
                 DALimage.Addimage(img);//insert image into db
                 imgId = DALimage.GetImageIdByURL(img.URL);

@@ -13,22 +13,7 @@ namespace WebApi.Controllers
     public class ImagesController : ApiController
     {
 
-        public IHttpActionResult GetTwelveNextImages(int id, int time)
-        {
-            //time is current page number in this category images
-            List<COMimage> list = BLLimage.GetTwelveNextImages(id, time);
-            if (list == null)
-                return BadRequest("fail to load images");
-            if (list.Count > 0)
-                return Ok(ImageMat.CreateMat(list));
-            else
-                return BadRequest("no more pictures for this category.");
-        }
-
-
-
         [Route("api/Images/GetImageById/{id}")]
-
         public IHttpActionResult GetImageById(int id)
         {
             COMimage img = BLLimage.GetImageById(id);
@@ -47,33 +32,19 @@ namespace WebApi.Controllers
             if (catid != -1)
             {
                 list = BLLimage.Getimages().FindAll(img => img.CategoryID == catid);
-
             }
             else
             {
-                //return BLLimage.Getimages();
                 //time is current page number in this category images
                 list = BLLimage.Getimages().FindAll(img => img.UserId == id);
             }
-                if (list == null)
+            if (list == null)
                 return BadRequest("fail to load images");
             if (list.Count > 0)
                 return Ok(ImageMat.CreateMat(list,true));
             else
                 return BadRequest("no more pictures for this category.");
     }
-        //public IHttpActionResult GetTwelveNextImages(int id, int time)
-        //{
-        //    //time is current page number in this category images
-        //    List<COMimage> list = BLLimage.GetTwelveNextImages(id, time);
-        //    if (list == null)
-        //        return BadRequest("fail to load images");
-        //    if (list.Count > 0)
-        //        return Ok(ImageMat.CreateMat(list));
-        //    else
-        //        return BadRequest("no more pictures for this category.");
-        //}
-
 
         public IHttpActionResult PostImage([FromBody] COMimage img)
          {

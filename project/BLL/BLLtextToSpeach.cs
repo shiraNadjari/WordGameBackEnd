@@ -7,16 +7,18 @@ using System.Collections.Generic;
 using COMMON;
 
 public class BLLtextToSpeach
+
 {//
     public static string pathcre;
+
     public static string VoiceStorage(int userId,int catId, string URL, Dictionary<string, int> voicesCounter)
     {
-        Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", pathcre+@"App_Data\wordproject -29b2e0d3e0d5.json");
+        Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS",  @"C:\keys\wordproject -29b2e0d3e0d5.json");
         // upload the image storage
-        //----------------
         string voiceName;
         if(voicesCounter.Count>0)
-            voiceName = "voice" + BLLcategory.GetCategoryById(catId).CategoryName + voicesCounter[BLLcategory.GetCategoryById(catId).CategoryName]++ + ".mp3";
+        //voicesCounter[BLLcategory.GetCategoryById(catId).CategoryName]++
+        voiceName = "voice" + BLLcategory.GetCategoryById(catId).CategoryName + voicesCounter[BLLcategory.GetCategoryById(catId).CategoryName]++ + ".mp3";
         else
         {
             List<COMimageObject> objs = new List<COMimageObject>();
@@ -24,7 +26,10 @@ public class BLLtextToSpeach
             {
                 objs.AddRange(BLLobject.GetObjects().FindAll(obj => obj.ImageID == img.ImageID));
             }
-            voiceName = "voice" + BLLcategory.GetCategoryById(catId).CategoryName + objs.Count + ".mp3";
+
+            string add = catId == 6 ? BLLuser.GetUserById(userId).CategoryName : BLLcategory.GetCategoryById(catId).CategoryName;
+            voiceName = "voice" + add + objs.Count + ".mp3";
+
         }
         string bucketName = "objectsound";
         var storage = StorageClient.Create();
@@ -42,12 +47,13 @@ public class BLLtextToSpeach
         }
         return URL;
     }
+
+    //get text return his temp voiceURL
     public static string TextToSpeach(string text)
     {
         Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", @"C:\TextToSpeach-b2d8743c4197.json");
         // Instantiate a client
         TextToSpeechClient client = TextToSpeechClient.Create();
-
         // Set the text input to be synthesized.
         SynthesisInput input = new SynthesisInput
         {
@@ -89,25 +95,4 @@ public class BLLtextToSpeach
         }
         return url;
     }
-
-    //public static void UpdateUrl(Dictionary<string,int> voicesCounter)
-    //    {
-    //        foreach (COMimageObject obj in BLLobject.GetObjects())
-    //        {
-    //            if (obj.VoiceURL == null)
-    //            {
-    //                try
-    //                {
-    //                    string url = TextToSpeach(obj.Name);
-    //                    url = BLLtextToSpeach.VoiceStorage(BLLimage.GetImageById(obj.ImageID).CategoryID, url, voicesCounter);
-    //                    BLLobject.UpdateVoiceURL(obj.ObjectId, url);
-    //                }
-    //                catch (Exception)
-    //                {
-
-    //                    throw;
-    //                }
-    //            }
-    //        }
-    //    }
 }

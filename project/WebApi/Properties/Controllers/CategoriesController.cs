@@ -31,6 +31,7 @@ namespace WebApi.Controllers
             BLLgoogleVision.pathCred=HttpRuntime.AppDomainAppPath;
             return BLLcategory.GetCategories();   
         }
+
         [Route("api/Categories/GetPagesAmountPerCategory/{id}")]
         public int GetPagesAmountPerCategory(int id)
         {

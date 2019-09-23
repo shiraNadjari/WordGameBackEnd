@@ -99,9 +99,10 @@
             this.label14 = new System.Windows.Forms.Label();
             this.delete = new System.Windows.Forms.Button();
             this.groupBox9 = new System.Windows.Forms.GroupBox();
-            this.backgroundWorker2 = new System.ComponentModel.BackgroundWorker();
-            this.label17 = new System.Windows.Forms.Label();
             this.numericUpDown9 = new System.Windows.Forms.NumericUpDown();
+            this.label17 = new System.Windows.Forms.Label();
+            this.backgroundWorker2 = new System.ComponentModel.BackgroundWorker();
+            this.button23 = new System.Windows.Forms.Button();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -780,15 +781,6 @@
             this.groupBox9.TabStop = false;
             this.groupBox9.Text = "groupBox9";
             // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(7, 33);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(45, 13);
-            this.label17.TabIndex = 29;
-            this.label17.Text = "objectId";
-            // 
             // numericUpDown9
             // 
             this.numericUpDown9.Location = new System.Drawing.Point(58, 33);
@@ -801,11 +793,31 @@
             this.numericUpDown9.Size = new System.Drawing.Size(56, 20);
             this.numericUpDown9.TabIndex = 30;
             // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(7, 33);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(45, 13);
+            this.label17.TabIndex = 29;
+            this.label17.Text = "objectId";
+            // 
+            // button23
+            // 
+            this.button23.Location = new System.Drawing.Point(312, 142);
+            this.button23.Name = "button23";
+            this.button23.Size = new System.Drawing.Size(75, 81);
+            this.button23.TabIndex = 30;
+            this.button23.Text = "fix spaces";
+            this.button23.UseVisualStyleBackColor = true;
+            this.button23.Click += new System.EventHandler(this.button23_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(997, 467);
+            this.Controls.Add(this.button23);
             this.Controls.Add(this.groupBox9);
             this.Controls.Add(this.groupBox8);
             this.Controls.Add(this.button21);
@@ -935,6 +947,7 @@
         private System.Windows.Forms.NumericUpDown numericUpDown9;
         private System.Windows.Forms.Label label17;
         private System.ComponentModel.BackgroundWorker backgroundWorker2;
+        private System.Windows.Forms.Button button23;
     }
 }
 

@@ -73,7 +73,6 @@ namespace WindowsFormsApp1
                 }
                 catch (Exception ex)
                 {
-
                     MessageBox.Show("error: add user didnt success: "+ex);
                 }
             }
@@ -161,14 +160,6 @@ namespace WindowsFormsApp1
             foreach (COMCategory cat in BLLcategory.GetCategories())
             {
                 List<COMimageObject> objects = new List<COMimageObject>();
-                //List <COMimage> images= BLLimage.Getimages().FindAll(img => img.CategoryID == cat.CategoryId);
-                //foreach (COMimage img in images)
-                //{
-                //    foreach (COMimageObject obj in BLLobject.GetObjects().FindAll(obj => obj.ImageID == img.ImageID))
-                //    {
-                //        objects.Add(obj);
-                //    }
-                //}
                 BLLimage.Getimages().FindAll(img => img.CategoryID == cat.CategoryId).ForEach(img => objects.AddRange(BLLobject.GetObjects().FindAll(obj => obj.ImageID == img.ImageID)));
                 x = objects.Count;
                 voicesCounter.Add(cat.CategoryName, x);
@@ -274,9 +265,9 @@ namespace WindowsFormsApp1
             numericUpDown9.Value = 0;
         }
 
-        //private void Form1_Load_2(object sender, EventArgs e)
-        //{
-
-        //}
+        private void button23_Click(object sender, EventArgs e)
+        {
+            DAL.DALimageObject.fix();
+        }
     }
 }
